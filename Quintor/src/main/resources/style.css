@@ -1,0 +1,21 @@
+.table-view .column-header .label{
+    -fx-font-weight: bold;
+}
+
+.table-view .cell{
+    -fx-cell-size: 30;
+    -fx-text-fill: #000000;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    /*-fx-cell-size : 20;*/
+    -fx-background-color:   white;
+}
+
+.table-view {
+    /*-fx-border-insets: 0,0,0,0;*/
+    -fx-border-style: none;
+    -fx-background-insets: 0;
+}
