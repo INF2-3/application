@@ -34,11 +34,13 @@ public class HelloApplication extends Application {
         }
 
         // Scene
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("transactionsOverview.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
         String css = this.getClass().getResource("/style.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setMaximized(true);
+        stage.setResizable(false);
+        System.out.println(screenWidth);
         stage.setScene(scene);
         stage.show();
     }
