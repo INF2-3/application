@@ -1,10 +1,18 @@
 package com.example.quintor.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class TransactionOverviewController {
+    @FXML
+    private AnchorPane anchorPane;
 
     @FXML
     private TableColumn<?, ?> columnBedrag;
@@ -29,9 +37,5 @@ public class TransactionOverviewController {
 
     @FXML
     private TableView<?> transactionsTable;
-
-    public void test() {
-
-    }
 }
 

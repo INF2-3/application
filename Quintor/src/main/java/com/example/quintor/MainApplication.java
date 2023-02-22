@@ -6,12 +6,15 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class MainApplication extends Application {
+
     int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
     int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws IOException {
         // Responsive Design
         int sceneWidth = 0;
         int sceneHeight = 0;
@@ -27,12 +30,13 @@ public class MainApplication extends Application {
         }
 
         // Scene
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("transactionsOverview.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("navbar.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
         String css = this.getClass().getResource("/style.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setMaximized(true);
-        stage.setResizable(false);
+        stage.setMinWidth(1360);
+        stage.setMinHeight(720);
         stage.setScene(scene);
         stage.show();
     }
