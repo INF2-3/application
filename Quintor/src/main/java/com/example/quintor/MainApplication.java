@@ -2,18 +2,11 @@ package com.example.quintor;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseButton;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.IOException;
-
-public class HelloApplication extends Application {
+public class MainApplication extends Application {
     int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
     int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
 
@@ -34,13 +27,12 @@ public class HelloApplication extends Application {
         }
 
         // Scene
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("transactionsOverview.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("transactionsOverview.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
         String css = this.getClass().getResource("/style.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setMaximized(true);
         stage.setResizable(false);
-        System.out.println(screenWidth);
         stage.setScene(scene);
         stage.show();
     }

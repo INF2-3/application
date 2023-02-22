@@ -1,4 +1,4 @@
-package com.example.quintor;
+package com.example.quintor.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;

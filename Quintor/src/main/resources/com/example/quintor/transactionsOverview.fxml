@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -12,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="transactionsTable" layoutX="94.0" layoutY="168.0" prefHeight="485.0" prefWidth="1179.0" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="168.0">
+      <TableView fx:id="transactionsTable" layoutX="91.0" layoutY="104.0" prefHeight="611.0" prefWidth="1179.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="104.0">
         <columns>
           <TableColumn fx:id="columnDate" maxWidth="274.0" minWidth="0.0" prefWidth="168.0" sortable="false" text="Datum" />
           <TableColumn fx:id="columnDebCred" maxWidth="274.0" minWidth="0.0" prefWidth="168.0" sortable="false" text="Debit/Credit" />
@@ -26,27 +23,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <MenuBar prefHeight="69.0" prefWidth="781.0" style="-fx-background-color: E7C6FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <TextField layoutX="899.0" layoutY="91.0" prefHeight="45.0" prefWidth="372.0" promptText="Zoeken naar transactie" AnchorPane.rightAnchor="89.0" />
-      <Label layoutX="94.0" layoutY="92.0" prefWidth="206.0" text="Transacties" AnchorPane.leftAnchor="94.0">
+      <TextField layoutX="896.0" layoutY="27.0" prefHeight="45.0" prefWidth="372.0" promptText="Zoeken naar transactie" AnchorPane.rightAnchor="92.0" />
+      <Label layoutX="91.0" layoutY="28.0" prefWidth="206.0" text="Transacties" AnchorPane.leftAnchor="91.0">
          <font>
             <Font name="Roboto Bold" size="34.0" />
          </font>
