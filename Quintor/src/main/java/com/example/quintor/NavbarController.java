@@ -26,7 +26,7 @@ public class NavbarController {
     }
 
     public void settingsButton(){
-//        loadPage("settings");
+        loadPage("settings");
     }
 
     public void loadPage(String page) {
