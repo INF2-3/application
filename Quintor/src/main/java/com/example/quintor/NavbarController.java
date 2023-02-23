@@ -1,4 +1,4 @@
-package com.example.quintor.controller;
+package com.example.quintor;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
