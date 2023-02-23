@@ -1,24 +1,31 @@
 .table-view .column-header .label{
     -fx-font-weight: bold;
-    /*-fx-label-padding: 40;*/
-    /*-fx-padding: 20;*/
-    /*-fx-background-color: blue;*/
+    -fx-font-size: 20;
+    -fx-label-padding: 10 0 10 0;
 }
 
 .table-view .cell{
     -fx-cell-size: 30;
     -fx-text-fill: #000000;
-    /*-fx-alignment: CENTER_LEFT;*/
+    -fx-alignment: CENTER;
+    -fx-font-weight: bold;
+    -fx-border-width: 0;
+    /*-fx-background-color: #f4f4f4;*/
 }
 
 .table-view .column-header,
 .table-view .column-header-background .filler {
-    /*-fx-cell-size : 20;*/
-    -fx-background-color:   white;
+    -fx-background-color:   ffffff;
+    -fx-border-color: black;
+    -fx-border-width: 1 0 1 0;
 }
 
 .table-view {
-    /*-fx-border-insets: 0,0,0,0;*/
-    -fx-border-style: none;
-    -fx-background-insets: 0;
+    -fx-background-insets: -1;
+    -fx-background-color: #ffffff;
+    -fx-border-width: 0;
+}
+
+.table-view .cell:selected {
+    -fx-background-color: #bebebe;
 }
