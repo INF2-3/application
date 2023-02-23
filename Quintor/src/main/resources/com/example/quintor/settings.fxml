@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quintor.controller.SettingsController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quintor.SettingsController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="521.0" layoutY="185.0" prefHeight="350.0" prefWidth="317.0" spacing="20.0" style="-fx-background-color: #E7C6FF; -fx-background-radius: 20; -fx-border-color: #000000; -fx-border-radius: 20;">
+      <VBox fx:id="settingsBox" alignment="TOP_CENTER" layoutX="521.0" layoutY="185.0" prefHeight="350.0" prefWidth="317.0" spacing="20.0" style="-fx-background-color: #E7C6FF; -fx-background-radius: 20; -fx-border-color: #000000; -fx-border-radius: 20;">
          <children>
             <Label style="-fx-font-weight: bold;" text="Instellingen">
                <font>
