@@ -12,6 +12,7 @@ import java.io.IOException;
 public class SettingsController {
     @FXML
     private AnchorPane anchorPane;
+    @FXML
     public VBox settingsBox;
 
     public void changePassword(){
@@ -23,20 +24,20 @@ public class SettingsController {
     }
 
     public void addonOverview(){
-        changeView("addonOverview");
+//        changeView("addonOverview");
     }
 
     public void logout() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("navbar.fxml"));
-        Parent root = loader.load();
-        Scene newScene = new Scene(root);
-        Stage stage = (Stage) anchorPane.getScene().getWindow();
-        Scene oldScene = stage.getScene();
-        if (oldScene != null) {
-            stage.close();
-        }
-        stage.setScene(newScene);
-        stage.show();
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+//        Parent root = loader.load();
+//        Scene newScene = new Scene(root);
+//        Stage stage = (Stage) anchorPane.getScene().getWindow();
+//        Scene oldScene = stage.getScene();
+//        if (oldScene != null) {
+//            stage.close();
+//        }
+//        stage.setScene(newScene);
+//        stage.show();
     }
 
     public void changeView(String view){
