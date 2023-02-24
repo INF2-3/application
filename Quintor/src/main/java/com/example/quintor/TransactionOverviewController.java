@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
@@ -19,6 +20,9 @@ import java.util.ResourceBundle;
 public class TransactionOverviewController implements Initializable {
     @FXML
     private AnchorPane anchorPane;
+
+    @FXML
+    private TextField search;
 
     @FXML
     private TableView<Transaction> transactionsTable;
