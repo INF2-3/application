@@ -13,18 +13,27 @@ public class LoginController {
     @FXML
     private TextField passwordField;
     @FXML
-    private Label errorLabel = null;
+    private Label errorLabel;
 
+    public boolean setEmail(String email) {
+        this.email = email;
+        return true;
+    }
 
+    public boolean setHashedPassword(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
+        return true;
+    }
 
     public void pressLoginButton() {
         if(this.emailField.getText().isEmpty() || this.passwordField.getText().isEmpty()) {
             this.errorLabel.setText("Er is geen e-mailadres of wachtwoord ingevuld");
             return;
         }
-
-        this.email = this.emailField.getText();
-        this.hashedPassword = this.passwordField.getText();
+        if(!this.setEmail(this.emailField.getText()) && !this.setHashedPassword(this.passwordField.getText())) {
+            this.errorLabel.setText("De inloggegevens kloppen niet.");
+        }
+        this.errorLabel.setText(" ");
     }
 
 }
