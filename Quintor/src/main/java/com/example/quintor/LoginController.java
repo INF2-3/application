@@ -30,8 +30,9 @@ public class LoginController {
             this.errorLabel.setText("Er is geen e-mailadres of wachtwoord ingevuld");
             return;
         }
-        if(!this.setEmail(this.emailField.getText()) && !this.setHashedPassword(this.passwordField.getText())) {
+        if(!this.setEmail(this.emailField.getText()) || !this.setHashedPassword(this.passwordField.getText())) {
             this.errorLabel.setText("De inloggegevens kloppen niet.");
+            return;
         }
         this.errorLabel.setText(" ");
     }
