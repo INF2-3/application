@@ -13,19 +13,19 @@ public class NavbarController {
     @FXML
     private BorderPane borderPane;
 
-    public void initialize(){
+    public void initialize() {
 //        loadPage("dashboard");
     }
 
-    public void dashboardButton(){
+    public void dashboardButton() {
 //        loadPage("dashboard");
     }
 
-    public void transactionButton(){
+    public void transactionButton() {
         loadPage("transactionsOverview");
     }
 
-    public void settingsButton(){
+    public void settingsButton() {
 //        loadPage("settings");
     }
 
@@ -33,7 +33,7 @@ public class NavbarController {
         Parent root = null;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page + ".fxml")));
-        }catch (IOException ex){
+        } catch (IOException ex) {
             System.out.println(ex);
         }
         borderPane.setCenter(root);

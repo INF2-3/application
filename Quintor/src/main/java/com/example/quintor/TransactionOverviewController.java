@@ -53,7 +53,8 @@ public class TransactionOverviewController implements Initializable {
      * to perform post-processing on the content
      * It creates cell factory's for the table, then adds every transaction to an observable list and adds the
      * observable list to the transactions table.
-     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     *
+     * @param url            The location used to resolve relative paths for the root object, or null if the location is not known.
      * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
      */
     @Override
