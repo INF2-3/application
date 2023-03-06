@@ -22,13 +22,22 @@ public class NavbarController {
     }
 
     public void transactionButton() {
+
         loadPage("transactionsOverview");
     }
 
+    /**
+     * Load settings page
+     */
     public void settingsButton() {
-//        loadPage("settings");
+        loadPage("settings");
     }
 
+    /**
+     * load page
+     *
+     * @param page String name of the fxml file
+     */
     public void loadPage(String page) {
         Parent root = null;
         try {
