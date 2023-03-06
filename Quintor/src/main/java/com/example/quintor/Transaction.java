@@ -34,29 +34,29 @@ public class Transaction {
     private String category;
 
     public Transaction(int id, LocalDate valueDate, String entryDate, String debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, int originalDescriptionId, String description, int fileId, int categoryId) {
-        this.id = id;
-        this.valueDate = valueDate;
-        this.entryDate = entryDate;
-        this.debCred = debCred;
-        this.amount = amount;
-        this.code = code;
-        this.referenceOwner = referenceOwner;
-        this.institutionReference = institutionReference;
-        this.supplementaryDetails = supplementaryDetails;
-        this.originalDescriptionId = originalDescriptionId;
-        this.description = description;
-        this.fileId = fileId;
-        this.categoryId = categoryId;
+        setId(id);
+        setValueDate(valueDate);
+        setEntryDate(entryDate);
+        setDebCred(debCred);
+        setAmount(amount);
+        setCode(code);
+        setReferenceOwner(referenceOwner);
+        setInstitutionReference(institutionReference);
+        setSupplementaryDetails(supplementaryDetails);
+        setOriginalDescriptionId(originalDescriptionId);
+        setDescription(description);
+        setFileId(fileId);
+        setCategoryId(categoryId);
     }
 
     public Transaction(String entryDate, String debCred, double amount, String code, String type, String category, String description) {
-        this.entryDate = entryDate;
-        this.debCred = debCred;
-        this.amount = amount;
-        this.code = code;
-        this.type = type;
-        this.category = category;
-        this.description = description;
+        setEntryDate(entryDate);
+        setDebCred(debCred);
+        setAmount(amount);
+        setCode(code);
+        setType(type);
+        setCategory(category);
+        setDescription(description);
     }
 
     public int getId() {

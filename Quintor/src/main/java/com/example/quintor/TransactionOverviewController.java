@@ -48,7 +48,14 @@ public class TransactionOverviewController implements Initializable {
     @FXML
     private TableColumn<Transaction, String> columnType;
 
-
+    /**
+     * This method gets called automatically when the contents of the fxml file are fully loaded
+     * to perform post-processing on the content
+     * It creates cell factory's for the table, then adds every transaction to an observable list and adds the
+     * observable list to the transactions table.
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         columnBedrag.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("amount"));
