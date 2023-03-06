@@ -9,13 +9,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
 public class SettingsController {
     @FXML
     private AnchorPane anchorPane;
     @FXML
     public VBox settingsBox;
 
-    public void changePassword(){
+    public void changePassword() {
 //        changeView("changePassword");
     }
 
@@ -23,7 +24,7 @@ public class SettingsController {
 //        changeView("userOverview");
     }
 
-    public void addonOverview(){
+    public void addonOverview() {
 //        changeView("addonOverview");
     }
 
@@ -40,7 +41,11 @@ public class SettingsController {
 //        stage.show();
     }
 
-    public void changeView(String view){
+    /**
+     * Change view of the settings page
+     * @param view String name of fxml file
+     */
+    public void changeView(String view) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(view + ".fxml"));
             AnchorPane myAnchorPane = loader.load();
