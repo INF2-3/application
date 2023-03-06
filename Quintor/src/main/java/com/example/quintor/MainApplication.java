@@ -30,7 +30,7 @@ public class MainApplication extends Application {
         }
 
         // Scene
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("navbar.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
         String css = this.getClass().getResource("/style.css").toExternalForm();
         scene.getStylesheets().add(css);
