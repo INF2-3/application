@@ -23,19 +23,21 @@ public class AddUserController {
     }
 
     public void makeUser() {
-        if (this.emailField.getText().isEmpty() || this.passwordField.getText().isEmpty()) {
-            this.errorLabel.setText("Er is geen e-mailadres of wachtwoord ingevuld");
+        System.out.println(this.roleField.getValue());
+        if (this.emailField.getText().isEmpty() || this.passwordField.getText().isEmpty() || this.roleField.getValue() == null) {
+            this.errorLabel.setText("Er is geen e-mailadres, wachtwoord of rol ingevuld");
             return;
         }
+        this.errorLabel.setText(" ");
         //password hashen moet nog gebeuren.
         //role moet nog meegegeven kunnen worden als int.
         try {
             User user = new User(1, this.emailField.getText(), this.passwordField.getText());
             this.errorLabel.setText("De gebruiker is aangemaakt.");
+            return;
         } catch (Exception e) {
             this.errorLabel.setText("De gegevens zijn niet correct.");
         }
-        this.errorLabel.setText(" ");
 
     }
 
