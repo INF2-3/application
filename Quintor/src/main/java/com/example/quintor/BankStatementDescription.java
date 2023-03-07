@@ -1,6 +1,6 @@
 package com.example.quintor;
 
-public class FileDescription {
+public class BankStatementDescription {
     private int id;
 
     private int numberOfDebitEntries;
@@ -11,12 +11,12 @@ public class FileDescription {
 
     private double amountOfCreditEntries;
 
-    public FileDescription(int id, int numberOfDebitEntries, int numberOfCreditEntries, double amountOfDebitEntries, double amountOfCreditEntries) {
-        this.id = id;
-        this.numberOfDebitEntries = numberOfDebitEntries;
-        this.numberOfCreditEntries = numberOfCreditEntries;
-        this.amountOfDebitEntries = amountOfDebitEntries;
-        this.amountOfCreditEntries = amountOfCreditEntries;
+    public BankStatementDescription(int id, int numberOfDebitEntries, int numberOfCreditEntries, double amountOfDebitEntries, double amountOfCreditEntries) {
+        setId(id);
+        setNumberOfDebitEntries(numberOfDebitEntries);
+        setAmountOfCreditEntries(numberOfCreditEntries);
+        setAmountOfDebitEntries(amountOfDebitEntries);
+        setAmountOfCreditEntries(amountOfCreditEntries);
     }
 
     public int getId() {

@@ -2,7 +2,7 @@ package com.example.quintor;
 
 import java.util.ArrayList;
 
-public class TranscriptFile {
+public class BankStatement {
     private int id;
 
     private String transactionReferenceNumber;
@@ -11,7 +11,7 @@ public class TranscriptFile {
 
     private int statementNumber;
 
-    private FileDescription fileDescription;
+    private BankStatementDescription bankStatementDescription;
 
     private User lastUpdatedUser;
 
@@ -21,15 +21,15 @@ public class TranscriptFile {
 
     private ArrayList<Transaction> transactions;
 
-    public TranscriptFile(int id, String transactionReferenceNumber, String accountNumber, int statementNumber, FileDescription fileDescription, User lastUpdatedUser, String uploadDate) {
-        this.id = id;
-        this.transactionReferenceNumber = transactionReferenceNumber;
-        this.accountNumber = accountNumber;
-        this.statementNumber = statementNumber;
-        this.fileDescription = fileDescription;
-        this.lastUpdatedUser = lastUpdatedUser;
-        this.uploadDate = uploadDate;
-        this.finalBalance = calculateFinalBalance();
+    public BankStatement(int id, String transactionReferenceNumber, String accountNumber, int statementNumber, BankStatementDescription bankStatementDescription, User lastUpdatedUser, String uploadDate) {
+        setId(id);
+        setTransactionReferenceNumber(transactionReferenceNumber);
+        setAccountNumber(accountNumber);
+        setStatementNumber(statementNumber);
+        setBankStatementDescription(bankStatementDescription);
+        setLastUpdatedUser(lastUpdatedUser);
+        setUploadDate(uploadDate);
+        setFinalBalance(calculateFinalBalance());
         this.transactions = new ArrayList<>();
     }
 
@@ -65,12 +65,12 @@ public class TranscriptFile {
         this.statementNumber = statementNumber;
     }
 
-    public FileDescription getFileDescription() {
-        return fileDescription;
+    public BankStatementDescription getBankStatementDescription() {
+        return bankStatementDescription;
     }
 
-    public void setFileDescription(FileDescription fileDescription) {
-        this.fileDescription = fileDescription;
+    public void setBankStatementDescription(BankStatementDescription bankStatementDescription) {
+        this.bankStatementDescription = bankStatementDescription;
     }
 
     public User getLastUpdatedUser() {

@@ -8,9 +8,9 @@ public class User {
     private int role;
 
     public User(String email, String username, int role) {
-        this.email = email;
-        this.username = username;
-        this.role = role;
+        setEmail(email);
+        setUsername(username);
+        setRole(role);
     }
 
     public String getEmail() {
