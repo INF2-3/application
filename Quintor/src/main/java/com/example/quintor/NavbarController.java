@@ -22,7 +22,8 @@ public class NavbarController {
     }
 
     public void transactionButton() {
-//        loadPage("transactions");
+
+        loadPage("transactionsOverview");
     }
 
     /**
