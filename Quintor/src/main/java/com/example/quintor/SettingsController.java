@@ -21,7 +21,7 @@ public class SettingsController {
     }
 
     public void userOverview() {
-        changeView("addUser");
+        changeView("createUser");
     }
 
     public void addonOverview() {
@@ -43,6 +43,7 @@ public class SettingsController {
 
     /**
      * Change view of the settings page
+     *
      * @param view String name of fxml file
      */
     public void changeView(String view) {
