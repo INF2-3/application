@@ -14,7 +14,7 @@ public class NavbarController {
     private BorderPane borderPane;
 
     public void initialize() {
-//        loadPage("dashboard");
+        loadPage("fileOverview");
     }
 
     public void dashboardButton() {
