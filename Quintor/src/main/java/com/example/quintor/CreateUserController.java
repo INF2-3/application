@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class AddUserController {
+public class CreateUserController {
     @FXML
     private TextField emailField;
     @FXML
@@ -15,6 +15,8 @@ public class AddUserController {
     private ComboBox roleField;
     @FXML
     private Label errorLabel;
+    @FXML
+    private Label succesLabel;
 
     @FXML
     public void initialize() {
@@ -29,12 +31,12 @@ public class AddUserController {
             return;
         }
         this.errorLabel.setText(" ");
+        this.succesLabel.setText(" ");
         //password hashen moet nog gebeuren.
         //role moet nog meegegeven kunnen worden als int.
         try {
             User user = new User(1, this.emailField.getText(), this.passwordField.getText());
-            this.errorLabel.setText("De gebruiker is aangemaakt.");
-            return;
+            this.succesLabel.setText("De gebruiker is aangemaakt.");
         } catch (Exception e) {
             this.errorLabel.setText("De gegevens zijn niet correct.");
         }
