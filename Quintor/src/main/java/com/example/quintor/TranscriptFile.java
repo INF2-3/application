@@ -1,5 +1,7 @@
 package com.example.quintor;
 
+import java.util.ArrayList;
+
 public class TranscriptFile {
     private int id;
 
@@ -17,6 +19,8 @@ public class TranscriptFile {
 
     private double finalBalance;
 
+    private ArrayList<Transaction> transactions;
+
     public TranscriptFile(int id, String transactionReferenceNumber, String accountNumber, int statementNumber, FileDescription fileDescription, User lastUpdatedUser, String uploadDate) {
         this.id = id;
         this.transactionReferenceNumber = transactionReferenceNumber;
@@ -26,6 +30,7 @@ public class TranscriptFile {
         this.lastUpdatedUser = lastUpdatedUser;
         this.uploadDate = uploadDate;
         this.finalBalance = calculateFinalBalance();
+        this.transactions = new ArrayList<>();
     }
 
     public int getId() {
@@ -94,6 +99,14 @@ public class TranscriptFile {
 
     public String getUserName() {
         return this.lastUpdatedUser.getUsername();
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void addTransaction(Transaction transaction) {
+        this.transactions.add(transaction);
     }
 
     public double calculateFinalBalance() {
