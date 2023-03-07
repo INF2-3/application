@@ -14,11 +14,11 @@ public class NavbarController {
     private BorderPane borderPane;
 
     public void initialize() {
-//        loadPage("dashboard");
+        loadPage("dashboard");
     }
 
     public void dashboardButton() {
-//        loadPage("dashboard");
+        loadPage("dashboard");
     }
 
     public void transactionButton() {
