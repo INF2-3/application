@@ -21,7 +21,7 @@ public class SettingsController {
     }
 
     public void userOverview() {
-//        changeView("userOverview");
+        changeView("addUser");
     }
 
     public void addonOverview() {
