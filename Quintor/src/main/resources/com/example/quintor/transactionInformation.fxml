@@ -17,23 +17,25 @@
 
     <GridPane hgap="10" styleClass="style" vgap="0" xmlns:fx="http://javafx.com/fxml" layoutX="91.0" layoutY="104.0" prefHeight="611.0" prefWidth="1179.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="104.0">
         <columnConstraints>
-            <ColumnConstraints prefWidth="201.0" />
-            <ColumnConstraints prefWidth="201.0" />
+            <ColumnConstraints prefWidth="500.0" />
+            <ColumnConstraints prefWidth="250.0" />
+            <ColumnConstraints prefWidth="250.0"/>
         </columnConstraints>
         <rowConstraints>
             <RowConstraints prefHeight="46.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
-            <RowConstraints minHeight="10.0" prefHeight="50.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+
         </rowConstraints>
         <children>
 
@@ -80,38 +82,38 @@
             <TextField fx:id="optionalDescription" GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.rowSpan="2" prefHeight="Infinity"/>
 
 
-            <Label text="Ref. Eigenaar" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label text="Ref. Eigenaar" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.columnSpan="2">
                 <font>
                     <Font size="20.0"/>
                 </font>
             </Label>
-            <TextField fx:id="referenceOwner" GridPane.columnIndex="1" GridPane.rowIndex="2" prefHeight="Infinity"/>
+            <TextField fx:id="referenceOwner" GridPane.columnIndex="1" GridPane.rowIndex="2" prefHeight="Infinity" GridPane.columnSpan="2"/>
 
             <Label text="Ref. Institutie" GridPane.columnIndex="1" GridPane.rowIndex="3">
                 <font>
                     <Font size="20.0"/>
                 </font>
             </Label>
-            <TextField fx:id="referenceInstitution" GridPane.columnIndex="1" GridPane.rowIndex="4" prefHeight="Infinity"/>
+            <TextField fx:id="referenceInstitution" GridPane.columnIndex="1" GridPane.rowIndex="4" prefHeight="Infinity" GridPane.columnSpan="2"/>
 
-            <Label text="Extra details" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label text="Extra details" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="2">
                 <font>
                     <Font size="20.0"/>
                 </font>
             </Label>
-            <TextField fx:id="supplementaryDetails" GridPane.columnIndex="1" GridPane.rowIndex="6" prefHeight="Infinity"/>
+            <TextField fx:id="supplementaryDetails" GridPane.columnIndex="1" GridPane.rowIndex="6" prefHeight="Infinity" GridPane.columnSpan="2"/>
 
-            <Label text="Orginele beschrijving" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label text="Orginele beschrijving" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.columnSpan="2">
                 <font>
                     <Font size="20.0"/>
                 </font>
             </Label>
-            <TextField fx:id="originalDescription" GridPane.columnIndex="1" GridPane.rowIndex="8" prefHeight="Infinity"/>
+            <TextField fx:id="originalDescription" GridPane.columnIndex="1" GridPane.rowIndex="8" prefHeight="Infinity" GridPane.columnSpan="2"/>
 
             <IntegerField fx:id="amountOfTransactions" GridPane.columnIndex="1" GridPane.rowIndex="12" prefHeight="Infinity"/>
-            <Button fx:id="split" text="Splitsen" GridPane.columnIndex="1" GridPane.rowIndex="12" onAction="#" prefHeight="Infinity"> </Button>
+            <Button fx:id="split" text="Splitsen" GridPane.columnIndex="2" GridPane.rowIndex="12" onAction="#" prefHeight="40.0"> </Button>
 
-            <Button fx:id="change" text="Aanpassen" GridPane.columnIndex="1" GridPane.rowIndex="13" onAction="#" > </Button>
+            <Button fx:id="change" text="Aanpassen" GridPane.columnIndex="2" GridPane.rowIndex="13" prefHeight="40.0" onAction="#" > </Button>
         </children>
     </GridPane>
   </children>
