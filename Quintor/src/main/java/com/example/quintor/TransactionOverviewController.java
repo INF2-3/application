@@ -1,11 +1,8 @@
 package com.example.quintor;
 
-import com.example.quintor.Transaction;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -14,10 +11,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class TransactionOverviewController implements Initializable {
+public class TransactionOverviewController extends SceneController implements Initializable{
     @FXML
     private AnchorPane anchorPane;
 
@@ -73,6 +69,22 @@ public class TransactionOverviewController implements Initializable {
         transactions.add(transaction);
         transactions.add(transaction1);
         transactionsTable.setItems(transactions);
+        transactionsTable.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+//                try {
+//                    switchScene("transactionInformation");
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+                System.out.println("aaa");
+            }});
+
+    }
+
+
+    @Override
+    public void openLayout() {
+
     }
 }
 

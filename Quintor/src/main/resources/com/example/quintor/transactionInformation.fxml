@@ -110,10 +110,10 @@
             </Label>
             <TextField fx:id="originalDescription" GridPane.columnIndex="1" GridPane.rowIndex="8" prefHeight="Infinity" GridPane.columnSpan="2"/>
 
-            <IntegerField fx:id="amountOfTransactions" GridPane.columnIndex="1" GridPane.rowIndex="12" prefHeight="Infinity"/>
-            <Button fx:id="split" text="Splitsen" GridPane.columnIndex="2" GridPane.rowIndex="12" onAction="#" prefHeight="40.0"> </Button>
+<!--            <IntegerField fx:id="amountOfTransactions" GridPane.columnIndex="1" GridPane.rowIndex="12" prefHeight="Infinity"/>-->
+<!--            <Button fx:id="split" text="Splitsen" GridPane.columnIndex="2" GridPane.rowIndex="12" onAction="#" prefHeight="40.0"> </Button>-->
 
-            <Button fx:id="change" text="Aanpassen" GridPane.columnIndex="2" GridPane.rowIndex="13" prefHeight="40.0" onAction="#" > </Button>
+<!--            <Button fx:id="change" text="Aanpassen" GridPane.columnIndex="2" GridPane.rowIndex="13" prefHeight="40.0" onAction="#" > </Button>-->
         </children>
     </GridPane>
   </children>

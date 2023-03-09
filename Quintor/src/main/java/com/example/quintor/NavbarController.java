@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 import java.util.Objects;
 
-public class NavbarController {
+public class NavbarController extends SceneController {
 
     @FXML
     private BorderPane borderPane;
@@ -21,9 +21,9 @@ public class NavbarController {
 //        loadPage("dashboard");
     }
 
-    public void transactionButton() {
-
-        loadPage("transactionsOverview");
+    public void transactionButton() throws IOException {
+//        switchScene(new ActionEvent(),"transactionOverview");
+//        loadPage("transactionsOverview");
     }
 
     /**
@@ -31,6 +31,14 @@ public class NavbarController {
      */
     public void settingsButton() {
         loadPage("settings");
+    }
+
+    @Override
+    public void openLayout(){
+        SettingsController settingsController = new SettingsController(this);
+
+        // Show the new stage/window
+        SettingsController.showStage();
     }
 
     /**

@@ -10,8 +10,14 @@ import java.io.IOException;
 
 public class MainApplication extends Application {
 
+    private Stage stage;
     int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
     int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
+
+    public static void main(String[] args) {
+        launch();
+    }
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -29,19 +35,19 @@ public class MainApplication extends Application {
             sceneHeight = 650;
         }
 
+        SceneController navbarController = new NavbarController();
+
+        SceneController.showStage();
         // Scene
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("navbar.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
-        String css = this.getClass().getResource("/style.css").toExternalForm();
-        scene.getStylesheets().add(css);
-        stage.setMaximized(true);
-        stage.setMinWidth(1360);
-        stage.setMinHeight(720);
-        stage.setScene(scene);
-        stage.show();
+//        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("navbar.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
+//        String css = this.getClass().getResource("/style.css").toExternalForm();
+//        scene.getStylesheets().add(css);
+////        stage.setMaximized(true);
+////        stage.setMinWidth(1360);
+////        stage.setMinHeight(720);
+//        stage.setScene(scene);
+//        stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
 }

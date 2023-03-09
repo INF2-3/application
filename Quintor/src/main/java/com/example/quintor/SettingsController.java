@@ -10,11 +10,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SettingsController {
+public class SettingsController extends SceneController{
     @FXML
     private AnchorPane anchorPane;
     @FXML
     public VBox settingsBox;
+
+    public SettingsController(NavbarController navbarController) {
+
+    }
 
     public void changePassword() {
 //        changeView("changePassword");
@@ -55,5 +59,10 @@ public class SettingsController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void openLayout() {
+       // buttonName.setOnAction(event -> openLayout());
     }
 }
