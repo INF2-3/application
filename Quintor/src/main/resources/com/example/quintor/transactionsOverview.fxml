@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <!--        fx:controller="com.example.quintor.TransactionOverviewController"-->
 <AnchorPane stylesheets="/style.css" fx:controller="com.example.quintor.TransactionOverviewController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="360.0" minWidth="680.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-    <fx:include fx:id="embeddedNav" source="navbar.fxml"/>
+    <fx:include fx:id="embeddedNav" source="navbar.fxml" />
     <children>
       <TableView fx:id="transactionsTable" layoutX="91.0" layoutY="104.0" prefHeight="611.0" prefWidth="1179.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="141.0">
         <columns>

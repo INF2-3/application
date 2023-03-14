@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.control.Button?>
 <AnchorPane stylesheets="/style.css" fx:controller="com.example.quintor.TransactionInformationController"
-            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="360.0" minWidth="680.0"
+            maxHeight="-Infinity" maxWidth="Infinity" minHeight="360.0" minWidth="680.0"
             style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1">
     <fx:include fx:id="embeddedNav" source="navbar.fxml"/>

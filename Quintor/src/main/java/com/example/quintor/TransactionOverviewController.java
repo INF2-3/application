@@ -62,7 +62,6 @@ public class TransactionOverviewController implements Initializable{
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("transactionInformation.fxml")));
         Stage window = (Stage)embeddedNav.getScene().getWindow();
         window.setScene(new Scene(root));
-        System.out.println("aaa");
     }
     /**
      * This method gets called automatically when the contents of the fxml file are fully loaded

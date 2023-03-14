@@ -38,18 +38,16 @@ public class MainApplication extends Application {
             sceneHeight = 650;
         }
 
+        // Scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
         stage.setTitle("quintor");
         Scene scene = new Scene(root, sceneWidth, sceneHeight);
-
-        String css = this.getClass().getResource("/style.css").toExternalForm();
-        scene.getStylesheets().add(css);
-        // Scene
-//        stage.setMaximized(true);
+        stage.setMaximized(true);
         stage.setMinWidth(1360);
         stage.setMinHeight(720);
         stage.setScene(scene);
-
+        String css = this.getClass().getResource("/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.show();
 
     }
