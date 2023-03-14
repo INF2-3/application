@@ -1,6 +1,5 @@
 package com.example.quintor;
 
-import com.sun.javafx.scene.control.IntegerField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;

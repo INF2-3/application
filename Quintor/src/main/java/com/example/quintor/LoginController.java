@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -12,9 +13,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LoginController {
 
+    public Button loginButton;
     @FXML
     private BorderPane borderPane;
     private String email;
@@ -52,16 +55,9 @@ public class LoginController {
         this.errorLabel.setText(" ");
 
         //For the demo
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("navbar.fxml"));
-        Parent root = loader.load();
-        Scene newScene = new Scene(root);
-        Stage stage = (Stage) borderPane.getScene().getWindow();
-        Scene oldScene = stage.getScene();
-        if (oldScene != null) {
-            stage.close();
-        }
-        stage.setScene(newScene);
-        stage.show();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("navbar.fxml")));
+        Stage window = (Stage)loginButton.getScene().getWindow();
+        window.setScene(new Scene(root));
     }
 
 }

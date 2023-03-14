@@ -28,7 +28,13 @@ public class NavbarController{
     }
 
     public void initialize() {
-        dashboardButton.setOnAction(event -> dashboardButton());
+        dashboardButton.setOnAction(event -> {
+            try {
+                dashboardButton();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         transactionButton.setOnAction(event -> {
             try {
                 transactionButton();
@@ -45,8 +51,10 @@ public class NavbarController{
         });
     }
 
-    public void dashboardButton() {
-//        loadPage("dashboard");
+    public void dashboardButton() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
+        Stage window = (Stage)dashboardButton.getScene().getWindow();
+        window.setScene(new Scene(root));
 
     }
 
