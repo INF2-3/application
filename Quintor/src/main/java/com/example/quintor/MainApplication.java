@@ -44,6 +44,12 @@ public class MainApplication extends Application {
 
         String css = this.getClass().getResource("/style.css").toExternalForm();
         scene.getStylesheets().add(css);
+        // Scene
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
+        stage.setMaximized(true);
+        stage.setMinWidth(1360);
+        stage.setMinHeight(720);
         stage.setScene(scene);
 ////        stage.setMaximized(true);
 ////        stage.setMinWidth(1360);
