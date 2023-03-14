@@ -25,21 +25,6 @@ public class NavbarController{
     private Button settingsButton;
     public NavbarController() {
         this.stage = new Stage();
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("navbar.fxml"));
-//        try{
-//            // Set this class as the controller
-//            loader.setController(this);
-//
-//            // Load the scene
-//            stage.setScene(new Scene(loader.load()));
-//        }catch (Exception e){
-//            System.out.println(e);
-//        }
-//
-//
-//        // Set up the window/stage
-//        stage.setTitle("Quintor");
-
     }
 
     public void initialize() {
