@@ -38,7 +38,7 @@ public class MainApplication extends Application {
             sceneHeight = 650;
         }
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("transactionsOverview.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("navbar.fxml")));
         stage.setTitle("quintor");
         Scene scene = new Scene(root);
 

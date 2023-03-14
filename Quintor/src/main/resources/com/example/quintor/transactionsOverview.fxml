@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <!--        fx:controller="com.example.quintor.TransactionOverviewController"-->
-<AnchorPane fx:controller="com.example.quintor.TransactionOverviewController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="360.0" minWidth="680.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane stylesheets="/style.css" fx:controller="com.example.quintor.TransactionOverviewController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="360.0" minWidth="680.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <fx:include fx:id="embeddedNav" source="navbar.fxml"/>
     <children>
-      <TableView fx:id="transactionsTable" layoutX="91.0" layoutY="104.0" prefHeight="611.0" prefWidth="1179.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="104.0">
+      <TableView fx:id="transactionsTable" layoutX="91.0" layoutY="104.0" prefHeight="611.0" prefWidth="1179.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="141.0">
         <columns>
           <TableColumn fx:id="columnDate" maxWidth="274.0" minWidth="0.0" prefWidth="168.0" sortable="false" text="Datum" />
           <TableColumn fx:id="columnDebCred" maxWidth="274.0" minWidth="0.0" prefWidth="168.0" sortable="false" text="Debit/Credit" />
@@ -24,8 +24,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField layoutX="896.0" layoutY="27.0" prefHeight="45.0" prefWidth="372.0" promptText="Zoeken naar transactie" AnchorPane.rightAnchor="92.0" />
-      <Label layoutX="91.0" layoutY="28.0" prefWidth="206.0" text="Transacties" AnchorPane.leftAnchor="91.0">
+      <TextField layoutX="896.0" layoutY="65.0" prefHeight="45.0" prefWidth="372.0" promptText="Zoeken naar transactie" AnchorPane.rightAnchor="92.0" />
+      <Label layoutX="91.0" layoutY="65.0" prefWidth="206.0" text="Transacties" AnchorPane.leftAnchor="91.0">
          <font>
             <Font name="Roboto Bold" size="34.0" />
          </font>

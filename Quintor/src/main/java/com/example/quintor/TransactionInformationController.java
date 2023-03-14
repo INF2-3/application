@@ -7,14 +7,15 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TransactionInformationController implements Initializable {
-
-    public AnchorPane anchorPane;
+    @FXML
+    public GridPane gird;
     @FXML
     private Parent embeddedNav;
     private static Stage stage;
@@ -38,8 +39,8 @@ public class TransactionInformationController implements Initializable {
     public TextField supplementaryDetails;
     @FXML
     public TextField originalDescription;
-//    @FXML
-//    public IntegerField amountOfTransactions;
+    @FXML
+    public TextField amountOfTransactions;
     @FXML
     public Button split;
     @FXML
