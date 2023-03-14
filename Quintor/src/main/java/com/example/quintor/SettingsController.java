@@ -2,23 +2,41 @@ package com.example.quintor;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.Set;
 
-public class SettingsController extends SceneController{
+public class SettingsController implements Initializable {
+    @FXML
+    private Parent embeddedNav;
+    private static Stage stage;
+    private Scene navScene;
     @FXML
     private AnchorPane anchorPane;
     @FXML
     public VBox settingsBox;
 
-    public SettingsController(NavbarController navbarController) {
-
+    public SettingsController(){
+        stage = new Stage();
     }
+    public Scene getScene(){
+        return stage.getScene();
+    }
+
+
+    public static void showStage() {
+        stage.showAndWait();
+    }
+
 
     public void changePassword() {
 //        changeView("changePassword");
@@ -45,24 +63,9 @@ public class SettingsController extends SceneController{
 //        stage.show();
     }
 
-    /**
-     * Change view of the settings page
-     * @param view String name of fxml file
-     */
-    public void changeView(String view) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(view + ".fxml"));
-            AnchorPane myAnchorPane = loader.load();
-            anchorPane.getChildren().add(myAnchorPane);
-
-            anchorPane.getChildren().remove(settingsBox);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
-    public void openLayout() {
-       // buttonName.setOnAction(event -> openLayout());
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

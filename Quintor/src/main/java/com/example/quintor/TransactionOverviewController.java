@@ -2,18 +2,27 @@ package com.example.quintor;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class TransactionOverviewController extends SceneController implements Initializable{
+public class TransactionOverviewController implements Initializable{
+
+    @FXML
+    private Parent embeddedNav;
+    private final Stage stage;
     @FXML
     private AnchorPane anchorPane;
 
@@ -43,7 +52,18 @@ public class TransactionOverviewController extends SceneController implements In
 
     @FXML
     private TableColumn<Transaction, String> columnType;
+    public TransactionOverviewController() {
+        this.stage = new Stage();
 
+    }
+
+    public void openLayout() throws IOException {
+        TransactionInformationController transactionInformationController = new TransactionInformationController();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("transactionInformation.fxml")));
+        Stage window = (Stage)embeddedNav.getScene().getWindow();
+        window.setScene(new Scene(root));
+        System.out.println("aaa");
+    }
     /**
      * This method gets called automatically when the contents of the fxml file are fully loaded
      * to perform post-processing on the content
@@ -71,20 +91,16 @@ public class TransactionOverviewController extends SceneController implements In
         transactionsTable.setItems(transactions);
         transactionsTable.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
-//                try {
-//                    switchScene("transactionInformation");
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-                System.out.println("aaa");
+                try {
+                    openLayout();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }});
-
     }
 
 
-    @Override
-    public void openLayout() {
 
-    }
+
 }
 

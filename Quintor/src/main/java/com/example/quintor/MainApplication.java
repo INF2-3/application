@@ -2,11 +2,14 @@ package com.example.quintor;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
+import java.util.Set;
 
 public class MainApplication extends Application {
 
@@ -35,19 +38,19 @@ public class MainApplication extends Application {
             sceneHeight = 650;
         }
 
-        SceneController navbarController = new NavbarController();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("transactionsOverview.fxml")));
+        stage.setTitle("quintor");
+        Scene scene = new Scene(root);
 
-        SceneController.showStage();
-        // Scene
-//        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("navbar.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
-//        String css = this.getClass().getResource("/style.css").toExternalForm();
-//        scene.getStylesheets().add(css);
+        String css = this.getClass().getResource("/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        stage.setScene(scene);
 ////        stage.setMaximized(true);
 ////        stage.setMinWidth(1360);
 ////        stage.setMinHeight(720);
-//        stage.setScene(scene);
-//        stage.show();
+
+        stage.show();
+
     }
 
 }
