@@ -82,13 +82,7 @@ public class DashboardController implements Initializable {
         File f = fc.showOpenDialog(null);
         if (f != null) {
             try {
-                if (uploadFile(f, userId)) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("bankStatementDetailed.fxml"));
-                    AnchorPane myAnchorPane = loader.load();
-                    mainVBox.getChildren().add(myAnchorPane);
-
-                    mainVBox.getChildren().remove(dashboardBox);
-                }
+                uploadFile(f, userId);
             } catch (IOException e) {
                 e.printStackTrace();
             }
