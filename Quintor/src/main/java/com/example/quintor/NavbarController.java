@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class NavbarController{
+public class NavbarController extends SceneController{
 
     public AnchorPane anchorPane;
     private NavbarController navbarController;
@@ -53,25 +53,18 @@ public class NavbarController{
     }
 
     public void dashboardButton() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
-        Stage window = (Stage)dashboardButton.getScene().getWindow();
-        window.setScene(new Scene(root));
+        changeView("dashboard", dashboardButton);
 
     }
 
     public void transactionButton() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("transactionsOverview.fxml")));
-        Stage window = (Stage)transactionButton.getScene().getWindow();
-        window.setScene(new Scene(root));
-
+        changeView("transactionsOverview", transactionButton);
     }
 
     /**
      * Load settings page
      */
     public void settingsButton() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("settings.fxml")));
-        Stage window = (Stage)settingsButton.getScene().getWindow();
-        window.setScene(new Scene(root));
+        changeView("settings", settingsButton);
     }
 }

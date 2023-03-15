@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -18,38 +19,28 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class TransactionOverviewController implements Initializable{
-
+public class TransactionOverviewController extends SceneController implements Initializable{
     @FXML
     private Parent embeddedNav;
     private final Stage stage;
     @FXML
     private AnchorPane anchorPane;
-
     @FXML
     private TextField search;
-
     @FXML
     private TableView<Transaction> transactionsTable;
-
     @FXML
     private TableColumn<Transaction, Double> columnBedrag;
-
     @FXML
     private TableColumn<Transaction, String> columnCategory;
-
     @FXML
     private TableColumn<Transaction, Integer> columnCode;
-
     @FXML
     private TableColumn<Transaction, String> columnDate;
-
     @FXML
     private TableColumn<Transaction, String> columnDebCred;
-
     @FXML
     private TableColumn<Transaction, String> columnDescription;
-
     @FXML
     private TableColumn<Transaction, String> columnType;
     public TransactionOverviewController() {
@@ -57,9 +48,7 @@ public class TransactionOverviewController implements Initializable{
     }
 
     public void openLayout() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("transactionInformation.fxml")));
-        Stage window = (Stage)embeddedNav.getScene().getWindow();
-        window.setScene(new Scene(root));
+        changeView("transactionInformation", embeddedNav);
     }
     /**
      * This method gets called automatically when the contents of the fxml file are fully loaded
