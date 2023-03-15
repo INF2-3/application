@@ -11,8 +11,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -42,14 +42,23 @@ public class DashboardController implements Initializable {
     @FXML
     private Button uploadButton;
 
+    // temporary userId
+    private int userId = 1;
+
+    private final String success = "success";
+
     /**
-     * This method gets called automatically when the contents of the fxml file are fully loaded
+     * This method gets called automatically when the contents of the fxml file are
+     * fully loaded
      * to perform post-processing on the content
-     * It creates cell factory's for the table, then adds every transcript to an observable list and adds the
+     * It creates cell factory's for the table, then adds every transcript to an
+     * observable list and adds the
      * observable list to the transactions table.
      *
-     * @param url            The location used to resolve relative paths for the root object, or null if the location is not known.
-     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     * @param url            The location used to resolve relative paths for the
+     *                       root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null
+     *                       if the root object was not localized.
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,8 +81,77 @@ public class DashboardController implements Initializable {
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MT940 files", "*.940"));
         File f = fc.showOpenDialog(null);
         if (f != null) {
+            try {
+                if (uploadFile(f, userId)) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("bankStatementDetailed.fxml"));
+                    AnchorPane myAnchorPane = loader.load();
+                    mainVBox.getChildren().add(myAnchorPane);
 
+                    mainVBox.getChildren().remove(dashboardBox);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
+    }
+
+    /**
+     * This method uploads a mt940 file to the MongoDB through a POST request to the
+     * api.
+     *
+     * @param file   The file which should be uploaded.
+     * @param userId The user id of the user who uploads the file.
+     * @return return true when the file has been uploaded and false when something
+     *         went wrong.
+     * @throws IOException
+     */
+    private boolean uploadFile(File file, int userId) throws IOException {
+        if (file == null || !file.isFile() || !file.exists()) {
+            return false;
+        }
+        if (userId < 0) {
+            return false;
+        }
+        String url = "http://localhost:8080/api/mt940/insert";
+        URL api = new URL(url);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) api.openConnection();
+        httpURLConnection.setRequestMethod("POST");
+        httpURLConnection.setRequestProperty("Accept", "application/json");
+
+        httpURLConnection.setDoOutput(true);
+        OutputStream os = httpURLConnection.getOutputStream();
+        String params = "userId=" + userId + "&file=" + file;
+        os.write(params.getBytes());
+        os.flush();
+        os.close();
+        return getResponse(httpURLConnection);
+    }
+
+    /**
+     * Gets the response of a httpURLConnection and puts them in a Stringbuffer.
+     *
+     * @param httpURLConnection the httpURLConnection used to get the response.
+     * @return true or false based on the response of the api.
+     * @throws IOException
+     */
+    private boolean getResponse(HttpURLConnection httpURLConnection) throws IOException {
+        int responseCode = httpURLConnection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            System.out.println(response);
+            if (response.toString().equals(success)) {
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 }
