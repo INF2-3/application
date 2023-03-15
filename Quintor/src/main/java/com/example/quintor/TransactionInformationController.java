@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TransactionInformationController implements Initializable {
+public class TransactionInformationController {
     @FXML
     public GridPane gird;
     @FXML
@@ -46,11 +46,6 @@ public class TransactionInformationController implements Initializable {
 
     public TransactionInformationController(){
         stage = new Stage();
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     public void split(){

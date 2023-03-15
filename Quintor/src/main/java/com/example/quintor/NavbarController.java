@@ -74,7 +74,4 @@ public class NavbarController{
         Stage window = (Stage)settingsButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
-    public void showStage() {
-        stage.showAndWait();
-    }
 }

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SettingsController implements Initializable {
+public class SettingsController {
     @FXML
     private Parent embeddedNav;
     private static Stage stage;
@@ -23,15 +23,6 @@ public class SettingsController implements Initializable {
     public SettingsController(){
         stage = new Stage();
     }
-    public Scene getScene(){
-        return stage.getScene();
-    }
-
-
-    public static void showStage() {
-        stage.showAndWait();
-    }
-
 
     public void changePassword() {
 //        changeView("changePassword");
@@ -56,11 +47,5 @@ public class SettingsController implements Initializable {
 //        }
 //        stage.setScene(newScene);
 //        stage.show();
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 }
