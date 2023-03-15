@@ -1,15 +1,11 @@
 package com.example.quintor;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.Objects;
 
 public class NavbarController extends SceneController{
 
@@ -52,6 +48,9 @@ public class NavbarController extends SceneController{
         });
     }
 
+    /**
+     * These methodes change the page.
+     */
     public void dashboardButton() throws IOException {
         changeView("dashboard", dashboardButton);
 
@@ -61,9 +60,6 @@ public class NavbarController extends SceneController{
         changeView("transactionsOverview", transactionButton);
     }
 
-    /**
-     * Load settings page
-     */
     public void settingsButton() throws IOException {
         changeView("settings", settingsButton);
     }

@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LoginController {
-
     public Button loginButton;
     @FXML
     private BorderPane borderPane;
@@ -54,5 +53,4 @@ public class LoginController {
         Stage window = (Stage)loginButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
-
 }

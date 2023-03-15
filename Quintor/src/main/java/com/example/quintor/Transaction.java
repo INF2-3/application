@@ -4,33 +4,19 @@ import java.time.LocalDate;
 
 public class Transaction {
     private int id;
-
     private LocalDate valueDate;
-
     private String entryDate;
-
     private String debCred;
-
     private double amount;
-
     private String code;
-
     private String referenceOwner;
-
     private String institutionReference;
-
     private String supplementaryDetails;
-
     private int originalDescriptionId;
-
     private String description;
-
     private int fileId;
-
     private int categoryId;
-
     private String type;
-
     private String category;
 
     public Transaction(int id, LocalDate valueDate, String entryDate, String debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, int originalDescriptionId, String description, int fileId, int categoryId) {
