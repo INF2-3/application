@@ -83,39 +83,4 @@ public class NavbarController{
         stage.showAndWait();
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * load page
-     *
-     * @param page String name of the fxml file
-     */
-    public void loadPage(String page) {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page + ".fxml")));
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
-//        borderPane.setCenter(root);
-    }
 }

@@ -51,9 +51,6 @@ public class LoginController {
             this.errorLabel.setText("De inloggegevens kloppen niet.");
             return;
         }
-        this.errorLabel.setText(" ");
-
-        //For the demo
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
         Stage window = (Stage)loginButton.getScene().getWindow();
         window.setScene(new Scene(root));

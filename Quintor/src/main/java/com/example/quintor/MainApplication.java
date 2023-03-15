@@ -39,7 +39,7 @@ public class MainApplication extends Application {
 
         // Scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
-        stage.setTitle("quintor");
+        stage.setTitle("Quintor");
         Scene scene = new Scene(root, sceneWidth, sceneHeight);
         stage.setMaximized(true);
         stage.setMinWidth(1360);
