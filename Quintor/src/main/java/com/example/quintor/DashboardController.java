@@ -67,12 +67,13 @@ public class DashboardController implements Initializable {
         transcriptTable.setItems(bankStatements);
     }
 
-    public void uploadButtonAction(ActionEvent event) {
+    public void uploadButtonAction(ActionEvent event) throws Exception {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MT940 files", "*.940"));
         File f = fc.showOpenDialog(null);
         if (f != null) {
-
+            ApiModel apiModel = new ApiModel("http://localhost:8080/MT940toJSON");
+            System.out.println(apiModel.PostFile(f));
         }
 
     }
