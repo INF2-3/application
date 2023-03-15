@@ -55,7 +55,7 @@ public class LoginController {
         this.errorLabel.setText(" ");
 
         //For the demo
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("navbar.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
         Stage window = (Stage)loginButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
