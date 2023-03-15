@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -61,8 +60,6 @@ public class NavbarController{
     }
 
     public void transactionButton() throws IOException {
-        TransactionOverviewController transactionOverviewController = new TransactionOverviewController();
-
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("transactionsOverview.fxml")));
         Stage window = (Stage)transactionButton.getScene().getWindow();
         window.setScene(new Scene(root));
@@ -73,14 +70,11 @@ public class NavbarController{
      * Load settings page
      */
     public void settingsButton() throws IOException {
-        SettingsController settingsController = new SettingsController();
-
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("settings.fxml")));
         Stage window = (Stage)settingsButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
     public void showStage() {
         stage.showAndWait();
-
     }
 }

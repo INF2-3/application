@@ -54,11 +54,9 @@ public class TransactionOverviewController implements Initializable{
     private TableColumn<Transaction, String> columnType;
     public TransactionOverviewController() {
         this.stage = new Stage();
-
     }
 
     public void openLayout() throws IOException {
-        TransactionInformationController transactionInformationController = new TransactionInformationController();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("transactionInformation.fxml")));
         Stage window = (Stage)embeddedNav.getScene().getWindow();
         window.setScene(new Scene(root));
@@ -97,9 +95,5 @@ public class TransactionOverviewController implements Initializable{
                 }
             }});
     }
-
-
-
-
 }
 
