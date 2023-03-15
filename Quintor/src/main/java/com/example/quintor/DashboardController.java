@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
