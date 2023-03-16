@@ -2,9 +2,7 @@ package com.example.quintor;
 
 public class User {
     private String email;
-
     private String username;
-
     private int role;
 
     public User(String email, String username, int role) {
