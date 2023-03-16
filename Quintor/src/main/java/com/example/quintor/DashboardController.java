@@ -36,6 +36,17 @@ public class DashboardController implements Initializable {
     private int userId = 1;
     private final String success = "success";
 
+    //getter and setter for the user id
+    public int getUserId() {
+        return this.userId;
+    }
+
+    public void setUserId(int userId) {
+        if (userId >= 0) {
+            this.userId = userId;
+        }
+    }
+
     /**
      * This method gets called automatically when the contents of the fxml file are fully loaded
      * to perform post-processing on the content
@@ -118,6 +129,9 @@ public class DashboardController implements Initializable {
      * @throws IOException
      */
     private boolean getResponse(HttpURLConnection httpURLConnection) throws IOException {
+        if (httpURLConnection == null) {
+            return false;
+        }
         int responseCode = httpURLConnection.getResponseCode();
         if (responseCode == HttpURLConnection.HTTP_OK) {
             BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
