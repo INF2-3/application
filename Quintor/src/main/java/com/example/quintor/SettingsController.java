@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class SettingsController extends SceneController {
@@ -16,7 +17,7 @@ public class SettingsController extends SceneController {
     @FXML
     public VBox settingsBox;
 
-    public SettingsController(){
+    public SettingsController() {
         stage = new Stage();
     }
 

@@ -40,15 +40,15 @@ public class TransactionInformationController {
     @FXML
     public Button change;
 
-    public TransactionInformationController(){
+    public TransactionInformationController() {
         stage = new Stage();
     }
 
-    public void split(){
+    public void split() {
 
     }
 
-    public void change(){
+    public void change() {
 
     }
 }

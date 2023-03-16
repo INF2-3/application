@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -50,7 +51,7 @@ public class LoginController {
             return;
         }
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
-        Stage window = (Stage)loginButton.getScene().getWindow();
+        Stage window = (Stage) loginButton.getScene().getWindow();
         window.setScene(new Scene(root));
     }
 }

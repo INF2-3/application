@@ -10,11 +10,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TransactionOverviewController extends SceneController implements Initializable{
+public class TransactionOverviewController extends SceneController implements Initializable {
     @FXML
     private Parent embeddedNav;
     private final Stage stage;
@@ -38,6 +39,7 @@ public class TransactionOverviewController extends SceneController implements In
     private TableColumn<Transaction, String> columnDescription;
     @FXML
     private TableColumn<Transaction, String> columnType;
+
     public TransactionOverviewController() {
         this.stage = new Stage();
     }
@@ -45,6 +47,7 @@ public class TransactionOverviewController extends SceneController implements In
     public void openLayout() throws IOException {
         changeView("transactionInformation", embeddedNav);
     }
+
     /**
      * This method gets called automatically when the contents of the fxml file are fully loaded
      * to perform post-processing on the content
@@ -77,7 +80,8 @@ public class TransactionOverviewController extends SceneController implements In
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-            }});
+            }
+        });
     }
 }
 

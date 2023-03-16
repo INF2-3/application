@@ -5,9 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
-public class NavbarController extends SceneController{
+public class NavbarController extends SceneController {
 
     public AnchorPane anchorPane;
     private NavbarController navbarController;
@@ -20,6 +21,7 @@ public class NavbarController extends SceneController{
     private Button transactionButton;
     @FXML
     private Button settingsButton;
+
     public NavbarController() {
         this.stage = new Stage();
     }
