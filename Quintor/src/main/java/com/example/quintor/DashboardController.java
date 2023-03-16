@@ -12,33 +12,24 @@ import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
-
     @FXML
     private Label clubName;
-
     @FXML
     private TableColumn<BankStatement, String> columnAccountNumber;
-
     @FXML
     private TableColumn<BankStatement, String> columnFileDate;
-
     @FXML
     private TableColumn<BankStatement, Integer> columnFileId;
-
     @FXML
     private TableColumn<BankStatement, User> columnFileUploader;
-
     @FXML
     private TableColumn<BankStatement, Double> columnFinalBalance;
-
     @FXML
     private TableView<BankStatement> transcriptTable;
-
     @FXML
     private Button uploadButton;
 
@@ -74,6 +65,5 @@ public class DashboardController implements Initializable {
         if (f != null) {
 
         }
-
     }
 }

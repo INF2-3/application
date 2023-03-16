@@ -1,9 +1,7 @@
 package com.example.quintor;
 
-import com.example.quintor.Transaction;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
@@ -11,42 +9,44 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class TransactionOverviewController implements Initializable {
+public class TransactionOverviewController extends SceneController implements Initializable {
+    @FXML
+    private Parent embeddedNav;
+    private final Stage stage;
     @FXML
     private AnchorPane anchorPane;
-
     @FXML
     private TextField search;
-
     @FXML
     private TableView<Transaction> transactionsTable;
-
     @FXML
     private TableColumn<Transaction, Double> columnBedrag;
-
     @FXML
     private TableColumn<Transaction, String> columnCategory;
-
     @FXML
     private TableColumn<Transaction, Integer> columnCode;
-
     @FXML
     private TableColumn<Transaction, String> columnDate;
-
     @FXML
     private TableColumn<Transaction, String> columnDebCred;
-
     @FXML
     private TableColumn<Transaction, String> columnDescription;
-
     @FXML
     private TableColumn<Transaction, String> columnType;
+
+    public TransactionOverviewController() {
+        this.stage = new Stage();
+    }
+
+    public void openLayout() throws IOException {
+        changeView("transactionInformation", embeddedNav);
+    }
 
     /**
      * This method gets called automatically when the contents of the fxml file are fully loaded
@@ -73,6 +73,15 @@ public class TransactionOverviewController implements Initializable {
         transactions.add(transaction);
         transactions.add(transaction1);
         transactionsTable.setItems(transactions);
+        transactionsTable.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                try {
+                    openLayout();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 }
 
