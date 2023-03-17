@@ -1,5 +1,7 @@
 package com.example.quintor;
 
+import com.example.quintor.transaction.DebCred;
+import com.example.quintor.transaction.Transaction;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -67,8 +69,8 @@ public class TransactionOverviewController extends SceneController implements In
         columnDescription.setCellValueFactory(new PropertyValueFactory<Transaction, String>("description"));
         columnType.setCellValueFactory(new PropertyValueFactory<Transaction, String>("type"));
 
-        Transaction transaction = new Transaction("10-12-2023", "Debit", 20.2, "1", "T", "main", "first transaction");
-        Transaction transaction1 = new Transaction("1-02-2024", "Credit", 0, "3904", "None", "Eten", "Second transaction");
+        Transaction transaction = new Transaction(1012, DebCred.DEBIT, 20.2, "1", "T", "main", "first transaction");
+        Transaction transaction1 = new Transaction(0102, DebCred.CREDIT, 0, "3904", "None", "Eten", "Second transaction");
         ObservableList<Transaction> transactions = transactionsTable.getItems();
         transactions.add(transaction);
         transactions.add(transaction1);
