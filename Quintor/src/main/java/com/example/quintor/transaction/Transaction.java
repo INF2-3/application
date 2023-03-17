@@ -1,25 +1,25 @@
-package com.example.quintor;
+package com.example.quintor.transaction;
 
 import java.time.LocalDate;
 
 public class Transaction {
     private int id;
     private LocalDate valueDate;
-    private String entryDate;
-    private String debCred;
+    private int entryDate;
+    private DebCred debCred;
     private double amount;
     private String code;
     private String referenceOwner;
     private String institutionReference;
     private String supplementaryDetails;
-    private int originalDescriptionId;
+    private Description originalDescriptionId;
     private String description;
     private int fileId;
     private int categoryId;
     private String type;
     private String category;
 
-    public Transaction(int id, LocalDate valueDate, String entryDate, String debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, int originalDescriptionId, String description, int fileId, int categoryId) {
+    public Transaction(int id, LocalDate valueDate, int entryDate, DebCred debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, Description originalDescriptionId, String description, int fileId, int categoryId) {
         setId(id);
         setValueDate(valueDate);
         setEntryDate(entryDate);
@@ -35,7 +35,7 @@ public class Transaction {
         setCategoryId(categoryId);
     }
 
-    public Transaction(String entryDate, String debCred, double amount, String code, String type, String category, String description) {
+    public Transaction(int entryDate, DebCred debCred, double amount, String code, String type, String category, String description) {
         setEntryDate(entryDate);
         setDebCred(debCred);
         setAmount(amount);
@@ -61,19 +61,22 @@ public class Transaction {
         this.valueDate = valueDate;
     }
 
-    public String getEntryDate() {
+    public int getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(String entryDate) {
+    public void setEntryDate(int entryDate) {
+        if (entryDate < 0) {
+            return;
+        }
         this.entryDate = entryDate;
     }
 
-    public String getDebCred() {
+    public DebCred getDebCred() {
         return debCred;
     }
 
-    public void setDebCred(String debCred) {
+    public void setDebCred(DebCred debCred) {
         this.debCred = debCred;
     }
 
@@ -90,6 +93,9 @@ public class Transaction {
     }
 
     public void setCode(String code) {
+        if (code == null || code.isEmpty()) {
+            return;
+        }
         this.code = code;
     }
 
@@ -98,6 +104,9 @@ public class Transaction {
     }
 
     public void setReferenceOwner(String referenceOwner) {
+        if (referenceOwner == null || referenceOwner.isEmpty()) {
+            return;
+        }
         this.referenceOwner = referenceOwner;
     }
 
@@ -106,6 +115,9 @@ public class Transaction {
     }
 
     public void setInstitutionReference(String institutionReference) {
+        if (institutionReference == null || institutionReference.isEmpty()) {
+            return;
+        }
         this.institutionReference = institutionReference;
     }
 
@@ -114,14 +126,20 @@ public class Transaction {
     }
 
     public void setSupplementaryDetails(String supplementaryDetails) {
+        if (supplementaryDetails == null || supplementaryDetails.isEmpty()) {
+            return;
+        }
         this.supplementaryDetails = supplementaryDetails;
     }
 
-    public int getOriginalDescriptionId() {
+    public Description getOriginalDescriptionId() {
         return originalDescriptionId;
     }
 
-    public void setOriginalDescriptionId(int originalDescriptionId) {
+    public void setOriginalDescriptionId(Description originalDescriptionId) {
+        if (originalDescriptionId == null) {
+            return;
+        }
         this.originalDescriptionId = originalDescriptionId;
     }
 
@@ -130,6 +148,9 @@ public class Transaction {
     }
 
     public void setDescription(String description) {
+        if (description == null || description.isEmpty()) {
+            return;
+        }
         this.description = description;
     }
 
@@ -154,6 +175,9 @@ public class Transaction {
     }
 
     public void setType(String type) {
+        if (type == null || type.isEmpty()) {
+            return;
+        }
         this.type = type;
     }
 
@@ -162,6 +186,9 @@ public class Transaction {
     }
 
     public void setCategory(String category) {
+        if (category == null || category.isEmpty()) {
+            return;
+        }
         this.category = category;
     }
 }
