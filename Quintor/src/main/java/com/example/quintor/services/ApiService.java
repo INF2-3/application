@@ -104,7 +104,7 @@ public class ApiService {
     }
 
     public void setEndpoint(String endpoint) {
-        if(url != null &&!endpoint.isEmpty()){
+        if(endpoint != null &&!endpoint.isEmpty()){
             this.endpoint = endpoint;
         }
     }
