@@ -90,7 +90,9 @@ public class ApiService {
     }
 
     public void setUrl(String url) {
-        this.url = url;
+        if(!url.isEmpty()){
+            this.url = url;
+        }
     }
 
     public String getUrl() {
@@ -102,6 +104,8 @@ public class ApiService {
     }
 
     public void setEndpoint(String endpoint) {
-        this.endpoint = endpoint;
+        if(!endpoint.isEmpty()){
+            this.endpoint = endpoint;
+        }
     }
 }
