@@ -26,7 +26,7 @@ public class SettingsController extends SceneController {
     }
 
     public void userOverview() {
-        changeView("createUser");
+//        changeView("createUser");
     }
 
     public void addonOverview() {

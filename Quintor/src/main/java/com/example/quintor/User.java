@@ -23,8 +23,12 @@ public class User {
         return this.id;
     }
 
-    public void setId(int id) {
+    public boolean setId(int id) {
+        if (id < 0) {
+            return false;
+        }
         this.id = id;
+        return true;
     }
 
     public String getHashedPassword() {

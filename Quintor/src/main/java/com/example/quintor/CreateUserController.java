@@ -32,6 +32,7 @@ public class CreateUserController {
         }
         this.errorLabel.setText(" ");
         this.succesLabel.setText(" ");
+
         //password hashen moet nog gebeuren.
         //role moet nog meegegeven kunnen worden als int.
         try {
