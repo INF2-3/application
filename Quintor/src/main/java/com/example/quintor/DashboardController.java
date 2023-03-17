@@ -66,7 +66,7 @@ public class DashboardController implements Initializable {
         transcriptTable.setItems(bankStatements);
     }
 
-    public void uploadButtonAction(ActionEvent event) throws Exception {
+    public void uploadButtonAction(ActionEvent event) {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MT940 files", "*.940"));
         File f = fc.showOpenDialog(null);
