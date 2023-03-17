@@ -6,4 +6,6 @@ module com.example.quintor {
 
     opens com.example.quintor to javafx.fxml;
     exports com.example.quintor;
+    exports com.example.quintor.services;
+    opens com.example.quintor.services to javafx.fxml;
 }
