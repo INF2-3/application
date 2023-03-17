@@ -1,9 +1,7 @@
 package com.example.quintor;
 
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -115,7 +113,6 @@ public class DashboardController implements Initializable {
         }
         if (userId < 0) {
             return false;
-
         }
         String url = System.getenv("URL") + "/api/mt940/insert";
         URL api = new URL(url);
