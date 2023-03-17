@@ -1,5 +1,6 @@
 package com.example.quintor;
 
+import com.example.quintor.controllers.GetTransactions;
 import com.example.quintor.transaction.DebCred;
 import com.example.quintor.transaction.Transaction;
 import javafx.collections.ObservableList;
@@ -16,6 +17,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static com.example.quintor.controllers.GetTransactions.getTransactions;
 
 public class TransactionOverviewController extends SceneController implements Initializable {
     @FXML
@@ -61,6 +64,11 @@ public class TransactionOverviewController extends SceneController implements In
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//        try {
+//            GetTransactions.getTransactions();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
         columnBedrag.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("amount"));
         columnCategory.setCellValueFactory(new PropertyValueFactory<Transaction, String>("category"));
         columnCode.setCellValueFactory(new PropertyValueFactory<Transaction, Integer>("code"));

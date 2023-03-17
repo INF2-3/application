@@ -104,9 +104,6 @@ public class Transaction {
     }
 
     public void setReferenceOwner(String referenceOwner) {
-        if (referenceOwner == null || referenceOwner.isEmpty()) {
-            return;
-        }
         this.referenceOwner = referenceOwner;
     }
 
@@ -115,9 +112,6 @@ public class Transaction {
     }
 
     public void setInstitutionReference(String institutionReference) {
-        if (institutionReference == null || institutionReference.isEmpty()) {
-            return;
-        }
         this.institutionReference = institutionReference;
     }
 
@@ -126,9 +120,6 @@ public class Transaction {
     }
 
     public void setSupplementaryDetails(String supplementaryDetails) {
-        if (supplementaryDetails == null || supplementaryDetails.isEmpty()) {
-            return;
-        }
         this.supplementaryDetails = supplementaryDetails;
     }
 
@@ -148,9 +139,6 @@ public class Transaction {
     }
 
     public void setDescription(String description) {
-        if (description == null || description.isEmpty()) {
-            return;
-        }
         this.description = description;
     }
 
