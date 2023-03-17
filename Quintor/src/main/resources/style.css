@@ -46,3 +46,12 @@
     -fx-min-height: 0;
     -fx-max-height: 0;
 }
+
+#split, #change {
+-fx-color:#023047;
+-fx-font-weight: bold;
+-fx-min-height: 46.0;
+-fx-min-width: 201.0;
+-fx-background-color: #023047;
+-fx-textFill: "WHITE";
+}
