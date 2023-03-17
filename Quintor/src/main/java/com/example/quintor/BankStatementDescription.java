@@ -2,13 +2,9 @@ package com.example.quintor;
 
 public class BankStatementDescription {
     private int id;
-
     private int numberOfDebitEntries;
-
     private int numberOfCreditEntries;
-
     private double amountOfDebitEntries;
-
     private double amountOfCreditEntries;
 
     public BankStatementDescription(int id, int numberOfDebitEntries, int numberOfCreditEntries, double amountOfDebitEntries, double amountOfCreditEntries) {

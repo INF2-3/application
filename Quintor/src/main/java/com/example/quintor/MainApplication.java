@@ -2,16 +2,24 @@ package com.example.quintor;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainApplication extends Application {
 
+    private Stage stage;
     int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
     int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
+
+    public static void main(String[] args) {
+        launch();
+    }
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -30,16 +38,17 @@ public class MainApplication extends Application {
         }
 
         // Scene
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
+        stage.setTitle("Quintor");
+        Scene scene = new Scene(root, sceneWidth, sceneHeight);
         stage.setMaximized(true);
         stage.setMinWidth(1360);
         stage.setMinHeight(720);
         stage.setScene(scene);
+        String css = this.getClass().getResource("/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.show();
+
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
 }
