@@ -78,7 +78,11 @@ public class DashboardController implements Initializable {
         transcriptTable.setItems(bankStatements);
     }
 
-    public void uploadButtonAction(ActionEvent event) {
+    /**
+     * This method is called when the user preses the upload file button on the dashboard.
+     * This method allows you to upload a file
+     */
+    public void uploadButtonAction() {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MT940 files", "*.940"));
         File f = fc.showOpenDialog(null);
