@@ -1,20 +1,25 @@
 package com.example.quintor;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SettingsController {
+public class SettingsController extends SceneController {
+    @FXML
+    private Parent embeddedNav;
+    private static Stage stage;
     @FXML
     private AnchorPane anchorPane;
     @FXML
     public VBox settingsBox;
+
+    public SettingsController() {
+        stage = new Stage();
+    }
 
     public void changePassword() {
 //        changeView("changePassword");
@@ -39,21 +44,5 @@ public class SettingsController {
 //        }
 //        stage.setScene(newScene);
 //        stage.show();
-    }
-
-    /**
-     * Change view of the settings page
-     * @param view String name of fxml file
-     */
-    public void changeView(String view) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(view + ".fxml"));
-            AnchorPane myAnchorPane = loader.load();
-            anchorPane.getChildren().add(myAnchorPane);
-
-            anchorPane.getChildren().remove(settingsBox);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

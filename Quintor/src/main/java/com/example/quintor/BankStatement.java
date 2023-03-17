@@ -4,21 +4,13 @@ import java.util.ArrayList;
 
 public class BankStatement {
     private int id;
-
     private String transactionReferenceNumber;
-
     private String accountNumber;
-
     private int statementNumber;
-
     private BankStatementDescription bankStatementDescription;
-
     private User lastUpdatedUser;
-
     private String uploadDate;
-
     private double finalBalance;
-
     private ArrayList<Transaction> transactions;
 
     public BankStatement(int id, String transactionReferenceNumber, String accountNumber, int statementNumber, BankStatementDescription bankStatementDescription, User lastUpdatedUser, String uploadDate) {
