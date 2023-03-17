@@ -11,7 +11,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 
-import java.io.File;
+import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,6 +33,19 @@ public class DashboardController implements Initializable {
     private TableView<BankStatement> transcriptTable;
     @FXML
     private Button uploadButton;
+    private int userId = 1;
+    private final String success = "success";
+
+    //getter and setter for the user id
+    public int getUserId() {
+        return this.userId;
+    }
+
+    public void setUserId(int userId) {
+        if (userId >= 0) {
+            this.userId = userId;
+        }
+    }
 
     /**
      * This method gets called automatically when the contents of the fxml file are fully loaded
@@ -63,7 +77,77 @@ public class DashboardController implements Initializable {
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MT940 files", "*.940"));
         File f = fc.showOpenDialog(null);
         if (f != null) {
-
+            try {
+                if (uploadFile(f, userId)) {
+                    System.out.println("gelukt");
+                } else {
+                    System.out.println("niet gelukt");
+                }
+            } catch (IOException error) {
+                error.printStackTrace();
+            }
         }
+    }
+
+    /**
+     * This method uploads a mt940 file to the MongoDB through a POST request to the
+     * api.
+     *
+     * @param file   The file which should be uploaded.
+     * @param userId The user id of the user who uploads the file.
+     * @return return true when the file has been uploaded and false when something
+     * went wrong.
+     * @throws IOException
+     */
+    private boolean uploadFile(File file, int userId) throws IOException {
+        if (file == null || !file.isFile() || !file.exists()) {
+            return false;
+        }
+        if (userId < 0) {
+            return false;
+        }
+        String url = System.getenv("URL") + "/api/mt940/insert";
+        URL api = new URL(url);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) api.openConnection();
+        httpURLConnection.setRequestMethod("POST");
+        httpURLConnection.setRequestProperty("Accept", "application/json");
+
+        httpURLConnection.setDoOutput(true);
+        OutputStream os = httpURLConnection.getOutputStream();
+        String params = "userId=" + userId + "&file=" + file;
+        os.write(params.getBytes());
+        os.flush();
+        os.close();
+        return getResponse(httpURLConnection);
+    }
+
+    /**
+     * Gets the response of a httpURLConnection and puts them in a Stringbuffer.
+     *
+     * @param httpURLConnection the httpURLConnection used to get the response.
+     * @return true or false based on the response of the api.
+     * @throws IOException
+     */
+    private boolean getResponse(HttpURLConnection httpURLConnection) throws IOException {
+        if (httpURLConnection == null) {
+            return false;
+        }
+        int responseCode = httpURLConnection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            System.out.println(response);
+            if (response.toString().equals(success)) {
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 }
