@@ -1,5 +1,7 @@
 package com.example.quintor;
 
+import com.example.quintor.transaction.Transaction;
+
 import java.util.ArrayList;
 
 public class BankStatement {
