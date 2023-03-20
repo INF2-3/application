@@ -64,11 +64,11 @@ public class TransactionOverviewController extends SceneController implements In
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        try {
-//            GetTransactions.getTransactions();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            System.out.print(GetTransactions.getTransactions());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         columnBedrag.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("amount"));
         columnCategory.setCellValueFactory(new PropertyValueFactory<Transaction, String>("category"));
         columnCode.setCellValueFactory(new PropertyValueFactory<Transaction, Integer>("code"));

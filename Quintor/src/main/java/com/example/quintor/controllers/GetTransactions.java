@@ -8,20 +8,25 @@ import java.net.URL;
 
 public class GetTransactions {
     public static String getTransactions() throws IOException {
-        String url = System.getenv("URL") + "/api/transaction/getAllTransactions";
+        String url = System.getenv("URL_API") + "/api/transaction/getAllTransactions";
         URL api = new URL(url);
         HttpURLConnection httpURLConnection = (HttpURLConnection) api.openConnection();
-        httpURLConnection.setRequestMethod("get");
+        httpURLConnection.setRequestMethod("GET");
+        httpURLConnection.setRequestProperty("Accept", "application/json");
+
         BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
         String inputLine;
-        StringBuffer response = new StringBuffer();
+        StringBuilder response = new StringBuilder();
 
         while ((inputLine = in.readLine()) != null) {
             response.append(inputLine);
         }
         in.close();
-        System.out.println(response);
+//        System.out.println(response);
         return response.toString();
+
+//        Object[] test = ;
+
     }
 
 }
