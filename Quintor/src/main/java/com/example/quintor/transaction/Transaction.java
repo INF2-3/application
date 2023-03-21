@@ -13,13 +13,14 @@ public class Transaction {
     private String institutionReference;
     private String supplementaryDetails;
     private int originalDescriptionId;
+    private Description originalDescription;
     private String description;
     private int fileId;
     private int categoryId;
     private String type;
-    private String category;
+    private Category category;
 
-    public Transaction(int id, String valueDate, int entryDate, DebCred debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, int originalDescriptionId, String description, int fileId, int categoryId) {
+    public Transaction(int id, String valueDate, int entryDate, DebCred debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, Description originalDescription, String description, int fileId, Category category) {
         setId(id);
         setValueDate(valueDate);
         setEntryDate(entryDate);
@@ -29,13 +30,13 @@ public class Transaction {
         setReferenceOwner(referenceOwner);
         setInstitutionReference(institutionReference);
         setSupplementaryDetails(supplementaryDetails);
-        setOriginalDescriptionId(originalDescriptionId);
+        setOriginalDescription(originalDescription);
         setDescription(description);
         setFileId(fileId);
-        setCategoryId(categoryId);
+        setCategory(category);
     }
 
-    public Transaction(int entryDate, DebCred debCred, double amount, String code, String type, String category, String description) {
+    public Transaction(int entryDate, DebCred debCred, double amount, String code, String type, Category category, String description) {
         setEntryDate(entryDate);
         setDebCred(debCred);
         setAmount(amount);
@@ -123,12 +124,12 @@ public class Transaction {
         this.supplementaryDetails = supplementaryDetails;
     }
 
-    public int getOriginalDescriptionId() {
-        return originalDescriptionId;
+    public Description getOriginalDescription() {
+        return originalDescription;
     }
 
-    public void setOriginalDescriptionId(int originalDescriptionId) {
-        this.originalDescriptionId = originalDescriptionId;
+    public void setOriginalDescription(Description originalDescription) {
+        this.originalDescription = originalDescription;
     }
 
     public String getDescription() {
@@ -166,14 +167,11 @@ public class Transaction {
         this.type = type;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
-        if (category == null || category.isEmpty()) {
-            return;
-        }
+    public void setCategory(Category category) {
         this.category = category;
     }
 }

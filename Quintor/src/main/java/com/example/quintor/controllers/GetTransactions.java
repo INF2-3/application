@@ -8,8 +8,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+import com.example.quintor.transaction.Category;
 import com.example.quintor.transaction.DebCred;
+import com.example.quintor.transaction.Description;
 import com.example.quintor.transaction.Transaction;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,19 +44,13 @@ public class GetTransactions {
         }
 
         return allTransactions;
-
-
     }
 
     private static Transaction makeTransaction(JSONObject jsonObject) {
         int id = (int) jsonObject.get("id");
-
         String valueDate = (String) jsonObject.get("valueDate");
-
         int entryDate = (int) jsonObject.get("entryDate");
-
         String debCredString = (String) jsonObject.get("debitOrCredit");
-
         DebCred debCred;
         if (debCredString.equals("CREDIT")) {
             debCred = DebCred.CREDIT;
@@ -67,44 +64,28 @@ public class GetTransactions {
         double amount = amount1.doubleValue();
 
         String transactionCode = (String) jsonObject.get("transactionCode");
+        String referenceOwner = GetTransactions.checkJsonObject("referenceOwner", jsonObject);
+        String institutionReference = GetTransactions.checkJsonObject("institutionReference", jsonObject);
+        String supplementaryDetails = GetTransactions.checkJsonObject("supplementaryDetails", jsonObject);
 
-        String referenceOwner;
-        if (!jsonObject.isNull("referenceOwner")) {
-            referenceOwner = (String) jsonObject.get("referenceOwner");
-        } else {
-            referenceOwner = null;
-        }
+        Description description1 = GetDescription.checkDescription((JSONObject) jsonObject.get("originalDescription"));
 
-        String institutionReference;
-        if (!jsonObject.isNull("institutionReference")) {
-            institutionReference = (String) jsonObject.get("institutionReference");
-        } else {
-            institutionReference = null;
-        }
-
-        String supplementaryDetails;
-        if (!jsonObject.isNull("supplementaryDetails")) {
-            supplementaryDetails = (String) jsonObject.get("supplementaryDetails");
-        } else {
-            supplementaryDetails = null;
-        }
-
-        int originalDescriptionId = (int) jsonObject.get("originalDescriptionId");
-
-        String description;
-        if (!jsonObject.isNull("description")) {
-            description = (String) jsonObject.get("description");
-        } else {
-            description = null;
-        }
-
+//        int originalDescriptionId = (int) jsonObject.get("originalDescriptionId");
+        String description = GetTransactions.checkJsonObject("description", jsonObject);
         int fileId = (int) jsonObject.get("fileId");
+//        int categoryId = (int) jsonObject.get("categoryId");
+        Category category = GetCategory.checkCategory((JSONObject) jsonObject.get("category"));
 
-        int categoryId = (int) jsonObject.get("categoryId");
 
         return new Transaction(id, valueDate, entryDate, debCred, amount, transactionCode, referenceOwner
-                , institutionReference, supplementaryDetails, originalDescriptionId, description, fileId, categoryId);
+                , institutionReference, supplementaryDetails, description1, description, fileId, category);
+    }
 
+    public static String checkJsonObject(String name, JSONObject jsonObject){
+        if(!jsonObject.isNull(name)) {
+            return (String) jsonObject.get(name);
+        }
+        return null;
     }
 
 }

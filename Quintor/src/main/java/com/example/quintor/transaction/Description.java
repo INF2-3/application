@@ -9,6 +9,7 @@ public class Description {
     private String instructionId;
     private String mandateReference;
     private String creditorId;
+    private String counterpartyId;
     private String remittanceInformation;
     private String purposeCode;
     private String ultimateCreditor;
@@ -20,6 +21,24 @@ public class Description {
         if (!setId(id)) {
             throw new IllegalArgumentException("invalid_id");
         }
+    }
+
+    public Description(int id, String returnReason, String clientReference, String endToEndReference, String paymentInformationId, String instructionId, String mandateReference, String creditorId, String counterpartyId, String remittanceInformation, String purposeCode, String ultimateCreditor, String ultimateDebitor, String exchangeRate, String charges) {
+        setId(id);
+        setReturnReason(returnReason);
+        setClientReference(clientReference);
+        setEndToEndReference(endToEndReference);
+        setPaymentInformationId(paymentInformationId);
+        setInstructionId(instructionId);
+        setMandateReference(mandateReference);
+        setCreditorId(creditorId);
+        setCounterpartyId(counterpartyId);
+        setRemittanceInformation(remittanceInformation);
+        setPurposeCode(purposeCode);
+        setUltimateCreditor(ultimateCreditor);
+        setUltimateDebitor(ultimateDebitor);
+        setExchangeRate(exchangeRate);
+        setCharges(charges);
     }
 
     public int getId() {
@@ -39,9 +58,6 @@ public class Description {
     }
 
     public void setReturnReason(String returnReason) {
-        if (returnReason == null || returnReason.isEmpty()) {
-            return;
-        }
         this.returnReason = returnReason;
     }
 
@@ -50,9 +66,6 @@ public class Description {
     }
 
     public void setClientReference(String clientReference) {
-        if (clientReference == null || clientReference.isEmpty()) {
-            return;
-        }
         this.clientReference = clientReference;
     }
 
@@ -61,9 +74,6 @@ public class Description {
     }
 
     public void setEndToEndReference(String endToEndReference) {
-        if (endToEndReference == null || endToEndReference.isEmpty()) {
-            return;
-        }
         this.endToEndReference = endToEndReference;
     }
 
@@ -72,9 +82,6 @@ public class Description {
     }
 
     public void setPaymentInformationId(String paymentInformationId) {
-        if (paymentInformationId == null || paymentInformationId.isEmpty()) {
-            return;
-        }
         this.paymentInformationId = paymentInformationId;
     }
 
@@ -83,9 +90,6 @@ public class Description {
     }
 
     public void setInstructionId(String instructionId) {
-        if (instructionId == null || instructionId.isEmpty()) {
-            return;
-        }
         this.instructionId = instructionId;
     }
 
@@ -94,9 +98,6 @@ public class Description {
     }
 
     public void setMandateReference(String mandateReference) {
-        if (mandateReference == null || mandateReference.isEmpty()) {
-            return;
-        }
         this.mandateReference = mandateReference;
     }
 
@@ -105,10 +106,15 @@ public class Description {
     }
 
     public void setCreditorId(String creditorId) {
-        if (creditorId == null || creditorId.isEmpty()) {
-            return;
-        }
         this.creditorId = creditorId;
+    }
+
+    public String getCounterpartyId() {
+        return this.counterpartyId;
+    }
+
+    public void setCounterpartyId(String counterpartyId) {
+        this.counterpartyId = counterpartyId;
     }
 
     public String getRemittanceInformation() {
@@ -116,9 +122,6 @@ public class Description {
     }
 
     public void setRemittanceInformation(String remittanceInformation) {
-        if (remittanceInformation == null || remittanceInformation.isEmpty()) {
-            return;
-        }
         this.remittanceInformation = remittanceInformation;
     }
 
@@ -127,9 +130,6 @@ public class Description {
     }
 
     public void setPurposeCode(String purposeCode) {
-        if (purposeCode == null || purposeCode.isEmpty()) {
-            return;
-        }
         this.purposeCode = purposeCode;
     }
 
@@ -138,9 +138,6 @@ public class Description {
     }
 
     public void setUltimateCreditor(String ultimateCreditor) {
-        if (ultimateCreditor == null || ultimateCreditor.isEmpty()) {
-            return;
-        }
         this.ultimateCreditor = ultimateCreditor;
     }
 
@@ -149,9 +146,6 @@ public class Description {
     }
 
     public void setUltimateDebitor(String ultimateDebitor) {
-        if (ultimateDebitor == null || ultimateDebitor.isEmpty()) {
-            return;
-        }
         this.ultimateDebitor = ultimateDebitor;
     }
 
@@ -160,9 +154,6 @@ public class Description {
     }
 
     public void setExchangeRate(String exchangeRate) {
-        if (exchangeRate == null || exchangeRate.isEmpty()) {
-            return;
-        }
         this.exchangeRate = exchangeRate;
     }
 
@@ -171,9 +162,6 @@ public class Description {
     }
 
     public void setCharges(String charges) {
-        if (charges == null || charges.isEmpty()) {
-            return;
-        }
         this.charges = charges;
     }
 }
