@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Transaction {
     private int id;
-    private LocalDate valueDate;
+    private String valueDate;
     private int entryDate;
     private DebCred debCred;
     private double amount;
@@ -12,14 +12,14 @@ public class Transaction {
     private String referenceOwner;
     private String institutionReference;
     private String supplementaryDetails;
-    private Description originalDescriptionId;
+    private int originalDescriptionId;
     private String description;
     private int fileId;
     private int categoryId;
     private String type;
     private String category;
 
-    public Transaction(int id, LocalDate valueDate, int entryDate, DebCred debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, Description originalDescriptionId, String description, int fileId, int categoryId) {
+    public Transaction(int id, String valueDate, int entryDate, DebCred debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, int originalDescriptionId, String description, int fileId, int categoryId) {
         setId(id);
         setValueDate(valueDate);
         setEntryDate(entryDate);
@@ -53,11 +53,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public LocalDate getValueDate() {
+    public String getValueDate() {
         return valueDate;
     }
 
-    public void setValueDate(LocalDate valueDate) {
+    public void setValueDate(String valueDate) {
         this.valueDate = valueDate;
     }
 
@@ -123,14 +123,11 @@ public class Transaction {
         this.supplementaryDetails = supplementaryDetails;
     }
 
-    public Description getOriginalDescriptionId() {
+    public int getOriginalDescriptionId() {
         return originalDescriptionId;
     }
 
-    public void setOriginalDescriptionId(Description originalDescriptionId) {
-        if (originalDescriptionId == null) {
-            return;
-        }
+    public void setOriginalDescriptionId(int originalDescriptionId) {
         this.originalDescriptionId = originalDescriptionId;
     }
 

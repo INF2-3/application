@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import java.util.List;
 
 import java.io.IOException;
 import java.net.URL;
@@ -65,33 +66,34 @@ public class TransactionOverviewController extends SceneController implements In
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            System.out.print(GetTransactions.getTransactions());
+            List<Transaction> allTransactions = GetTransactions.getTransactions();
+
+
+            columnBedrag.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("amount"));
+            columnCategory.setCellValueFactory(new PropertyValueFactory<Transaction, String>("category"));
+            columnCode.setCellValueFactory(new PropertyValueFactory<Transaction, Integer>("code"));
+            columnDate.setCellValueFactory(new PropertyValueFactory<Transaction, String>("entryDate"));
+            columnDebCred.setCellValueFactory(new PropertyValueFactory<Transaction, String>("debCred"));
+            columnDescription.setCellValueFactory(new PropertyValueFactory<Transaction, String>("description"));
+            columnType.setCellValueFactory(new PropertyValueFactory<Transaction, String>("type"));
+
+
+            ObservableList<Transaction> transactions = transactionsTable.getItems();
+            transactions.addAll(allTransactions);
+            transactionsTable.setItems(transactions);
+            transactionsTable.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2) {
+                    try {
+                        openLayout();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        columnBedrag.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("amount"));
-        columnCategory.setCellValueFactory(new PropertyValueFactory<Transaction, String>("category"));
-        columnCode.setCellValueFactory(new PropertyValueFactory<Transaction, Integer>("code"));
-        columnDate.setCellValueFactory(new PropertyValueFactory<Transaction, String>("entryDate"));
-        columnDebCred.setCellValueFactory(new PropertyValueFactory<Transaction, String>("debCred"));
-        columnDescription.setCellValueFactory(new PropertyValueFactory<Transaction, String>("description"));
-        columnType.setCellValueFactory(new PropertyValueFactory<Transaction, String>("type"));
 
-        Transaction transaction = new Transaction(1012, DebCred.DEBIT, 20.2, "1", "T", "main", "first transaction");
-        Transaction transaction1 = new Transaction(0102, DebCred.CREDIT, 0, "3904", "None", "Eten", "Second transaction");
-        ObservableList<Transaction> transactions = transactionsTable.getItems();
-        transactions.add(transaction);
-        transactions.add(transaction1);
-        transactionsTable.setItems(transactions);
-        transactionsTable.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) {
-                try {
-                    openLayout();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
     }
 }
 

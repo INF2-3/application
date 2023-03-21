@@ -2,6 +2,7 @@ module com.example.quintor {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
+    requires org.json;
 
 
     opens com.example.quintor to javafx.fxml;
