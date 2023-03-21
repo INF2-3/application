@@ -31,10 +31,9 @@ public class GetTransactions {
             response.append(inputLine);
         }
         in.close();
-//        System.out.println(response);
 
         JSONArray jsonArray = new JSONArray(response.toString());
-//        System.out.println(testJson);
+
         for (Object current : jsonArray) {
             JSONObject currentTransaction = (JSONObject) current;
 
