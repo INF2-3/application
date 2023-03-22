@@ -1,7 +1,6 @@
 package com.example.quintor;
 
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -9,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
 import java.io.*;
@@ -17,6 +17,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
+    @FXML
+    private VBox mainVBox;
+    @FXML
+    private VBox dashboardBox;
     @FXML
     private Label clubName;
     @FXML
@@ -72,7 +76,11 @@ public class DashboardController implements Initializable {
         transcriptTable.setItems(bankStatements);
     }
 
-    public void uploadButtonAction(ActionEvent event) {
+    /**
+     * This method is called when the user preses the upload file button on the dashboard.
+     * This method allows you to upload a file
+     */
+    public void uploadButtonAction() {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MT940 files", "*.940"));
         File f = fc.showOpenDialog(null);
