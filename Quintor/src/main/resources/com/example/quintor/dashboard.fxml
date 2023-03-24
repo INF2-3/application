@@ -4,44 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<VBox fx:id="mainVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1360.0" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quintor.DashboardController">
-   <children>
-      <VBox fx:id="dashboardBox" prefHeight="648.0" prefWidth="1356.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="110.0" prefWidth="1242.0" spacing="700.0">
-               <children>
-                  <Label fx:id="clubName" prefWidth="206.0" text="&lt;&lt;Naam&gt;&gt;">
-                     <font>
-                        <Font name="Roboto Bold" size="34.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="uploadButton" minWidth="0.0" mnemonicParsing="false" onAction="#uploadButtonAction" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #023047;" text="MT940 BESTAND UPLOADEN" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <TableView fx:id="transcriptTable" prefHeight="474.0" prefWidth="1179.0">
-               <columns>
-                  <TableColumn fx:id="columnFileId" maxWidth="274.0" minWidth="0.0" prefWidth="168.0" sortable="false" text="ID" />
-                  <TableColumn fx:id="columnAccountNumber" maxWidth="274.0" minWidth="0.0" prefWidth="168.0" sortable="false" text="AccountNr" />
-                  <TableColumn fx:id="columnFileDate" maxWidth="274.0" minWidth="0.0" prefWidth="168.0" sortable="false" text="Datum" />
-                  <TableColumn fx:id="columnFinalBalance" maxWidth="274.0" minWidth="0.0" prefWidth="168.0" sortable="false" text="Eindsaldo" />
-                  <TableColumn fx:id="columnFileUploader" maxWidth="274.0" minWidth="0.0" prefWidth="168.0" sortable="false" text="Uploader" />
-               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-         </children>
-      </VBox>
-=======
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="360.0" minWidth="680.0" prefHeight="720.0" prefWidth="1360.0" style="-fx-background-color: ffffff;" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quintor.DashboardController">
    <fx:include fx:id="embeddedNav" source="navbar.fxml"/>
    <children>
@@ -67,6 +32,5 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
->>>>>>> dev
    </children>
-</VBox>
+</AnchorPane>
