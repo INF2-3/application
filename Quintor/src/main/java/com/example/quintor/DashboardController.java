@@ -106,7 +106,7 @@ public class DashboardController implements Initializable {
         if (userId < 0) {
             return false;
         }
-        String url = System.getenv("URL") + "/api/mt940/insert";
+        String url = System.getenv("URL_API") + "/api/mt940/insert";
         URL api = new URL(url);
         HttpURLConnection httpURLConnection = (HttpURLConnection) api.openConnection();
         httpURLConnection.setRequestMethod("POST");

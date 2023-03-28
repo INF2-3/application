@@ -1,7 +1,6 @@
 package com.example.quintor;
 
 import com.example.quintor.controllers.GetTransactions;
-import com.example.quintor.transaction.DebCred;
 import com.example.quintor.transaction.Transaction;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,8 +17,6 @@ import java.util.List;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static com.example.quintor.controllers.GetTransactions.getTransactions;
 
 public class TransactionOverviewController extends SceneController implements Initializable {
     @FXML
@@ -66,11 +63,11 @@ public class TransactionOverviewController extends SceneController implements In
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            List<Transaction> allTransactions = GetTransactions.getTransactions();
+            List<Transaction> allTransactions = GetTransactions.getTransactionsJSON();
 
 
             columnBedrag.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("amount"));
-            columnCategory.setCellValueFactory(new PropertyValueFactory<Transaction, String>("category"));
+            columnCategory.setCellValueFactory(new PropertyValueFactory<Transaction, String>("categoryId"));
             columnCode.setCellValueFactory(new PropertyValueFactory<Transaction, Integer>("code"));
             columnDate.setCellValueFactory(new PropertyValueFactory<Transaction, String>("entryDate"));
             columnDebCred.setCellValueFactory(new PropertyValueFactory<Transaction, String>("debCred"));
