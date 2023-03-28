@@ -10,7 +10,7 @@ public class ApiService {
     private String endpoint;
 
     public ApiService() {
-        setUrl(System.getenv("URL"));
+        setUrl(System.getenv("URL_API"));
     }
 
     /**

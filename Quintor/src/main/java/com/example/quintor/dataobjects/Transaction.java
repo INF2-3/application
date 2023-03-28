@@ -1,6 +1,4 @@
-package com.example.quintor.transaction;
-
-import java.time.LocalDate;
+package com.example.quintor.dataobjects;
 
 public class Transaction {
     private int id;

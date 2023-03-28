@@ -1,5 +1,7 @@
 package com.example.quintor;
 
+import com.example.quintor.dataobjects.BankStatement;
+import com.example.quintor.dataobjects.BankStatementDescription;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -151,7 +153,6 @@ public class DashboardController implements Initializable {
                 response.append(inputLine);
             }
             in.close();
-//            System.out.println(response);
             if (response.toString().equals(success)) {
                 return true;
             }

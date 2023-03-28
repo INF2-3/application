@@ -1,4 +1,4 @@
-package com.example.quintor.transaction;
+package com.example.quintor.dataobjects;
 
 public class Description {
     private int id;

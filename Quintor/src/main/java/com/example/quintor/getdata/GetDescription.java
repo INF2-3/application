@@ -1,10 +1,10 @@
-package com.example.quintor.controllers;
+package com.example.quintor.getdata;
 
-import com.example.quintor.transaction.Description;
+import com.example.quintor.dataobjects.Description;
 import org.json.JSONObject;
 
 public class GetDescription {
-    public static Description checkDescription(JSONObject jsonObject) {
+    public static Description makeDescriptionJSON(JSONObject jsonObject) {
         int descriptionId = (int) jsonObject.get("descriptionId");
 
         String returnReason = GetTransactions.checkJsonObject("returnReason", jsonObject);

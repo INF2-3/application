@@ -1,4 +1,4 @@
-package com.example.quintor;
+package com.example.quintor.dataobjects;
 
 public class BankStatementDescription {
     private int id;
