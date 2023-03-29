@@ -1,5 +1,6 @@
 package com.example.quintor;
 
+import com.example.quintor.services.ApiService;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +16,7 @@ import javafx.stage.FileChooser;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -87,10 +89,12 @@ public class DashboardController implements Initializable {
         File f = fc.showOpenDialog(null);
         if (f != null) {
             try {
-                if (uploadFile(f, userId)) {
+                if (uploadFile2(f, userId)) {
                     System.out.println("gelukt");
+                    System.out.println(uploadFile2(f, userId));
                 } else {
                     System.out.println("niet gelukt");
+                    System.out.println(uploadFile2(f, userId));
                 }
             } catch (IOException error) {
                 error.printStackTrace();
@@ -131,6 +135,28 @@ public class DashboardController implements Initializable {
         return getResponse(httpURLConnection);
     }
 
+
+    private boolean uploadFile2(File file, int userId) throws IOException {
+        if (file == null || !file.isFile() || !file.exists()) {
+            return false;
+        }
+        if (userId < 0) {
+            return false;
+        }
+        HttpURLConnection connection = (HttpURLConnection) new URL((System.getenv("URL_API") + "/api/postgres/insert")).openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setDoOutput(true);
+
+        OutputStream os = connection.getOutputStream();
+        String params = "file=" + file + "&userId=" + userId;
+        os.write(params.getBytes());
+        os.flush();
+        os.close();
+
+        return getResponse(connection);
+
+    }
     /**
      * Gets the response of a httpURLConnection and puts them in a Stringbuffer.
      *
