@@ -102,40 +102,14 @@ public class GetTransactions {
             Document document = documentBuilder.parse(new InputSource(new StringReader(xml)));
 //            Element list = (Element) document.getElementsByTagName("list");
             NodeList nodeList = document.getElementsByTagName("transaction");
-            ArrayList<Transaction> allTrans = new ArrayList<>();
             System.out.println(nodeList.getLength());
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Element element = (Element) nodeList.item(i);
-//                NodeList nodeMap = element.getChildNodes();
-//                element.getAttribute("id");
-                System.out.println(element.getElementsByTagName("entryDate").item(0).getTextContent());
-                int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
-                String valueDate = element.getElementsByTagName("valueDate").item(0).getTextContent();
-                int entryDate = Integer.parseInt(element.getElementsByTagName("entryDate").item(0).getTextContent());
-                DebCred debCred = null;
-                if (element.getElementsByTagName("debitOrCredit").item(0).getTextContent().equals("CREDIT")) {
-                    debCred = DebCred.CREDIT;
-                } else if (element.getElementsByTagName("debitOrCredit").item(0).getTextContent().equals("DEBIT")) {
-                    debCred = DebCred.DEBIT;
-                }
-                double amount = Double.parseDouble(element.getElementsByTagName("amount").item(0).getTextContent());
-                String transactionCode = element.getElementsByTagName("transactionCode").item(0).getTextContent();
-                String referenceOwner = element.getElementsByTagName("referenceOwner").item(0).getTextContent();
-                String institutionReference = element.getElementsByTagName("institutionReference").item(0).getTextContent();
-                String supplementaryDetails = element.getElementsByTagName("supplementaryDetails").item(0).getTextContent();
 
-                Element originalDescriptionElement = (Element) element.getElementsByTagName("originalDescription").item(0);
-                Description originalDescription = GetDescription.makeDescriptionXML(originalDescriptionElement);
+                Transaction transaction = GetTransactions.makeTransactionXML(element);
 
-                String description = checkElementByTagName(element.getElementsByTagName("description").item(0));
-                int fileId = Integer.parseInt(element.getElementsByTagName("fileId").item(0).getTextContent());
 
-                Element categoryElement = (Element) element.getElementsByTagName("category").item(0);
-                Category category = GetCategory.makeCategoryXML(categoryElement);
-
-                allTransactions.add(new Transaction(id, valueDate, entryDate, debCred, amount, transactionCode,
-                        referenceOwner, institutionReference, supplementaryDetails, originalDescription, description,
-                        fileId, category));
+                allTransactions.add(transaction);
             }
             return allTransactions;
         } catch (Exception e) {
@@ -151,22 +125,34 @@ public class GetTransactions {
     }
 
 
-    public static void makeTransactionXML(Element element) {
-//        String test = element.getElementsByTagName("id");
-        String valueDate = element.getAttribute("valueDate");
-        int entryDate = Integer.parseInt(element.getAttribute("entryDate"));
-        String debCredString = element.getAttribute("debitOrCredit");
-        DebCred debCred;
-        if (debCredString.equals("CREDIT")) {
+    public static Transaction makeTransactionXML(Element element) {
+        int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
+        String valueDate = element.getElementsByTagName("valueDate").item(0).getTextContent();
+        int entryDate = Integer.parseInt(element.getElementsByTagName("entryDate").item(0).getTextContent());
+        DebCred debCred = null;
+        if (element.getElementsByTagName("debitOrCredit").item(0).getTextContent().equals("CREDIT")) {
             debCred = DebCred.CREDIT;
-        } else if (debCredString.equals("DEBIT")) {
+        } else if (element.getElementsByTagName("debitOrCredit").item(0).getTextContent().equals("DEBIT")) {
             debCred = DebCred.DEBIT;
-        } else {
-            debCred = null;
         }
+        double amount = Double.parseDouble(element.getElementsByTagName("amount").item(0).getTextContent());
+        String transactionCode = element.getElementsByTagName("transactionCode").item(0).getTextContent();
+        String referenceOwner = element.getElementsByTagName("referenceOwner").item(0).getTextContent();
+        String institutionReference = element.getElementsByTagName("institutionReference").item(0).getTextContent();
+        String supplementaryDetails = element.getElementsByTagName("supplementaryDetails").item(0).getTextContent();
 
-        int amount = Integer.parseInt(element.getAttribute("amount"));
-        String transactionCode = element.getAttribute("transactionCode");
+        Element originalDescriptionElement = (Element) element.getElementsByTagName("originalDescription").item(0);
+        Description originalDescription = GetDescription.makeDescriptionXML(originalDescriptionElement);
+
+        String description = checkElementByTagName(element.getElementsByTagName("description").item(0));
+        int fileId = Integer.parseInt(element.getElementsByTagName("fileId").item(0).getTextContent());
+
+        Element categoryElement = (Element) element.getElementsByTagName("category").item(0);
+        Category category = GetCategory.makeCategoryXML(categoryElement);
+
+        return new Transaction(id, valueDate, entryDate, debCred, amount, transactionCode,
+                referenceOwner, institutionReference, supplementaryDetails, originalDescription, description,
+                fileId, category);
 
     }
 

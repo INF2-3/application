@@ -1,5 +1,6 @@
 package com.example.quintor;
 
+import com.example.quintor.dataobjects.Category;
 import com.example.quintor.dataobjects.XmlOrJson;
 import com.example.quintor.getdata.GetTransactions;
 import com.example.quintor.dataobjects.Transaction;
@@ -14,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 
 import java.io.IOException;
@@ -34,11 +35,11 @@ public class TransactionOverviewController extends SceneController implements In
     @FXML
     private TableColumn<Transaction, Double> columnBedrag;
     @FXML
-    private TableColumn<Transaction, String> columnCategory;
+    private TableColumn<Transaction, Category> columnCategory;
     @FXML
     private TableColumn<Transaction, Integer> columnCode;
     @FXML
-    private TableColumn<Transaction, String> columnDate;
+    private TableColumn<Transaction, LocalDate> columnDate;
     @FXML
     private TableColumn<Transaction, String> columnDebCred;
     @FXML
@@ -67,18 +68,13 @@ public class TransactionOverviewController extends SceneController implements In
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            List<Transaction> allTransactions = new ArrayList<>();
-            if (xmlOrJson == XmlOrJson.XML) {
-                allTransactions = GetTransactions.getTransactionsXML();
-            } else if (xmlOrJson == XmlOrJson.JSON) {
-                allTransactions = GetTransactions.getTransactionsJSON();
-            }
+            List<Transaction> allTransactions = GetTransactions.getTransactionsJSON();
 
 
             columnBedrag.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("amount"));
-            columnCategory.setCellValueFactory(new PropertyValueFactory<Transaction, String>("categoryId"));
+            columnCategory.setCellValueFactory(new PropertyValueFactory<Transaction, Category>("category"));
             columnCode.setCellValueFactory(new PropertyValueFactory<Transaction, Integer>("code"));
-            columnDate.setCellValueFactory(new PropertyValueFactory<Transaction, String>("entryDate"));
+            columnDate.setCellValueFactory(new PropertyValueFactory<Transaction, LocalDate>("valueDate"));
             columnDebCred.setCellValueFactory(new PropertyValueFactory<Transaction, String>("debCred"));
             columnDescription.setCellValueFactory(new PropertyValueFactory<Transaction, String>("description"));
             columnType.setCellValueFactory(new PropertyValueFactory<Transaction, String>("type"));

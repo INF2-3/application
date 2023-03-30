@@ -10,11 +10,9 @@ public class Transaction {
     private String referenceOwner;
     private String institutionReference;
     private String supplementaryDetails;
-    private int originalDescriptionId;
     private Description originalDescription;
     private String description;
     private int fileId;
-    private int categoryId;
     private String type;
     private Category category;
 
@@ -144,14 +142,6 @@ public class Transaction {
 
     public void setFileId(int fileId) {
         this.fileId = fileId;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
     }
 
     public String getType() {
