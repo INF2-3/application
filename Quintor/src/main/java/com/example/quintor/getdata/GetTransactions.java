@@ -9,24 +9,19 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.example.quintor.dataobjects.Category;
-import com.example.quintor.dataobjects.DebCred;
-import com.example.quintor.dataobjects.Description;
-import com.example.quintor.dataobjects.Transaction;
-import com.example.quintor.services.ApiService;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-
+import java.util.Objects;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+
+import com.example.quintor.dataobjects.*;
+import com.example.quintor.services.ApiService;
+import javafx.scene.control.TableColumn;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import org.w3c.dom.*;
+import org.xml.sax.InputSource;
+
 
 public class GetTransactions {
     public static List<Transaction> getTransactionsJSON() throws IOException {
@@ -102,60 +97,98 @@ public class GetTransactions {
         ApiService apiService = new ApiService();
         try {
             String xml = apiService.getRequest("/api/transaction/getAllTransactionsXML");
-            System.out.println(xml);
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
             Document document = documentBuilder.parse(new InputSource(new StringReader(xml)));
-            Element transactions = document.getDocumentElement();
-//            System.out.println(transactions);
+//            Element list = (Element) document.getElementsByTagName("list");
+            NodeList nodeList = document.getElementsByTagName("transaction");
+            ArrayList<Transaction> allTrans = new ArrayList<>();
+            System.out.println(nodeList.getLength());
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Element element = (Element) nodeList.item(i);
+//                NodeList nodeMap = element.getChildNodes();
+//                element.getAttribute("id");
+                System.out.println(element.getElementsByTagName("entryDate").item(0).getTextContent());
+                int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
+                LocalDate valueDate = LocalDate.parse(element.getElementsByTagName("valueDate").item(0).getTextContent());
+                int entryDate = Integer.parseInt(element.getElementsByTagName("valueDate").item(0).getTextContent());
+                DebCred debCred;
+                if (element.getElementsByTagName("debitOrCredit").item(0).getTextContent().equals("CREDIT")) {
+                    debCred = DebCred.CREDIT;
+                } else if (element.getElementsByTagName("debitOrCredit").item(0).getTextContent().equals("DEBIT")) {
+                    debCred = DebCred.DEBIT;
+                }
+                int amount = Integer.parseInt(element.getElementsByTagName("amount").item(0).getTextContent());
+                String transactionCode = String.valueOf(Integer.parseInt(element.getElementsByTagName("transactionCode").item(0).getTextContent()));
+                String referenceOwner = String.valueOf(Integer.parseInt(element.getElementsByTagName("referenceOwner").item(0).getTextContent()));
+                String institutionReference = String.valueOf(Integer.parseInt(element.getElementsByTagName("institutionReference").item(0).getTextContent()));
+                String supplementaryDetails = String.valueOf(Integer.parseInt(element.getElementsByTagName("supplementaryDetails").item(0).getTextContent()));
 
-            NodeList list = transactions.getChildNodes();
-//            transactions.getChildNodes()
-//            transactions.getChildNodes()
-            System.out.println(list.getLength());
-            for (int i = 0; i < list.getLength(); i++) {
-                System.out.println(list.item(i));
-
-            }
+                NodeList originalDescription = element.getElementsByTagName("originalDescription");
 
 
-//            System.out.println(list.getLength());
-//            for (int i = 0; i < list.getLength(); i++) {
-//                System.out.println(transactions.getAttribute("transaction"));
-////                NodeList list1 = transactions.getNodeName();
-////                System.out.println(transactions.getNodeName());
-////                System.out.println(transactions.getTagName());
-////                System.out.println(transactions.getPrefix());
-////                System.out.println(transactions.getNodeValue());
-//                System.out.println(transactions.getTextContent());
-////                for (int j = 0; j < list1.getLength(); j++) {
-////                    System.out.println(list1.getLength());
-////
-//////                    System.out.println(list1.item(j));
-////                }
-////                transactions.getAttribute("transaction");
-////                System.out.println(list.item(i));
+//                allTrans.add(new Transaction(element.getElementsByTagName("id").item(0).getTextContent()))
 //
-//            }
-
-
-//            NodeList nodeList = document.getElementsByTagName("transaction");
-//            for (int i = 0; i < nodeList.getLength(); i++) {
-//                Node node = nodeList.item(i);
-//                System.out.println(node);
-//                if (node.getNodeType() == Node.ELEMENT_NODE) {
-//                    Element element = (Element) node;
-//                    System.out.println(element);
-//                    GetTransactions.makeTransactionXML(element);
-////                    allTransactions.add(GetTransactions.makeTransactionXML(element));
+//
+//
+//                for (int j = 0; j < nodeMap.getLength(); j++) {
+//                    Element element1 = (Element) nodeMap.item(j);
+//                    System.out.println(element1.getAttribute("id"));
+////                    element1.getAttribute("id");
+//
 //                }
-//            }
-//
-//            return allTransactions;
+
+//                for (int j = 0; j < nodeMap.getLength(); j++) {
+//                    Node node1 = nodeMap.item(j);
+//                    if (node1.getNodeType() == Node.ELEMENT_NODE) {
+//                        System.out.println(j + " " + node1.getNodeName() + " value: " + node1.getTextContent());
+//                        int id = (int) GetTransactions.makeString(node1.getNodeName(), node1.getTextContent(), "id");
+//                        switch (node1.getNodeName()) {
+//                            case "id":
+//                                int id = Integer.parseInt(node1.getTextContent());
+//                                break;
+//                            case "valueDate":
+//                                LocalDate valueDate = LocalDate.parse(node1.getTextContent());
+//                                break;
+//                            case "entryDate":
+//                                int entryDate = Integer.parseInt(node1.getTextContent());
+//                                break;
+//                            case "debitOrCredit":
+//                                DebCred debCred;
+//                                if (node1.getTextContent().equals("CREDIT")) {
+//                                    debCred = DebCred.CREDIT;
+//                                    break;
+//                                } else if (node1.getTextContent().equals("DEBIT")) {
+//                                    debCred = DebCred.DEBIT;
+//                                }
+//                                break;
+//                            case "amount":
+//                                int amount = Integer.parseInt(node1.getTextContent());
+//                                break;
+//                            case "transactionCode":
+//                                String transactionCode = node1.getTextContent();
+//                                break;
+//                            case "referenceOwner":
+//                                String referenceOwner = node1.getTextContent();
+//                                break;
+//                            case "supplementaryDetails":
+//                                String supplementaryDetails = node1.getTextContent();
+//                                break;
+//                        }
+//                    }
+//                }
+            }
             return null;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static Object makeString(String nodeName, String nodeValue, String nameField) {
+        if (nodeName.equals(nameField)) {
+            return nodeValue;
+        }
+        return null;
     }
 
     public static void makeTransactionXML(Element element) {
