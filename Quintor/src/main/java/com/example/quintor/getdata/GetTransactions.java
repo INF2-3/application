@@ -21,6 +21,13 @@ import org.xml.sax.InputSource;
 
 
 public class GetTransactions {
+    /**
+     * Get the JSON with all the transactions from the api and place them in a JSONArray
+     * Then loops through the JSONArray and makes a List of Transaction.
+     *
+     * @return List of Transactions
+     * @throws IOException can throw IOException
+     */
     public static List<Transaction> getTransactionsJSON() throws IOException {
         List<Transaction> allTransactions = new ArrayList<>();
         String url = System.getenv("URL_API") + "/api/transaction/getAllTransactionsJSON";
@@ -50,6 +57,12 @@ public class GetTransactions {
         return allTransactions;
     }
 
+    /**
+     * Makes a Transaction object from a JSONObject and returns this Transaction
+     *
+     * @param jsonObject A JsonObject with data for a transaction.
+     * @return a Transaction object
+     */
     private static Transaction makeTransactionJSON(JSONObject jsonObject) {
         int id = (int) jsonObject.get("id");
         String valueDate = (String) jsonObject.get("valueDate");
@@ -82,6 +95,13 @@ public class GetTransactions {
                 , institutionReference, supplementaryDetails, originalDescription, description, fileId, category);
     }
 
+    /**
+     * Checks if a part of a JSONObject is null.
+     *
+     * @param name       the part of the JSONObject that needs to be checked
+     * @param jsonObject The JSONObject
+     * @return A string from the JSONObject or null.
+     */
     public static String checkJsonObject(String name, JSONObject jsonObject) {
         if (!jsonObject.isNull(name)) {
             return (String) jsonObject.get(name);
@@ -89,6 +109,12 @@ public class GetTransactions {
         return null;
     }
 
+    /**
+     * Gets the XML from the api with all the transactions from the database.
+     * Loops through the xml file and makes a list of transactions
+     *
+     * @return List with Transactions
+     */
     public static List<Transaction> getTransactionsXML() {
         List<Transaction> allTransactions = new ArrayList<>();
         ApiService apiService = new ApiService();
@@ -114,14 +140,26 @@ public class GetTransactions {
         }
     }
 
-    private static String checkElementByTagName(Node node) {
+    /**
+     * Gets the TextContext of a node when the node isn't null.
+     * If the node is null then the method returns null.
+     *
+     * @param node the node which gets checked.
+     * @return a String with the textContent of the node.
+     */
+    private static String getTextContentOfNode(Node node) {
         if (node != null) {
             return node.getTextContent();
         }
         return null;
     }
 
-
+    /**
+     * Makes a Transaction object from an element and return this Transaction obejct.
+     *
+     * @param element The element with the data for the transaction
+     * @return return the transaction
+     */
     public static Transaction makeTransactionXML(Element element) {
         int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
         String valueDate = element.getElementsByTagName("valueDate").item(0).getTextContent();
@@ -141,7 +179,7 @@ public class GetTransactions {
         Element originalDescriptionElement = (Element) element.getElementsByTagName("originalDescription").item(0);
         Description originalDescription = GetDescription.makeDescriptionXML(originalDescriptionElement);
 
-        String description = checkElementByTagName(element.getElementsByTagName("description").item(0));
+        String description = getTextContentOfNode(element.getElementsByTagName("description").item(0));
         int fileId = Integer.parseInt(element.getElementsByTagName("fileId").item(0).getTextContent());
 
         Element categoryElement = (Element) element.getElementsByTagName("category").item(0);
