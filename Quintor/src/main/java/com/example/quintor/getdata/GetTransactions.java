@@ -110,86 +110,46 @@ public class GetTransactions {
 //                element.getAttribute("id");
                 System.out.println(element.getElementsByTagName("entryDate").item(0).getTextContent());
                 int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
-                LocalDate valueDate = LocalDate.parse(element.getElementsByTagName("valueDate").item(0).getTextContent());
-                int entryDate = Integer.parseInt(element.getElementsByTagName("valueDate").item(0).getTextContent());
-                DebCred debCred;
+                String valueDate = element.getElementsByTagName("valueDate").item(0).getTextContent();
+                int entryDate = Integer.parseInt(element.getElementsByTagName("entryDate").item(0).getTextContent());
+                DebCred debCred = null;
                 if (element.getElementsByTagName("debitOrCredit").item(0).getTextContent().equals("CREDIT")) {
                     debCred = DebCred.CREDIT;
                 } else if (element.getElementsByTagName("debitOrCredit").item(0).getTextContent().equals("DEBIT")) {
                     debCred = DebCred.DEBIT;
                 }
-                int amount = Integer.parseInt(element.getElementsByTagName("amount").item(0).getTextContent());
-                String transactionCode = String.valueOf(Integer.parseInt(element.getElementsByTagName("transactionCode").item(0).getTextContent()));
-                String referenceOwner = String.valueOf(Integer.parseInt(element.getElementsByTagName("referenceOwner").item(0).getTextContent()));
-                String institutionReference = String.valueOf(Integer.parseInt(element.getElementsByTagName("institutionReference").item(0).getTextContent()));
-                String supplementaryDetails = String.valueOf(Integer.parseInt(element.getElementsByTagName("supplementaryDetails").item(0).getTextContent()));
+                double amount = Double.parseDouble(element.getElementsByTagName("amount").item(0).getTextContent());
+                String transactionCode = element.getElementsByTagName("transactionCode").item(0).getTextContent();
+                String referenceOwner = element.getElementsByTagName("referenceOwner").item(0).getTextContent();
+                String institutionReference = element.getElementsByTagName("institutionReference").item(0).getTextContent();
+                String supplementaryDetails = element.getElementsByTagName("supplementaryDetails").item(0).getTextContent();
 
-                NodeList originalDescription = element.getElementsByTagName("originalDescription");
+                Element originalDescriptionElement = (Element) element.getElementsByTagName("originalDescription").item(0);
+                Description originalDescription = GetDescription.makeDescriptionXML(originalDescriptionElement);
 
+                String description = checkElementByTagName(element.getElementsByTagName("description").item(0));
+                int fileId = Integer.parseInt(element.getElementsByTagName("fileId").item(0).getTextContent());
 
-//                allTrans.add(new Transaction(element.getElementsByTagName("id").item(0).getTextContent()))
-//
-//
-//
-//                for (int j = 0; j < nodeMap.getLength(); j++) {
-//                    Element element1 = (Element) nodeMap.item(j);
-//                    System.out.println(element1.getAttribute("id"));
-////                    element1.getAttribute("id");
-//
-//                }
+                Element categoryElement = (Element) element.getElementsByTagName("category").item(0);
+                Category category = GetCategory.makeCategoryXML(categoryElement);
 
-//                for (int j = 0; j < nodeMap.getLength(); j++) {
-//                    Node node1 = nodeMap.item(j);
-//                    if (node1.getNodeType() == Node.ELEMENT_NODE) {
-//                        System.out.println(j + " " + node1.getNodeName() + " value: " + node1.getTextContent());
-//                        int id = (int) GetTransactions.makeString(node1.getNodeName(), node1.getTextContent(), "id");
-//                        switch (node1.getNodeName()) {
-//                            case "id":
-//                                int id = Integer.parseInt(node1.getTextContent());
-//                                break;
-//                            case "valueDate":
-//                                LocalDate valueDate = LocalDate.parse(node1.getTextContent());
-//                                break;
-//                            case "entryDate":
-//                                int entryDate = Integer.parseInt(node1.getTextContent());
-//                                break;
-//                            case "debitOrCredit":
-//                                DebCred debCred;
-//                                if (node1.getTextContent().equals("CREDIT")) {
-//                                    debCred = DebCred.CREDIT;
-//                                    break;
-//                                } else if (node1.getTextContent().equals("DEBIT")) {
-//                                    debCred = DebCred.DEBIT;
-//                                }
-//                                break;
-//                            case "amount":
-//                                int amount = Integer.parseInt(node1.getTextContent());
-//                                break;
-//                            case "transactionCode":
-//                                String transactionCode = node1.getTextContent();
-//                                break;
-//                            case "referenceOwner":
-//                                String referenceOwner = node1.getTextContent();
-//                                break;
-//                            case "supplementaryDetails":
-//                                String supplementaryDetails = node1.getTextContent();
-//                                break;
-//                        }
-//                    }
-//                }
+                allTransactions.add(new Transaction(id, valueDate, entryDate, debCred, amount, transactionCode,
+                        referenceOwner, institutionReference, supplementaryDetails, originalDescription, description,
+                        fileId, category));
             }
-            return null;
+            return allTransactions;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static Object makeString(String nodeName, String nodeValue, String nameField) {
-        if (nodeName.equals(nameField)) {
-            return nodeValue;
+    private static String checkElementByTagName(Node node) {
+        if (node != null) {
+            return node.getTextContent();
         }
         return null;
     }
+
 
     public static void makeTransactionXML(Element element) {
 //        String test = element.getElementsByTagName("id");
@@ -207,12 +167,7 @@ public class GetTransactions {
 
         int amount = Integer.parseInt(element.getAttribute("amount"));
         String transactionCode = element.getAttribute("transactionCode");
-//        String referenceOwner = element.getAttribute("reference_owner");
-//        System.out.println(referenceOwner);
 
-//        System.out.println(test);
-
-        return;
     }
 
 
