@@ -1,5 +1,6 @@
 package com.example.quintor;
 
+import com.example.quintor.dataobjects.XmlOrJson;
 import com.example.quintor.getdata.GetTransactions;
 import com.example.quintor.dataobjects.Transaction;
 import javafx.collections.ObservableList;
@@ -12,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import java.io.IOException;
@@ -42,6 +45,7 @@ public class TransactionOverviewController extends SceneController implements In
     private TableColumn<Transaction, String> columnDescription;
     @FXML
     private TableColumn<Transaction, String> columnType;
+    private XmlOrJson xmlOrJson = XmlOrJson.JSON;
 
     public TransactionOverviewController() {
         this.stage = new Stage();
@@ -63,8 +67,12 @@ public class TransactionOverviewController extends SceneController implements In
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            List<Transaction> allTransactions = GetTransactions.getTransactionsJSON();
-            GetTransactions.getTransactionsXML();
+            List<Transaction> allTransactions = new ArrayList<>();
+            if (xmlOrJson == XmlOrJson.XML) {
+                allTransactions = GetTransactions.getTransactionsXML();
+            } else if (xmlOrJson == XmlOrJson.JSON) {
+                allTransactions = GetTransactions.getTransactionsJSON();
+            }
 
 
             columnBedrag.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("amount"));
