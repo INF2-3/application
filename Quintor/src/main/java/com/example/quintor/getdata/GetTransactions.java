@@ -6,16 +6,13 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import com.example.quintor.dataobjects.*;
 import com.example.quintor.services.ApiService;
-import javafx.scene.control.TableColumn;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -100,7 +97,7 @@ public class GetTransactions {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
             Document document = documentBuilder.parse(new InputSource(new StringReader(xml)));
-//            Element list = (Element) document.getElementsByTagName("list");
+
             NodeList nodeList = document.getElementsByTagName("transaction");
             System.out.println(nodeList.getLength());
             for (int i = 0; i < nodeList.getLength(); i++) {
@@ -155,6 +152,4 @@ public class GetTransactions {
                 fileId, category);
 
     }
-
-
 }
