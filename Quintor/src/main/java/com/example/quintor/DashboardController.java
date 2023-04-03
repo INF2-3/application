@@ -89,7 +89,8 @@ public class DashboardController implements Initializable {
         File f = fc.showOpenDialog(null);
         if (f != null) {
             try {
-                if (uploadFile2(f, userId)) {
+                if (uploadFile(f, userId)) {
+                    uploadToPostgres(f, userId);
                     System.out.println("gelukt");
 
                 } else {
@@ -135,7 +136,7 @@ public class DashboardController implements Initializable {
     }
 
 
-    private boolean uploadFile2(File file, int userId) throws IOException {
+    private boolean uploadToPostgres(File file, int userId) throws IOException {
         if (file == null || !file.isFile() || !file.exists()) {
             return false;
         }
