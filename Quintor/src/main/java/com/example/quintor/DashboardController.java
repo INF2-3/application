@@ -91,10 +91,9 @@ public class DashboardController implements Initializable {
             try {
                 if (uploadFile2(f, userId)) {
                     System.out.println("gelukt");
-                    System.out.println(uploadFile2(f, userId));
+
                 } else {
                     System.out.println("niet gelukt");
-                    System.out.println(uploadFile2(f, userId));
                 }
             } catch (IOException error) {
                 error.printStackTrace();
