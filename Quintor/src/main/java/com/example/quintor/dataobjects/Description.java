@@ -164,4 +164,9 @@ public class Description {
     public void setCharges(String charges) {
         this.charges = charges;
     }
+
+    @Override
+    public String toString(){
+        return this.returnReason;
+    }
 }

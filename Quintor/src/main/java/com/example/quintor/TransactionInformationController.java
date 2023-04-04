@@ -1,44 +1,52 @@
 package com.example.quintor;
 
+import com.example.quintor.dataobjects.Transaction;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class TransactionInformationController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class TransactionInformationController implements Initializable {
+    private static Transaction transaction;
     @FXML
     public GridPane gird;
     @FXML
     private Parent embeddedNav;
     private static Stage stage;
     @FXML
-    public TextField valueDate;
+    private TextField valueDate;
     @FXML
-    public TextField entryDate;
+    private TextField entryDate;
     @FXML
-    public TextField amount;
+    private TextField amount;
     @FXML
-    public TextField debitCredit;
+    private TextField debitCredit;
     @FXML
-    public TextField transactionCode;
+    private TextField transactionCode;
     @FXML
-    public TextField optionalDescription;
+    private TextField optionalDescription;
     @FXML
-    public TextField referenceOwner;
+    private TextField referenceOwner;
     @FXML
-    public TextField referenceInstitution;
+    private TextField referenceInstitution;
     @FXML
-    public TextField supplementaryDetails;
+    private TextField supplementaryDetails;
     @FXML
-    public TextField originalDescription;
+    private TextField originalDescription;
     @FXML
-    public TextField amountOfTransactions;
+    private TextField amountOfTransactions;
     @FXML
-    public Button split;
+    private Button split;
     @FXML
-    public Button change;
+    private Button change;
+    @FXML
+    private TextField transactionCategory;
 
     public TransactionInformationController() {
         stage = new Stage();
@@ -51,4 +59,30 @@ public class TransactionInformationController {
     public void change() {
 
     }
+
+    public static void setTransactionId(Transaction transaction){
+        TransactionInformationController.transaction = transaction;
+    }
+
+    public static Transaction getTransactionId(){
+        return TransactionInformationController.transaction;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.valueDate.setText(transaction.getValueDate());
+        this.entryDate.setText(String.valueOf(transaction.getEntryDate()));
+        this.debitCredit.setText(String.valueOf(transaction.getDebCred()));
+        this.amount.setText(String.valueOf(transaction.getAmount()));
+        this.transactionCode.setText(transaction.getCode());
+        this.referenceOwner.setText(transaction.getReferenceOwner());
+        this.referenceInstitution.setText(transaction.getInstitutionReference());
+        this.supplementaryDetails.setText(transaction.getSupplementaryDetails());
+        this.originalDescription.setText(transaction.getOriginalDescription().toString());
+        this.optionalDescription.setText(transaction.getDescription());
+        this.transactionCategory.setText(transaction.getCategory().getName());
+
+
+    }
+
 }

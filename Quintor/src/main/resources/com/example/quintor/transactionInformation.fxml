@@ -1,132 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.control.Button?>
-<AnchorPane stylesheets="/style.css" fx:controller="com.example.quintor.TransactionInformationController"
-            maxHeight="-Infinity" maxWidth="Infinity" minHeight="360.0" minWidth="680.0"
-            style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1">
-    <fx:include fx:id="embeddedNav" source="navbar.fxml"/>
+<AnchorPane maxHeight="-Infinity" maxWidth="Infinity" minHeight="360.0" minWidth="680.0" style="-fx-background-color: ffffff;" stylesheets="/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quintor.TransactionInformationController">
+    <fx:include fx:id="embeddedNav" source="navbar.fxml" />
     <Label layoutX="91.0" layoutY="65.0" text="Transactie gegevens" AnchorPane.leftAnchor="91.0">
         <font>
-            <Font name="Roboto Bold" size="34.0"/>
+            <Font name="Roboto Bold" size="34.0" />
         </font>
     </Label>
 
-    <GridPane fx:id="gird" hgap="10" styleClass="style" xmlns:fx="http://javafx.com/fxml" layoutX="91.0" layoutY="104.0"
-              prefHeight="611.0" prefWidth="1179.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="91.0"
-              AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="104.0">
+    <GridPane fx:id="gird" hgap="10" layoutX="91.0" layoutY="104.0" prefHeight="611.0" prefWidth="1179.0" styleClass="style" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="104.0" xmlns:fx="http://javafx.com/fxml">
         <columnConstraints>
-            <ColumnConstraints prefWidth="500.0"/>
-            <ColumnConstraints prefWidth="250.0"/>
-            <ColumnConstraints prefWidth="250.0"/>
+            <ColumnConstraints prefWidth="500.0" />
+            <ColumnConstraints prefWidth="250.0" />
+            <ColumnConstraints prefWidth="250.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints prefHeight="46.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
-            <RowConstraints minHeight="10.0" prefHeight="40.0"/>
+            <RowConstraints prefHeight="46.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" />
+         <RowConstraints />
 
         </rowConstraints>
         <children>
 
             <Label text="Waarde datum" GridPane.columnIndex="0" GridPane.rowIndex="1">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Label>
-            <TextField fx:id="valueDate" GridPane.columnIndex="0" GridPane.rowIndex="2" prefHeight="Infinity"/>
+            <TextField fx:id="valueDate" prefHeight="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="2" />
 
             <Label text="Invoer datum" GridPane.columnIndex="0" GridPane.rowIndex="3">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Label>
-            <TextField fx:id="entryDate" GridPane.columnIndex="0" GridPane.rowIndex="4" prefHeight="Infinity"/>
+            <TextField fx:id="entryDate" prefHeight="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="4" />
 
             <Label text="Transactie bedrag" GridPane.columnIndex="0" GridPane.rowIndex="5">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Label>
-            <TextField fx:id="amount" GridPane.columnIndex="0" GridPane.rowIndex="6" prefHeight="Infinity"/>
+            <TextField fx:id="amount" prefHeight="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="6" />
 
             <Label text="Debit/Credit" GridPane.columnIndex="0" GridPane.rowIndex="7">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Label>
-            <TextField fx:id="debitCredit" GridPane.columnIndex="0" GridPane.rowIndex="8" prefHeight="Infinity"/>
+            <TextField fx:id="debitCredit" prefHeight="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="8" />
 
-            <Label text="Transactie code" GridPane.columnIndex="0" GridPane.rowIndex="9">
+            <Label text="Transactie code" GridPane.rowIndex="9">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Label>
-            <TextField fx:id="transactionCode" GridPane.columnIndex="0" GridPane.rowIndex="10" prefHeight="Infinity"/>
+            <TextField fx:id="transactionCode" prefHeight="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="10" />
 
             <Label text="Optionele beschrijving" GridPane.columnIndex="0" GridPane.rowIndex="11">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Label>
-            <TextField fx:id="optionalDescription" GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.rowSpan="2"
-                       prefHeight="Infinity"/>
+            <TextField fx:id="optionalDescription" prefHeight="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.rowSpan="2" />
 
 
-            <Label text="Ref. Eigenaar" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.columnSpan="2">
+            <Label text="Ref. Eigenaar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Label>
-            <TextField fx:id="referenceOwner" GridPane.columnIndex="1" GridPane.rowIndex="2" prefHeight="Infinity"
-                       GridPane.columnSpan="2"/>
+            <TextField fx:id="referenceOwner" prefHeight="Infinity" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
 
             <Label text="Ref. Institutie" GridPane.columnIndex="1" GridPane.rowIndex="3">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Label>
-            <TextField fx:id="referenceInstitution" GridPane.columnIndex="1" GridPane.rowIndex="4" prefHeight="Infinity"
-                       GridPane.columnSpan="2"/>
+            <TextField fx:id="referenceInstitution" prefHeight="Infinity" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
 
-            <Label text="Extra details" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="2">
+            <Label text="Extra details" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Label>
-            <TextField fx:id="supplementaryDetails" GridPane.columnIndex="1" GridPane.rowIndex="6" prefHeight="Infinity"
-                       GridPane.columnSpan="2"/>
+            <TextField fx:id="supplementaryDetails" prefHeight="Infinity" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
 
-            <Label text="Orginele beschrijving" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.columnSpan="2">
+            <Label text="Orginele beschrijving" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Label>
-            <TextField fx:id="originalDescription" GridPane.columnIndex="1" GridPane.rowIndex="8" prefHeight="Infinity"
-                       GridPane.columnSpan="2"/>
+            <TextField fx:id="originalDescription" prefHeight="Infinity" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
 
-            <TextField fx:id="amountOfTransactions" GridPane.columnIndex="1" GridPane.rowIndex="12" prefHeight="Infinity"/>
-            <Button fx:id="split" text="SPLITSEN" GridPane.columnIndex="2" GridPane.rowIndex="12" onAction="#split" prefHeight="40.0"></Button>
+            <TextField fx:id="amountOfTransactions" prefHeight="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <Button fx:id="split" onAction="#split" prefHeight="40.0" text="SPLITSEN" GridPane.columnIndex="2" GridPane.rowIndex="12" />
 
-            <Button fx:id="change" text="AANPASSEN" GridPane.columnIndex="2" GridPane.rowIndex="13" prefHeight="40.0" onAction="#change"></Button>
+            <Button fx:id="change" onAction="#change" prefHeight="40.0" text="AANPASSEN" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+         <Label text="Categorie" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <TextField fx:id="transactionCategory" prefHeight="40.0" prefWidth="396.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
         </children>
     </GridPane>
 </AnchorPane>
