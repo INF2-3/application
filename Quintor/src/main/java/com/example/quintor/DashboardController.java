@@ -1,5 +1,7 @@
 package com.example.quintor;
 
+import com.example.quintor.dataobjects.BankStatement;
+import com.example.quintor.dataobjects.BankStatementDescription;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -115,7 +117,7 @@ public class DashboardController implements Initializable {
         if (userId < 0) {
             return false;
         }
-        String url = System.getenv("URL") + "/api/mt940/insert";
+        String url = System.getenv("URL_API") + "/api/mt940/insert";
         URL api = new URL(url);
         HttpURLConnection httpURLConnection = (HttpURLConnection) api.openConnection();
         httpURLConnection.setRequestMethod("POST");
@@ -151,7 +153,6 @@ public class DashboardController implements Initializable {
                 response.append(inputLine);
             }
             in.close();
-            System.out.println(response);
             if (response.toString().equals(success)) {
                 return true;
             }
