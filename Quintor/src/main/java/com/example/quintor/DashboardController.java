@@ -94,10 +94,8 @@ public class DashboardController implements Initializable {
             try {
                 if (uploadFile(f, userId)) {
                     uploadToPostgres(f, userId);
-                    System.out.println("gelukt");
 
                 } else {
-                    System.out.println("niet gelukt");
                 }
             } catch (IOException error) {
                 error.printStackTrace();
@@ -122,10 +120,7 @@ public class DashboardController implements Initializable {
         if (userId < 0) {
             return false;
         }
-<<<<<<< HEAD
-        System.out.println(System.getenv("URL_API"));
-=======
->>>>>>> dev
+
         String url = System.getenv("URL_API") + "/api/mt940/insert";
         URL api = new URL(url);
         HttpURLConnection httpURLConnection = (HttpURLConnection) api.openConnection();
