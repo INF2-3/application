@@ -1,25 +1,22 @@
-package com.example.quintor;
-
-import java.time.LocalDate;
+package com.example.quintor.dataobjects;
 
 public class Transaction {
     private int id;
-    private LocalDate valueDate;
-    private String entryDate;
-    private String debCred;
+    private String valueDate;
+    private int entryDate;
+    private DebCred debCred;
     private double amount;
     private String code;
     private String referenceOwner;
     private String institutionReference;
     private String supplementaryDetails;
-    private int originalDescriptionId;
+    private Description originalDescription;
     private String description;
     private int fileId;
-    private int categoryId;
     private String type;
-    private String category;
+    private Category category;
 
-    public Transaction(int id, LocalDate valueDate, String entryDate, String debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, int originalDescriptionId, String description, int fileId, int categoryId) {
+    public Transaction(int id, String valueDate, int entryDate, DebCred debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, Description originalDescription, String description, int fileId, Category category) {
         setId(id);
         setValueDate(valueDate);
         setEntryDate(entryDate);
@@ -29,13 +26,13 @@ public class Transaction {
         setReferenceOwner(referenceOwner);
         setInstitutionReference(institutionReference);
         setSupplementaryDetails(supplementaryDetails);
-        setOriginalDescriptionId(originalDescriptionId);
+        setOriginalDescription(originalDescription);
         setDescription(description);
         setFileId(fileId);
-        setCategoryId(categoryId);
+        setCategory(category);
     }
 
-    public Transaction(String entryDate, String debCred, double amount, String code, String type, String category, String description) {
+    public Transaction(int entryDate, DebCred debCred, double amount, String code, String type, Category category, String description) {
         setEntryDate(entryDate);
         setDebCred(debCred);
         setAmount(amount);
@@ -53,27 +50,30 @@ public class Transaction {
         this.id = id;
     }
 
-    public LocalDate getValueDate() {
+    public String getValueDate() {
         return valueDate;
     }
 
-    public void setValueDate(LocalDate valueDate) {
+    public void setValueDate(String valueDate) {
         this.valueDate = valueDate;
     }
 
-    public String getEntryDate() {
+    public int getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(String entryDate) {
+    public void setEntryDate(int entryDate) {
+        if (entryDate < 0) {
+            return;
+        }
         this.entryDate = entryDate;
     }
 
-    public String getDebCred() {
+    public DebCred getDebCred() {
         return debCred;
     }
 
-    public void setDebCred(String debCred) {
+    public void setDebCred(DebCred debCred) {
         this.debCred = debCred;
     }
 
@@ -90,6 +90,9 @@ public class Transaction {
     }
 
     public void setCode(String code) {
+        if (code == null || code.isEmpty()) {
+            return;
+        }
         this.code = code;
     }
 
@@ -117,12 +120,12 @@ public class Transaction {
         this.supplementaryDetails = supplementaryDetails;
     }
 
-    public int getOriginalDescriptionId() {
-        return originalDescriptionId;
+    public Description getOriginalDescription() {
+        return originalDescription;
     }
 
-    public void setOriginalDescriptionId(int originalDescriptionId) {
-        this.originalDescriptionId = originalDescriptionId;
+    public void setOriginalDescription(Description originalDescription) {
+        this.originalDescription = originalDescription;
     }
 
     public String getDescription() {
@@ -141,27 +144,22 @@ public class Transaction {
         this.fileId = fileId;
     }
 
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
+        if (type == null || type.isEmpty()) {
+            return;
+        }
         this.type = type;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 }

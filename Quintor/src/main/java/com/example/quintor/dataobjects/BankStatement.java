@@ -1,4 +1,6 @@
-package com.example.quintor;
+package com.example.quintor.dataobjects;
+
+import com.example.quintor.User;
 
 import java.util.ArrayList;
 
