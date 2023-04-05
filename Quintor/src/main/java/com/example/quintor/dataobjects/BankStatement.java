@@ -15,13 +15,13 @@ public class BankStatement {
     private double finalBalance;
     private ArrayList<Transaction> transactions;
 
-    public BankStatement(int id, String transactionReferenceNumber, String accountNumber, int statementNumber, BankStatementDescription bankStatementDescription, int lastUpdatedUserId, String uploadDate) {
+    public BankStatement(int id, String transactionReferenceNumber, String accountNumber, int statementNumber, BankStatementDescription bankStatementDescription, User lastUpdatedUser, String uploadDate) {
         setId(id);
         setTransactionReferenceNumber(transactionReferenceNumber);
         setAccountNumber(accountNumber);
         setStatementNumber(statementNumber);
         setBankStatementDescription(bankStatementDescription);
-        setLastUpdatedUserId(lastUpdatedUserId);
+        setLastUpdatedUser(lastUpdatedUser);
         setUploadDate(uploadDate);
         setFinalBalance(calculateFinalBalance());
         this.transactions = new ArrayList<>();

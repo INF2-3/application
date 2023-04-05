@@ -2,6 +2,7 @@ package com.example.quintor.getdata;
 
 import com.example.quintor.dataobjects.BankStatement;
 import com.example.quintor.dataobjects.BankStatementDescription;
+import com.example.quintor.dataobjects.User;
 import com.example.quintor.services.ApiService;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -40,11 +41,12 @@ public class GetBankStatement {
         String transactionReferenceNumber = jsonObject.getString("transactionReferenceNumber");
         String accountNumber = jsonObject.getString("accountNumber");
         int statementNumber = jsonObject.getInt("statementNumber");
-        int lastUpdatedUserId = jsonObject.getInt("lastUpdatedUser");
         String uploadDate = jsonObject.getString("uploadDate");
 
+        User lastUpdatedUser = GetUser.makeUserJSON((JSONObject) jsonObject.get("lastUpdatedUser"));
+
         BankStatementDescription bankStatementDescription = GetBankStatementDescription.getBankStatementDescriptionJSON((JSONObject) jsonObject.get("fileDescription"));
-        return new BankStatement(id, transactionReferenceNumber, accountNumber, statementNumber, bankStatementDescription, lastUpdatedUserId, uploadDate);
+        return new BankStatement(id, transactionReferenceNumber, accountNumber, statementNumber, bankStatementDescription, lastUpdatedUser, uploadDate);
     }
 
 }
