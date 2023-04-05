@@ -2,6 +2,7 @@ package com.example.quintor;
 
 import com.example.quintor.dataobjects.Category;
 import com.example.quintor.dataobjects.XmlOrJson;
+import com.example.quintor.getdata.GetCategory;
 import com.example.quintor.getdata.GetTransactions;
 import com.example.quintor.dataobjects.Transaction;
 import javafx.collections.ObservableList;
@@ -69,7 +70,8 @@ public class TransactionOverviewController extends SceneController implements In
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            List<Transaction> allTransactions = GetTransactions.getTransactionsJSON();
+            List<Transaction> allTransactions = GetTransactions.getTransactionsXML();
+            GetTransactions.getTransactionsJSON();
 
 
             columnBedrag.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("amount"));

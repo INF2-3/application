@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -76,8 +77,8 @@ public class GetTransactions {
         } else {
             debCred = null;
         }
-
-        int amount = (int) jsonObject.get("amount");
+        BigDecimal bigDecimal = (BigDecimal) jsonObject.get("amount");
+        double amount = bigDecimal.doubleValue();
 
         String transactionCode = (String) jsonObject.get("transactionCode");
         String referenceOwner = GetTransactions.checkJsonObject("referenceOwner", jsonObject);
@@ -90,9 +91,11 @@ public class GetTransactions {
         int fileId = (int) jsonObject.get("fileId");
         Category category = GetCategory.makeCategoryJSON((JSONObject) jsonObject.get("category"));
 
+        Transaction transaction = new Transaction(id, valueDate, entryDate, debCred, amount, transactionCode, referenceOwner
+                , institutionReference, supplementaryDetails, originalDescription, description, fileId);
+        transaction.setCategory(category);
 
-        return new Transaction(id, valueDate, entryDate, debCred, amount, transactionCode, referenceOwner
-                , institutionReference, supplementaryDetails, originalDescription, description, fileId, category);
+        return transaction;
     }
 
     /**
@@ -147,7 +150,7 @@ public class GetTransactions {
      * @param node the node which gets checked.
      * @return a String with the textContent of the node.
      */
-    private static String getTextContentOfNode(Node node) {
+    public static String getTextContentOfNode(Node node) {
         if (node != null) {
             return node.getTextContent();
         }
@@ -174,7 +177,7 @@ public class GetTransactions {
         String transactionCode = element.getElementsByTagName("transactionCode").item(0).getTextContent();
         String referenceOwner = element.getElementsByTagName("referenceOwner").item(0).getTextContent();
         String institutionReference = element.getElementsByTagName("institutionReference").item(0).getTextContent();
-        String supplementaryDetails = element.getElementsByTagName("supplementaryDetails").item(0).getTextContent();
+        String supplementaryDetails = getTextContentOfNode(element.getElementsByTagName("supplementaryDetails").item(0));
 
         Element originalDescriptionElement = (Element) element.getElementsByTagName("originalDescription").item(0);
         Description originalDescription = GetDescription.makeDescriptionXML(originalDescriptionElement);
@@ -183,11 +186,15 @@ public class GetTransactions {
         int fileId = Integer.parseInt(element.getElementsByTagName("fileId").item(0).getTextContent());
 
         Element categoryElement = (Element) element.getElementsByTagName("category").item(0);
-        Category category = GetCategory.makeCategoryXML(categoryElement);
+        Category category = null;
+        if (categoryElement != null) {
+            category = GetCategory.makeCategoryXML(categoryElement);
 
-        return new Transaction(id, valueDate, entryDate, debCred, amount, transactionCode,
+        }
+        Transaction transaction = new Transaction(id, valueDate, entryDate, debCred, amount, transactionCode,
                 referenceOwner, institutionReference, supplementaryDetails, originalDescription, description,
-                fileId, category);
-
+                fileId);
+        transaction.setCategory(category);
+        return transaction;
     }
 }

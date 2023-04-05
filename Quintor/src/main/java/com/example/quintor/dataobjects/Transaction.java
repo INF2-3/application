@@ -16,7 +16,7 @@ public class Transaction {
     private String type;
     private Category category;
 
-    public Transaction(int id, String valueDate, String entryDate, DebCred debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, Description originalDescription, String description, int fileId, Category category) {
+    public Transaction(int id, String valueDate, String entryDate, DebCred debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, Description originalDescription, String description, int fileId) {
         setId(id);
         setValueDate(valueDate);
         setEntryDate(entryDate);
@@ -29,7 +29,6 @@ public class Transaction {
         setOriginalDescription(originalDescription);
         setDescription(description);
         setFileId(fileId);
-        setCategory(category);
     }
 
     public Transaction(String entryDate, DebCred debCred, double amount, String code, String type, Category category, String description) {
@@ -157,6 +156,9 @@ public class Transaction {
     }
 
     public void setCategory(Category category) {
+        if (category == null) {
+            return;
+        }
         this.category = category;
     }
 }
