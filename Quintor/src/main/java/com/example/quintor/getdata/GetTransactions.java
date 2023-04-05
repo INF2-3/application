@@ -128,7 +128,6 @@ public class GetTransactions {
             Document document = documentBuilder.parse(new InputSource(new StringReader(xml)));
 
             NodeList nodeList = document.getElementsByTagName("transaction");
-            System.out.println(nodeList.getLength());
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Element element = (Element) nodeList.item(i);
 

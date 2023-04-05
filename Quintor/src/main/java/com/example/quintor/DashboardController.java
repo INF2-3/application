@@ -1,7 +1,6 @@
 package com.example.quintor;
 
 import com.example.quintor.dataobjects.BankStatement;
-import com.example.quintor.dataobjects.BankStatementDescription;
 import com.example.quintor.dataobjects.User;
 import com.example.quintor.getdata.GetBankStatement;
 import javafx.collections.ObservableList;
@@ -19,7 +18,6 @@ import javafx.stage.FileChooser;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 

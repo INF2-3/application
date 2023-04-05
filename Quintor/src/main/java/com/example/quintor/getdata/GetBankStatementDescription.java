@@ -2,6 +2,7 @@ package com.example.quintor.getdata;
 
 import com.example.quintor.dataobjects.BankStatementDescription;
 import org.json.JSONObject;
+import org.w3c.dom.Element;
 
 public class GetBankStatementDescription {
     public static BankStatementDescription getBankStatementDescriptionJSON(JSONObject jsonObject) {
@@ -12,5 +13,16 @@ public class GetBankStatementDescription {
         double amountOfCreditEntries = jsonObject.getDouble("amountOfCreditEntries");
 
         return new BankStatementDescription(id, numberOfDebitEntries, numberOfCreditEntries, amountOfDebitEntries, amountOfCreditEntries);
+    }
+
+    public static BankStatementDescription getBankStatementDescriptionXML(Element element) {
+        int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
+        int numberOfDebitEntries = Integer.parseInt(element.getElementsByTagName("numberOfDebitEntries").item(0).getTextContent());
+        int numberOfCreditEntries = Integer.parseInt(element.getElementsByTagName("numberOfCreditEntries").item(0).getTextContent());
+        double amountOfDebitEntries = Double.parseDouble(element.getElementsByTagName("amountOfDebitEntries").item(0).getTextContent());
+        double amountOfCreditEntries = Double.parseDouble(element.getElementsByTagName("amountOfCreditEntries").item(0).getTextContent());
+
+        return new BankStatementDescription(id, numberOfDebitEntries, numberOfCreditEntries, amountOfDebitEntries, amountOfCreditEntries);
+
     }
 }
