@@ -66,7 +66,7 @@ public class GetTransactions {
     private static Transaction makeTransactionJSON(JSONObject jsonObject) {
         int id = (int) jsonObject.get("id");
         String valueDate = (String) jsonObject.get("valueDate");
-        int entryDate = (int) jsonObject.get("entryDate");
+        String entryDate = (String) jsonObject.get("entryDate");
         String debCredString = (String) jsonObject.get("debitOrCredit");
         DebCred debCred;
         if (debCredString.equals("CREDIT")) {
@@ -163,7 +163,7 @@ public class GetTransactions {
     public static Transaction makeTransactionXML(Element element) {
         int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
         String valueDate = element.getElementsByTagName("valueDate").item(0).getTextContent();
-        int entryDate = Integer.parseInt(element.getElementsByTagName("entryDate").item(0).getTextContent());
+        String entryDate = element.getElementsByTagName("entryDate").item(0).getTextContent();
         DebCred debCred = null;
         if (element.getElementsByTagName("debitOrCredit").item(0).getTextContent().equals("CREDIT")) {
             debCred = DebCred.CREDIT;

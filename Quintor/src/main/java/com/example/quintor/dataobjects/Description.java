@@ -1,5 +1,7 @@
 package com.example.quintor.dataobjects;
 
+import java.util.Objects;
+
 public class Description {
     private int id;
     private String returnReason;
@@ -163,5 +165,16 @@ public class Description {
 
     public void setCharges(String charges) {
         this.charges = charges;
+    }
+
+    @Override
+    public String toString() {
+        return Objects.toString(this.returnReason, "") + " " + Objects.toString(this.clientReference, "")
+                + " " + Objects.toString(this.endToEndReference, "") + " " + Objects.toString(this.paymentInformationId, "")
+                + " " + Objects.toString(this.instructionId, "") + " " + Objects.toString(this.mandateReference, "")
+                + " " + Objects.toString(this.creditorId, "") + " " + Objects.toString(this.counterpartyId, "")
+                + " " + Objects.toString(this.remittanceInformation, "") + " " + Objects.toString(this.purposeCode, "")
+                + " " + Objects.toString(this.ultimateCreditor, "") + " " + Objects.toString(this.ultimateDebitor, "")
+                + " " + Objects.toString(this.exchangeRate, "") + " " + Objects.toString(this.charges, "");
     }
 }

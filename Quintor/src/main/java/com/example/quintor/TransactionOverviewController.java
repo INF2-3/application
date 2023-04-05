@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -82,15 +83,20 @@ public class TransactionOverviewController extends SceneController implements In
 
             ObservableList<Transaction> transactions = transactionsTable.getItems();
             transactions.addAll(allTransactions);
-            transactionsTable.setItems(transactions);
-            transactionsTable.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2) {
-                    try {
-                        openLayout();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+            transactionsTable.setRowFactory(tv -> {
+                TableRow<Transaction> row = new TableRow<>();
+                row.setOnMouseClicked(event -> {
+                    if (event.getClickCount() == 2 && !row.isEmpty()) {
+                        Transaction transaction = row.getItem();
+                        TransactionInformationController.setTransactionId(transaction);
+                        try {
+                            openLayout();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
-                }
+                });
+                return row;
             });
         } catch (IOException e) {
             throw new RuntimeException(e);

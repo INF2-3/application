@@ -3,7 +3,7 @@ package com.example.quintor.dataobjects;
 public class Transaction {
     private int id;
     private String valueDate;
-    private int entryDate;
+    private String entryDate;
     private DebCred debCred;
     private double amount;
     private String code;
@@ -16,7 +16,7 @@ public class Transaction {
     private String type;
     private Category category;
 
-    public Transaction(int id, String valueDate, int entryDate, DebCred debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, Description originalDescription, String description, int fileId, Category category) {
+    public Transaction(int id, String valueDate, String entryDate, DebCred debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, Description originalDescription, String description, int fileId, Category category) {
         setId(id);
         setValueDate(valueDate);
         setEntryDate(entryDate);
@@ -32,7 +32,7 @@ public class Transaction {
         setCategory(category);
     }
 
-    public Transaction(int entryDate, DebCred debCred, double amount, String code, String type, Category category, String description) {
+    public Transaction(String entryDate, DebCred debCred, double amount, String code, String type, Category category, String description) {
         setEntryDate(entryDate);
         setDebCred(debCred);
         setAmount(amount);
@@ -58,14 +58,11 @@ public class Transaction {
         this.valueDate = valueDate;
     }
 
-    public int getEntryDate() {
+    public String getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(int entryDate) {
-        if (entryDate < 0) {
-            return;
-        }
+    public void setEntryDate(String entryDate) {
         this.entryDate = entryDate;
     }
 
