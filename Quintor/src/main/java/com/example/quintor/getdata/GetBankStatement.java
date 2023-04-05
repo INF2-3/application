@@ -1,5 +1,6 @@
 package com.example.quintor.getdata;
 
+import com.example.quintor.dataobjects.Balance;
 import com.example.quintor.dataobjects.BankStatement;
 import com.example.quintor.dataobjects.BankStatementDescription;
 import com.example.quintor.dataobjects.User;
@@ -44,9 +45,11 @@ public class GetBankStatement {
         String uploadDate = jsonObject.getString("uploadDate");
 
         User lastUpdatedUser = GetUser.makeUserJSON((JSONObject) jsonObject.get("lastUpdatedUser"));
+        Balance closingBalance = GetBalance.makeBalance((JSONObject) jsonObject.get("closingBalance"));
+
 
         BankStatementDescription bankStatementDescription = GetBankStatementDescription.getBankStatementDescriptionJSON((JSONObject) jsonObject.get("fileDescription"));
-        return new BankStatement(id, transactionReferenceNumber, accountNumber, statementNumber, bankStatementDescription, lastUpdatedUser, uploadDate);
+        return new BankStatement(id, transactionReferenceNumber, accountNumber, statementNumber, bankStatementDescription, lastUpdatedUser, uploadDate, closingBalance);
     }
 
 }
