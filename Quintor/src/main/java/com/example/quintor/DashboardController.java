@@ -73,7 +73,7 @@ public class DashboardController implements Initializable {
         columnFinalBalance.setCellValueFactory(new PropertyValueFactory<BankStatement, Double>("finalBalance"));
         columnAccountNumber.setCellValueFactory(new PropertyValueFactory<BankStatement, String>("accountNumber"));
 
-        List<BankStatement> allBankstatements = GetBankStatement.getBankStatementsJSON();
+        List<BankStatement> allBankstatements = GetBankStatement.getBankStatementsXML();
         ObservableList<BankStatement> bankStatements = transcriptTable.getItems();
         bankStatements.addAll(allBankstatements);
         transcriptTable.setItems(bankStatements);

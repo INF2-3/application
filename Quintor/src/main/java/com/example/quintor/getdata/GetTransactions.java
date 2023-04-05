@@ -44,7 +44,6 @@ public class GetTransactions {
         while ((inputLine = in.readLine()) != null) {
             response.append(inputLine);
         }
-        System.out.println(response);
         in.close();
 
         JSONArray jsonArray = new JSONArray(response.toString());
