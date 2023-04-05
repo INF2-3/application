@@ -19,6 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetBankStatement {
+    /**
+     * Get the JSON with all the BankStatements from the api and place them in a JSONArray.
+     * Then loops through the JSONArray and makes a list of BankStatements.
+     *
+     * @return a list of BankStatements
+     */
     public static List<BankStatement> getBankStatementsJSON() {
         List<BankStatement> allBankStatements = new ArrayList<>();
         ApiService apiService = new ApiService();
@@ -39,6 +45,12 @@ public class GetBankStatement {
         return allBankStatements;
     }
 
+    /**
+     * Makes a BankStatement object from a JSONObject.
+     *
+     * @param jsonObject a JSONObject with data for a BankStatement
+     * @return a bankStatement.
+     */
     private static BankStatement makeBankStatementJSON(JSONObject jsonObject) {
         int id = jsonObject.getInt("id");
         String transactionReferenceNumber = jsonObject.getString("transactionReferenceNumber");
@@ -54,6 +66,12 @@ public class GetBankStatement {
         return new BankStatement(id, transactionReferenceNumber, accountNumber, statementNumber, bankStatementDescription, lastUpdatedUser, uploadDate, closingBalance);
     }
 
+    /**
+     * Gets the XML from the api with all the Bankstatements from the database.
+     * Then loops through the xml file and makes a list of BankStatements.
+     *
+     * @return List with BankStatementa
+     */
     public static List<BankStatement> getBankStatementsXML() {
         List<BankStatement> allBankStatements = new ArrayList<>();
         ApiService apiService = new ApiService();
@@ -76,6 +94,12 @@ public class GetBankStatement {
         }
     }
 
+    /**
+     * Makes a BankStatement from an Element.
+     *
+     * @param element element with data for the BankStatement.
+     * @return A BankStatement object
+     */
     private static BankStatement makeBankStatementXML(Element element) {
         int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
         String transactionReferenceNumber = element.getElementsByTagName("transactionReferenceNumber").item(0).getTextContent();

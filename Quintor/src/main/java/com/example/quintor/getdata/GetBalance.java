@@ -7,6 +7,12 @@ import org.json.JSONObject;
 import org.w3c.dom.Element;
 
 public class GetBalance {
+    /**
+     * This method makes a Balance object from a JSONObject
+     *
+     * @param jsonObject a JSON object with data for the Balance.
+     * @return a Balance object
+     */
     public static Balance makeBalanceJSON(JSONObject jsonObject) {
         int id = jsonObject.getInt("id");
         double amount = jsonObject.getDouble("amount");
@@ -18,6 +24,12 @@ public class GetBalance {
         return new Balance(id, debCred, date, currency, amount, balanceType);
     }
 
+    /**
+     * This method makes a Balance object from an Element
+     *
+     * @param element An element with data for the Balance.
+     * @return a Balance object
+     */
     public static Balance makeBalanceXML(Element element) {
         int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
         double amount = Double.parseDouble(element.getElementsByTagName("amount").item(0).getTextContent());

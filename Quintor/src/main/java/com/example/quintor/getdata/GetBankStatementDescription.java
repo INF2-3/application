@@ -5,6 +5,12 @@ import org.json.JSONObject;
 import org.w3c.dom.Element;
 
 public class GetBankStatementDescription {
+    /**
+     * Makes a BankStatementDescription from a JSONObject.
+     *
+     * @param jsonObject a JSONObject with data for a BankStatementDescription
+     * @return a BankStatementDescription object.
+     */
     public static BankStatementDescription getBankStatementDescriptionJSON(JSONObject jsonObject) {
         int id = jsonObject.getInt("id");
         int numberOfDebitEntries = jsonObject.getInt("numberOfDebitEntries");
@@ -15,6 +21,12 @@ public class GetBankStatementDescription {
         return new BankStatementDescription(id, numberOfDebitEntries, numberOfCreditEntries, amountOfDebitEntries, amountOfCreditEntries);
     }
 
+    /**
+     * Makes a BankStatementDescription from an Element.
+     *
+     * @param element an Element with data for a BankStatementDescription
+     * @return a BankStatementDescription object.
+     */
     public static BankStatementDescription getBankStatementDescriptionXML(Element element) {
         int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
         int numberOfDebitEntries = Integer.parseInt(element.getElementsByTagName("numberOfDebitEntries").item(0).getTextContent());
