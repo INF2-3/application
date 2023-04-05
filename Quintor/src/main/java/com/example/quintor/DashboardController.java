@@ -89,6 +89,7 @@ public class DashboardController implements Initializable {
     public void uploadButtonAction() {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MT940 files", "*.940"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT files", "*.txt"));
         File f = fc.showOpenDialog(null);
         if (f != null) {
             try {
