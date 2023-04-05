@@ -2,6 +2,7 @@ package com.example.quintor;
 
 import com.example.quintor.dataobjects.BankStatement;
 import com.example.quintor.dataobjects.BankStatementDescription;
+import com.example.quintor.dataobjects.User;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

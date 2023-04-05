@@ -2,7 +2,6 @@ package com.example.quintor;
 
 import com.example.quintor.dataobjects.Category;
 import com.example.quintor.dataobjects.XmlOrJson;
-import com.example.quintor.getdata.GetCategory;
 import com.example.quintor.getdata.GetTransactions;
 import com.example.quintor.dataobjects.Transaction;
 import javafx.collections.ObservableList;

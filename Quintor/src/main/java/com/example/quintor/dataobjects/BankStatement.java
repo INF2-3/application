@@ -1,7 +1,5 @@
 package com.example.quintor.dataobjects;
 
-import com.example.quintor.User;
-
 import java.util.ArrayList;
 
 public class BankStatement {
