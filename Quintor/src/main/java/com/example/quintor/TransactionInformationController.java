@@ -60,11 +60,11 @@ public class TransactionInformationController implements Initializable {
 
     }
 
-    public static void setTransactionId(Transaction transaction){
+    public static void setTransactionId(Transaction transaction) {
         TransactionInformationController.transaction = transaction;
     }
 
-    public static Transaction getTransactionId(){
+    public static Transaction getTransactionId() {
         return TransactionInformationController.transaction;
     }
 
@@ -80,8 +80,11 @@ public class TransactionInformationController implements Initializable {
         this.supplementaryDetails.setText(transaction.getSupplementaryDetails());
         this.originalDescription.setText(transaction.getOriginalDescription().toString());
         this.optionalDescription.setText(transaction.getDescription());
-        this.transactionCategory.setText(transaction.getCategory().getName());
-
+        if (transaction.getCategory() == null) {
+            this.transactionCategory.setText("");
+        } else {
+            this.transactionCategory.setText(transaction.getCategory().getName());
+        }
 
     }
 
