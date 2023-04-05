@@ -12,7 +12,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class LoginController {
     public Button loginButton;
@@ -26,6 +28,16 @@ public class LoginController {
     private PasswordField passwordField;
     @FXML
     private Label errorLabel;
+    @FXML
+    private RadioButton jsonModus, xmlModus;
+
+    /**
+     * Sets the xml or json modus to json
+     */
+    @Override
+    public void initialize() {
+        System.setProperty("MODUS", "JSON");
+    }
 
     public boolean setEmail(String email) {
         this.email = email;
@@ -53,5 +65,15 @@ public class LoginController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dashboard.fxml")));
         Stage window = (Stage) loginButton.getScene().getWindow();
         window.setScene(new Scene(root));
+    }
+    /**
+     * Updates the modus to json or xml
+     */
+    public void changeModus(){
+        if(jsonModus.isSelected()){
+            System.setProperty("MODUS", "JSON");
+        }else if(xmlModus.isSelected()){
+            System.setProperty("MODUS", "XML");
+        }
     }
 }
