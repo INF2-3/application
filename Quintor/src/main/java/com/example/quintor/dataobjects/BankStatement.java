@@ -1,5 +1,6 @@
 package com.example.quintor.dataobjects;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class BankStatement {
@@ -9,17 +10,18 @@ public class BankStatement {
     private int statementNumber;
     private BankStatementDescription bankStatementDescription;
     private User lastUpdatedUser;
+    private int lastUpdatedUserId;
     private String uploadDate;
     private double finalBalance;
     private ArrayList<Transaction> transactions;
 
-    public BankStatement(int id, String transactionReferenceNumber, String accountNumber, int statementNumber, BankStatementDescription bankStatementDescription, User lastUpdatedUser, String uploadDate) {
+    public BankStatement(int id, String transactionReferenceNumber, String accountNumber, int statementNumber, BankStatementDescription bankStatementDescription, int lastUpdatedUserId, String uploadDate) {
         setId(id);
         setTransactionReferenceNumber(transactionReferenceNumber);
         setAccountNumber(accountNumber);
         setStatementNumber(statementNumber);
         setBankStatementDescription(bankStatementDescription);
-        setLastUpdatedUser(lastUpdatedUser);
+        setLastUpdatedUserId(lastUpdatedUserId);
         setUploadDate(uploadDate);
         setFinalBalance(calculateFinalBalance());
         this.transactions = new ArrayList<>();
@@ -71,6 +73,14 @@ public class BankStatement {
 
     public void setLastUpdatedUser(User lastUpdatedUser) {
         this.lastUpdatedUser = lastUpdatedUser;
+    }
+
+    public int getLastUpdatedUserId() {
+        return this.lastUpdatedUserId;
+    }
+
+    public void setLastUpdatedUserId(int lastUpdatedUserId) {
+        this.lastUpdatedUserId = lastUpdatedUserId;
     }
 
     public String getUploadDate() {
