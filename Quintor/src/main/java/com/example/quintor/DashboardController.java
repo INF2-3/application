@@ -1,5 +1,6 @@
 package com.example.quintor;
 
+
 import com.example.quintor.dataobjects.BankStatement;
 import com.example.quintor.dataobjects.BankStatementDescription;
 import javafx.collections.ObservableList;
@@ -86,13 +87,12 @@ public class DashboardController implements Initializable {
     public void uploadButtonAction() {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MT940 files", "*.940"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT files", "*.txt"));
         File f = fc.showOpenDialog(null);
         if (f != null) {
             try {
                 if (uploadFile(f, userId)) {
-                    System.out.println("gelukt");
-                } else {
-                    System.out.println("niet gelukt");
+                    uploadToPostgres(f, userId);
                 }
             } catch (IOException error) {
                 error.printStackTrace();
@@ -117,6 +117,7 @@ public class DashboardController implements Initializable {
         if (userId < 0) {
             return false;
         }
+
         String url = System.getenv("URL_API") + "/api/mt940/insert";
         URL api = new URL(url);
         HttpURLConnection httpURLConnection = (HttpURLConnection) api.openConnection();
@@ -130,6 +131,35 @@ public class DashboardController implements Initializable {
         os.flush();
         os.close();
         return getResponse(httpURLConnection);
+    }
+
+
+    /**
+     * Call insert endpoint to insert file into database
+     *
+     * @param file   Uploaded file
+     * @param userId id of uploaded user
+     * @return Endpoint response
+     */
+    private boolean uploadToPostgres(File file, int userId) throws IOException {
+        if (file == null || !file.isFile() || !file.exists()) {
+            return false;
+        }
+        if (userId < 0) {
+            return false;
+        }
+        HttpURLConnection connection = (HttpURLConnection) new URL((System.getenv("URL_API") + "/api/postgres/insert")).openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setDoOutput(true);
+
+        OutputStream os = connection.getOutputStream();
+        String params = "file=" + file + "&userId=" + userId;
+        os.write(params.getBytes());
+        os.flush();
+        os.close();
+
+        return getResponse(connection);
     }
 
     /**
