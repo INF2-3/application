@@ -9,11 +9,13 @@ public class BankStatement {
     private int statementNumber;
     private BankStatementDescription bankStatementDescription;
     private User lastUpdatedUser;
+    private int lastUpdatedUserId;
     private String uploadDate;
+    private Balance closingBalance;
     private double finalBalance;
     private ArrayList<Transaction> transactions;
 
-    public BankStatement(int id, String transactionReferenceNumber, String accountNumber, int statementNumber, BankStatementDescription bankStatementDescription, User lastUpdatedUser, String uploadDate) {
+    public BankStatement(int id, String transactionReferenceNumber, String accountNumber, int statementNumber, BankStatementDescription bankStatementDescription, User lastUpdatedUser, String uploadDate, Balance closingBalance) {
         setId(id);
         setTransactionReferenceNumber(transactionReferenceNumber);
         setAccountNumber(accountNumber);
@@ -21,6 +23,7 @@ public class BankStatement {
         setBankStatementDescription(bankStatementDescription);
         setLastUpdatedUser(lastUpdatedUser);
         setUploadDate(uploadDate);
+        setClosingBalance(closingBalance);
         setFinalBalance(calculateFinalBalance());
         this.transactions = new ArrayList<>();
     }
@@ -73,6 +76,14 @@ public class BankStatement {
         this.lastUpdatedUser = lastUpdatedUser;
     }
 
+    public int getLastUpdatedUserId() {
+        return this.lastUpdatedUserId;
+    }
+
+    public void setLastUpdatedUserId(int lastUpdatedUserId) {
+        this.lastUpdatedUserId = lastUpdatedUserId;
+    }
+
     public String getUploadDate() {
         return uploadDate;
     }
@@ -101,7 +112,15 @@ public class BankStatement {
         this.transactions.add(transaction);
     }
 
+    public Balance getClosingBalance() {
+        return this.closingBalance;
+    }
+
+    public void setClosingBalance(Balance closingBalance) {
+        this.closingBalance = closingBalance;
+    }
+
     public double calculateFinalBalance() {
-        return 0.0;
+        return this.closingBalance.getAmount();
     }
 }
