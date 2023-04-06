@@ -76,8 +76,8 @@ public class GetTransactions {
         } else {
             debCred = null;
         }
-        BigDecimal bigDecimal = (BigDecimal) jsonObject.get("amount");
-        double amount = bigDecimal.doubleValue();
+        Number number = (Number) jsonObject.get("amount");
+        double amount = number.doubleValue();
 
         String transactionCode = (String) jsonObject.get("transactionCode");
         String referenceOwner = GetTransactions.checkJsonObject("referenceOwner", jsonObject);
