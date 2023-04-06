@@ -45,8 +45,6 @@ public class TransactionOverviewController extends SceneController implements In
     private TableColumn<Transaction, String> columnDebCred;
     @FXML
     private TableColumn<Transaction, String> columnDescription;
-    @FXML
-    private TableColumn<Transaction, String> columnType;
     private XmlOrJson xmlOrJson = XmlOrJson.JSON;
 
     public TransactionOverviewController() {
@@ -79,8 +77,6 @@ public class TransactionOverviewController extends SceneController implements In
             columnDate.setCellValueFactory(new PropertyValueFactory<Transaction, LocalDate>("valueDate"));
             columnDebCred.setCellValueFactory(new PropertyValueFactory<Transaction, String>("debCred"));
             columnDescription.setCellValueFactory(new PropertyValueFactory<Transaction, String>("description"));
-            columnType.setCellValueFactory(new PropertyValueFactory<Transaction, String>("type"));
-
 
             ObservableList<Transaction> transactions = transactionsTable.getItems();
             transactions.addAll(allTransactions);
