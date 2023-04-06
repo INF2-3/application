@@ -3,6 +3,7 @@ package com.example.quintor.getdata;
 import com.example.quintor.dataobjects.Category;
 import org.json.JSONObject;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 public class GetCategory {
     /**
@@ -13,8 +14,11 @@ public class GetCategory {
      */
     public static Category makeCategoryJSON(JSONObject jsonObject) {
         int categoryId = (int) jsonObject.get("categoryId");
-        String name = (String) jsonObject.get("name");
-        return new Category(categoryId, name);
+        String name = GetTransactions.checkJsonObject("name", jsonObject);
+        if (name != null) {
+            return new Category(categoryId, name);
+        }
+        return null;
     }
 
     /**
@@ -24,8 +28,18 @@ public class GetCategory {
      * @return a category object with an id and name
      */
     public static Category makeCategoryXML(Element element) {
-        int id = Integer.parseInt(element.getElementsByTagName("categoryId").item(0).getTextContent());
-        String name = element.getElementsByTagName("name").item(0).getTextContent();
-        return new Category(id, name);
+        if (!isNodeEmpty(element.getElementsByTagName("name").item(0))) {
+            int id = Integer.parseInt(element.getElementsByTagName("categoryId").item(0).getTextContent());
+            String name = element.getElementsByTagName("name").item(0).getTextContent();
+            return new Category(id, name);
+        }
+        return null;
+    }
+
+    private static boolean isNodeEmpty(Node node) {
+        if (node == null) {
+            return true;
+        }
+        return node.getTextContent() == null;
     }
 }

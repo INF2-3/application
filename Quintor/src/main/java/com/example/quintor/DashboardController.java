@@ -2,7 +2,8 @@ package com.example.quintor;
 
 
 import com.example.quintor.dataobjects.BankStatement;
-import com.example.quintor.dataobjects.BankStatementDescription;
+import com.example.quintor.dataobjects.User;
+import com.example.quintor.getdata.GetBankStatement;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import javafx.stage.FileChooser;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -72,11 +74,9 @@ public class DashboardController implements Initializable {
         columnFinalBalance.setCellValueFactory(new PropertyValueFactory<BankStatement, Double>("finalBalance"));
         columnAccountNumber.setCellValueFactory(new PropertyValueFactory<BankStatement, String>("accountNumber"));
 
-        BankStatement file = new BankStatement(1, "939DFKS9234", "IBAN09374229", 20,
-                new BankStatementDescription(1, 2, 1, 2, 483.4), new User("test@gmail.com", "tester", 1),
-                "12-12-2023");
+        List<BankStatement> allBankstatements = GetBankStatement.getBankStatementsXML();
         ObservableList<BankStatement> bankStatements = transcriptTable.getItems();
-        bankStatements.add(file);
+        bankStatements.addAll(allBankstatements);
         transcriptTable.setItems(bankStatements);
     }
 

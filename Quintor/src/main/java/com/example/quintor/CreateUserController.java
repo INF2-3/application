@@ -1,5 +1,6 @@
 package com.example.quintor;
 
+import com.example.quintor.dataobjects.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
