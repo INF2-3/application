@@ -5,8 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -20,25 +23,25 @@ public class TransactionInformationController implements Initializable {
     private Parent embeddedNav;
     private static Stage stage;
     @FXML
-    private TextField valueDate;
+    private Label valueDate;
     @FXML
-    private TextField entryDate;
+    private Label entryDate;
     @FXML
-    private TextField amount;
+    private Label amount;
     @FXML
-    private TextField debitCredit;
+    private Label debitCredit;
     @FXML
-    private TextField transactionCode;
+    private Label transactionCode;
     @FXML
     private TextField optionalDescription;
     @FXML
-    private TextField referenceOwner;
+    private Label referenceOwner;
     @FXML
-    private TextField referenceInstitution;
+    private Label referenceInstitution;
     @FXML
-    private TextField supplementaryDetails;
+    private Label supplementaryDetails;
     @FXML
-    private TextField originalDescription;
+    private Text originalDescription;
     @FXML
     private TextField amountOfTransactions;
     @FXML
