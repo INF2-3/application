@@ -1,7 +1,6 @@
 package com.example.quintor;
 
 
-import com.example.quintor.services.ApiService;
 import com.example.quintor.dataobjects.BankStatement;
 import com.example.quintor.dataobjects.BankStatementDescription;
 import javafx.collections.ObservableList;
@@ -19,7 +18,6 @@ import javafx.stage.FileChooser;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -95,8 +93,6 @@ public class DashboardController implements Initializable {
             try {
                 if (uploadFile(f, userId)) {
                     uploadToPostgres(f, userId);
-
-                } else {
                 }
             } catch (IOException error) {
                 error.printStackTrace();
@@ -138,6 +134,13 @@ public class DashboardController implements Initializable {
     }
 
 
+    /**
+     * Call insert endpoint to insert file into database
+     *
+     * @param file   Uploaded file
+     * @param userId id of uploaded user
+     * @return Endpoint response
+     */
     private boolean uploadToPostgres(File file, int userId) throws IOException {
         if (file == null || !file.isFile() || !file.exists()) {
             return false;
@@ -157,8 +160,8 @@ public class DashboardController implements Initializable {
         os.close();
 
         return getResponse(connection);
-
     }
+
     /**
      * Gets the response of a httpURLConnection and puts them in a Stringbuffer.
      *
