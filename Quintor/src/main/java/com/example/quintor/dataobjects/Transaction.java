@@ -15,6 +15,7 @@ public class Transaction {
     private int fileId;
     private String type;
     private Category category;
+    private String categoryName;
 
     public Transaction(int id, String valueDate, String entryDate, DebCred debCred, double amount, String code, String referenceOwner, String institutionReference, String supplementaryDetails, Description originalDescription, String description, int fileId) {
         setId(id);
@@ -39,6 +40,7 @@ public class Transaction {
         setType(type);
         setCategory(category);
         setDescription(description);
+        setCategoryName(this.category.getName());
     }
 
     public int getId() {
@@ -160,5 +162,14 @@ public class Transaction {
             return;
         }
         this.category = category;
+        setCategoryName(this.category.getName());
+    }
+
+    public String getCategoryName() {
+        return this.categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }

@@ -36,7 +36,7 @@ public class TransactionOverviewController extends SceneController implements In
     @FXML
     private TableColumn<Transaction, Double> columnBedrag;
     @FXML
-    private TableColumn<Transaction, Category> columnCategory;
+    private TableColumn<Transaction, String> columnCategory;
     @FXML
     private TableColumn<Transaction, Integer> columnCode;
     @FXML
@@ -74,7 +74,7 @@ public class TransactionOverviewController extends SceneController implements In
 
 
             columnBedrag.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("amount"));
-            columnCategory.setCellValueFactory(new PropertyValueFactory<Transaction, Category>("category"));
+            columnCategory.setCellValueFactory(new PropertyValueFactory<Transaction, String>("categoryName"));
             columnCode.setCellValueFactory(new PropertyValueFactory<Transaction, Integer>("code"));
             columnDate.setCellValueFactory(new PropertyValueFactory<Transaction, LocalDate>("valueDate"));
             columnDebCred.setCellValueFactory(new PropertyValueFactory<Transaction, String>("debCred"));
