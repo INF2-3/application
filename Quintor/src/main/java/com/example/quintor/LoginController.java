@@ -28,6 +28,14 @@ public class LoginController {
     private PasswordField passwordField;
     @FXML
     private Label errorLabel;
+    
+    /**
+     * Sets the xml or json modus to json
+     */
+
+    public void initialize() {
+        System.setProperty("MODUS", "JSON");
+    }
 
     public boolean setEmail(String email) {
         this.email = email;

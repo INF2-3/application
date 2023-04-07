@@ -21,14 +21,6 @@ public class SettingsController extends SceneController {
     @FXML
     private RadioButton jsonModus, xmlModus;
 
-    /**
-     * Sets the xml or json modus to json
-     */
-
-    public void initialize() {
-        System.setProperty("MODUS", "JSON");
-    }
-
     public SettingsController() {
         stage = new Stage();
     }
