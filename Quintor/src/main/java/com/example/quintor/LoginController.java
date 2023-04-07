@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 public class LoginController {
     public Button loginButton;
     @FXML
-    private BorderPane borderPane;
+    private AnchorPane anchorPane;
     private String email;
     private String hashedPassword;
     @FXML

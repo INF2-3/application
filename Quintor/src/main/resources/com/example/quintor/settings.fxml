@@ -5,61 +5,63 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quintor.SettingsController">
-   <fx:include fx:id="embeddedNav" source="navbar.fxml"/>
-   <children>
-      <VBox fx:id="settingsBox" alignment="TOP_CENTER" layoutX="521.0" layoutY="185.0" prefHeight="380.0" prefWidth="318.0" spacing="20.0" style="-fx-background-color: #E7C6FF; -fx-background-radius: 20; -fx-border-color: #000000; -fx-border-radius: 20;">
-         <children>
-            <Label style="-fx-font-weight: bold;" text="Instellingen">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Button mnemonicParsing="false" onAction="#changePassword" prefHeight="46.0" prefWidth="201.0" style="-fx-background-color: #023047;" text="WIJZIG WACHTWOORD" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onAction="#userOverview" prefHeight="46.0" prefWidth="201.0" style="-fx-background-color: #023047;" text="GEBRUIKERS OVERZICHT" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#addonOverview" prefHeight="46.0" prefWidth="201.0" style="-fx-background-color: #023047;" text="ADD-ON OVERZICHT" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#logout" prefHeight="46.0" prefWidth="201.0" style="-fx-background-color: #023047;" text="LOGOUT" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Label layoutX="84.0" layoutY="292.0" text="Modus:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <RadioButton fx:id="jsonModus" layoutX="157.0" layoutY="294.0" mnemonicParsing="false" onAction="#changeModus" selected="true" text="JSON">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <toggleGroup>
-                  <ToggleGroup fx:id="modus" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton layoutX="234.0" layoutY="295.0" mnemonicParsing="false" onAction="#changeModus" text="XML" toggleGroup="$modus" fx:id="xmlModus">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </RadioButton>
-         </children>
+
+<BorderPane minHeight="720.0" minWidth="1360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quintor.SettingsController">
+   <top>
+      <fx:include fx:id="embeddedNav" source="navbar.fxml" />
+   </top>
+   <center>
+      <VBox fx:id="settingsBox" alignment="TOP_CENTER" fillWidth="false" maxHeight="380.0" maxWidth="318.0" minHeight="380.0" minWidth="318.0" prefHeight="380.0" prefWidth="318.0" spacing="20.0" style="-fx-background-color: #E7C6FF; -fx-background-radius: 20; -fx-border-color: #000000; -fx-border-radius: 20;" BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="15.0" top="15.0" />
          </padding>
+         <Label style="-fx-font-weight: bold;" text="Instellingen">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Button mnemonicParsing="false" onAction="#changePassword" prefHeight="46.0" prefWidth="201.0" style="-fx-background-color: #023047;" text="WIJZIG WACHTWOORD" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#userOverview" prefHeight="46.0" prefWidth="201.0" style="-fx-background-color: #023047;" text="GEBRUIKERS OVERZICHT" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#addonOverview" prefHeight="46.0" prefWidth="201.0" style="-fx-background-color: #023047;" text="ADD-ON OVERZICHT" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#logout" prefHeight="46.0" prefWidth="201.0" style="-fx-background-color: #023047;" text="LOGOUT" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Button>
+         <Label layoutX="84.0" layoutY="292.0" text="Modus:">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <RadioButton fx:id="jsonModus" layoutX="157.0" layoutY="294.0" mnemonicParsing="false" onAction="#changeModus" selected="true" text="JSON">
+            <font>
+               <Font size="13.0" />
+            </font>
+            <toggleGroup>
+               <ToggleGroup fx:id="modus" />
+            </toggleGroup>
+         </RadioButton>
+         <RadioButton layoutX="234.0" layoutY="295.0" mnemonicParsing="false" onAction="#changeModus" text="XML" toggleGroup="$modus" fx:id="xmlModus">
+            <font>
+               <Font size="13.0" />
+            </font>
+         </RadioButton>
       </VBox>
-   </children>
-</AnchorPane>
+   </center>
+</BorderPane>

@@ -10,8 +10,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="Infinity" minHeight="360.0" minWidth="680.0" style="-fx-background-color: ffffff;" stylesheets="/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quintor.TransactionInformationController">
-    <fx:include fx:id="embeddedNav" source="navbar.fxml" />
+<AnchorPane minHeight="720.0" minWidth="1360.0" style="-fx-background-color: ffffff;" stylesheets="/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quintor.TransactionInformationController">
+    <fx:include fx:id="embeddedNav" source="navbar.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     <Label layoutX="91.0" layoutY="65.0" text="Transactie gegevens" AnchorPane.leftAnchor="91.0">
         <font>
             <Font name="Roboto Bold" size="34.0" />
@@ -38,128 +38,125 @@
             <RowConstraints minHeight="10.0" prefHeight="40.0" />
             <RowConstraints minHeight="10.0" prefHeight="40.0" />
             <RowConstraints minHeight="10.0" prefHeight="40.0" />
-         <RowConstraints />
+            <RowConstraints />
 
         </rowConstraints>
-        <children>
-
-            <Label text="Waarde datum" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
-
-            <Label text="Invoer datum" GridPane.columnIndex="0" GridPane.rowIndex="3">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
-
-            <Label text="Transactie bedrag" GridPane.columnIndex="0" GridPane.rowIndex="5">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
-
-            <Label text="Debit/Credit" GridPane.columnIndex="0" GridPane.rowIndex="7">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
-
-            <Label text="Transactie code" GridPane.rowIndex="9">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
-
-            <Label text="Optionele beschrijving" GridPane.columnIndex="0" GridPane.rowIndex="11">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
-            <TextField fx:id="optionalDescription" prefHeight="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.rowSpan="2" />
-
-
-            <Label text="Ref. Eigenaar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
-
-            <Label text="Ref. Institutie" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
-
-            <Label text="Extra details" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
-
-            <Label text="Orginele beschrijving" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
-
-            <TextField fx:id="amountOfTransactions" prefHeight="40.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <Button fx:id="split" onAction="#split" prefHeight="40.0" text="SPLITSEN" GridPane.columnIndex="2" GridPane.rowIndex="12" />
-
-            <Button fx:id="change" onAction="#change" prefHeight="40.0" text="AANPASSEN" GridPane.columnIndex="2" GridPane.rowIndex="13" />
-         <Label text="Categorie" GridPane.columnIndex="1" GridPane.rowIndex="9">
+        <Label text="Waarde datum:" GridPane.rowIndex="1">
             <font>
-               <Font size="20.0" />
+                <Font name="System Bold" size="20.0" />
             </font>
-         </Label>
-         <TextField fx:id="transactionCategory" minHeight="-Infinity" prefHeight="40.0" prefWidth="396.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-         <Label fx:id="valueDate" text=" " GridPane.rowIndex="2">
+        </Label>
+
+        <Label text="Invoer datum:" GridPane.rowIndex="3">
             <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+
+        <Label text="Transactie bedrag:" GridPane.rowIndex="5">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+
+        <Label text="Debit/Credit:" GridPane.rowIndex="7">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+
+        <Label text="Transactie code:" GridPane.rowIndex="9">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+
+        <Label text="Optionele beschrijving:" GridPane.rowIndex="11">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <TextField fx:id="optionalDescription" prefHeight="Infinity" GridPane.rowIndex="12" GridPane.rowSpan="2" />
+
+
+        <Label text="Ref. Eigenaar:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+
+        <Label text="Ref. Institutie:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+
+        <Label text="Extra details:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+
+        <Label text="Orginele beschrijving:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+
+        <TextField fx:id="amountOfTransactions" prefHeight="40.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+        <Button fx:id="split" onAction="#split" prefHeight="40.0" text="SPLITSEN" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+
+        <Button fx:id="change" onAction="#change" prefHeight="40.0" text="AANPASSEN" GridPane.columnIndex="2" GridPane.rowIndex="10" GridPane.rowSpan="2147483647" GridPane.valignment="TOP" />
+        <Label text="Categorie:" GridPane.columnIndex="1" GridPane.rowIndex="9">
+           <font>
+               <Font name="System Bold" size="20.0" />
+           </font>
+        </Label>
+        <TextField fx:id="transactionCategory" minHeight="-Infinity" prefHeight="40.0" prefWidth="396.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+        <Label fx:id="valueDate" text=" " GridPane.rowIndex="2">
+           <font>
                <Font size="18.0" />
-            </font>
-         </Label>
-         <Label fx:id="entryDate" text=" " GridPane.rowIndex="4">
-            <font>
+           </font>
+        </Label>
+        <Label fx:id="entryDate" text=" " GridPane.rowIndex="4">
+           <font>
                <Font size="18.0" />
-            </font>
-         </Label>
-         <Label fx:id="amount" text=" " GridPane.rowIndex="6">
-            <font>
+           </font>
+        </Label>
+        <Label fx:id="amount" text=" " GridPane.rowIndex="6">
+           <font>
                <Font size="18.0" />
-            </font>
-         </Label>
-         <Label fx:id="debitCredit" text=" " GridPane.rowIndex="8">
-            <font>
+           </font>
+        </Label>
+        <Label fx:id="debitCredit" text=" " GridPane.rowIndex="8">
+           <font>
                <Font size="18.0" />
-            </font>
-         </Label>
-         <Label fx:id="transactionCode" text=" " GridPane.rowIndex="10">
-            <font>
+           </font>
+        </Label>
+        <Label fx:id="transactionCode" text=" " GridPane.rowIndex="10">
+           <font>
                <Font size="18.0" />
-            </font>
-         </Label>
-         <Label fx:id="referenceOwner" text=" " GridPane.columnIndex="1" GridPane.rowIndex="2">
-            <font>
+           </font>
+        </Label>
+        <Label fx:id="referenceOwner" text=" " GridPane.columnIndex="1" GridPane.rowIndex="2">
+           <font>
                <Font size="18.0" />
-            </font>
-         </Label>
-         <Label fx:id="referenceInstitution" text=" " GridPane.columnIndex="1" GridPane.rowIndex="4">
-            <font>
+           </font>
+        </Label>
+        <Label fx:id="referenceInstitution" text=" " GridPane.columnIndex="1" GridPane.rowIndex="4">
+           <font>
                <Font size="18.0" />
-            </font>
-         </Label>
-         <Label fx:id="supplementaryDetails" text=" " GridPane.columnIndex="1" GridPane.rowIndex="6">
-            <font>
+           </font>
+        </Label>
+        <Label fx:id="supplementaryDetails" text=" " GridPane.columnIndex="1" GridPane.rowIndex="6">
+           <font>
                <Font size="18.0" />
-            </font>
-         </Label>
-         <Text fx:id="originalDescription" strokeType="OUTSIDE" strokeWidth="0.0" text=" " GridPane.columnIndex="1" GridPane.rowIndex="8">
-            <font>
+           </font>
+        </Label>
+        <Text fx:id="originalDescription" strokeType="OUTSIDE" strokeWidth="0.0" text=" " GridPane.columnIndex="1" GridPane.rowIndex="8">
+           <font>
                <Font size="13.0" />
-            </font>
-         </Text>
-        </children>
+           </font>
+        </Text>
     </GridPane>
 </AnchorPane>

@@ -1,9 +1,6 @@
 package com.example.quintor.getdata;
 
-import com.example.quintor.dataobjects.Balance;
-import com.example.quintor.dataobjects.BankStatement;
-import com.example.quintor.dataobjects.BankStatementDescription;
-import com.example.quintor.dataobjects.User;
+import com.example.quintor.dataobjects.*;
 import com.example.quintor.services.ApiService;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,11 +11,22 @@ import org.xml.sax.InputSource;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GetBankStatement {
+    public static List<BankStatement> getBankStatements() throws IOException {
+        if (System.getProperty("MODUS").equals("JSON")) {
+            return getBankStatementsJSON();
+        }
+        if (System.getProperty("MODUS").equals("XML")) {
+            return getBankStatementsXML();
+        }
+        return null;
+    }
+
     /**
      * Get the JSON with all the BankStatements from the api and place them in a JSONArray.
      * Then loops through the JSONArray and makes a list of BankStatements.
@@ -29,7 +37,7 @@ public class GetBankStatement {
         List<BankStatement> allBankStatements = new ArrayList<>();
         ApiService apiService = new ApiService();
         try {
-            String json = apiService.getRequest("/api/bankStatement/allBankStatementsJSON");
+            String json = apiService.getRequest("/api/json/getAllBankStatements");
             JSONArray jsonArray = new JSONArray(json);
             for (Object current : jsonArray) {
                 JSONObject currentBankStatement = (JSONObject) current;
@@ -76,7 +84,7 @@ public class GetBankStatement {
         List<BankStatement> allBankStatements = new ArrayList<>();
         ApiService apiService = new ApiService();
         try {
-            String xml = apiService.getRequest("/api/bankStatement/allBankStatementsXML");
+            String xml = apiService.getRequest("/api/xml/getAllBankStatements");
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
             Document document = documentBuilder.parse(new InputSource(new StringReader(xml)));

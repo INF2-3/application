@@ -41,10 +41,10 @@ public class MainApplication extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
         stage.setTitle("Quintor");
         Scene scene = new Scene(root, sceneWidth, sceneHeight);
-        stage.setMaximized(true);
         stage.setMinWidth(1360);
         stage.setMinHeight(720);
         stage.setScene(scene);
+        stage.centerOnScreen();
         String css = this.getClass().getResource("/style.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.show();
