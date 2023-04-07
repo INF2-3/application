@@ -68,32 +68,37 @@ public class DashboardController extends SceneController implements Initializabl
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        columnFileId.setCellValueFactory(new PropertyValueFactory<BankStatement, Integer>("id"));
-        columnFileDate.setCellValueFactory(new PropertyValueFactory<BankStatement, String>("uploadDate"));
-        columnFileUploader.setCellValueFactory(new PropertyValueFactory<BankStatement, User>("userName"));
-        columnFinalBalance.setCellValueFactory(new PropertyValueFactory<BankStatement, Double>("finalBalance"));
-        columnAccountNumber.setCellValueFactory(new PropertyValueFactory<BankStatement, String>("accountNumber"));
+        try {
 
-        List<BankStatement> allBankstatements = GetBankStatement.getBankStatementsXML();
-        ObservableList<BankStatement> bankStatements = transcriptTable.getItems();
-        bankStatements.addAll(allBankstatements);
-        transcriptTable.setItems(bankStatements);
+            columnFileId.setCellValueFactory(new PropertyValueFactory<BankStatement, Integer>("id"));
+            columnFileDate.setCellValueFactory(new PropertyValueFactory<BankStatement, String>("uploadDate"));
+            columnFileUploader.setCellValueFactory(new PropertyValueFactory<BankStatement, User>("userName"));
+            columnFinalBalance.setCellValueFactory(new PropertyValueFactory<BankStatement, Double>("finalBalance"));
+            columnAccountNumber.setCellValueFactory(new PropertyValueFactory<BankStatement, String>("accountNumber"));
 
-        transcriptTable.setRowFactory(tv -> {
-            TableRow<BankStatement> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && !row.isEmpty()) {
-                    BankStatement bankStatement = row.getItem();
-                    TransactionOverviewController.setFileId(bankStatement.getId());
-                    try {
-                        changeView("transactionsOverview", embeddedNav);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+            List<BankStatement> allBankstatements = GetBankStatement.getBankStatements();
+            ObservableList<BankStatement> bankStatements = transcriptTable.getItems();
+            bankStatements.addAll(allBankstatements);
+            transcriptTable.setItems(bankStatements);
+
+            transcriptTable.setRowFactory(tv -> {
+                TableRow<BankStatement> row = new TableRow<>();
+                row.setOnMouseClicked(event -> {
+                    if (event.getClickCount() == 2 && !row.isEmpty()) {
+                        BankStatement bankStatement = row.getItem();
+                        TransactionOverviewController.setFileId(bankStatement.getId());
+                        try {
+                            changeView("transactionsOverview", embeddedNav);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
-                }
+                });
+                return row;
             });
-            return row;
-        });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**

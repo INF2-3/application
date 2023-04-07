@@ -22,6 +22,16 @@ import org.xml.sax.InputSource;
 
 
 public class GetTransactions {
+    public static List<Transaction> getTransactions() throws IOException {
+        if (System.getProperty("MODUS").equals("JSON")) {
+            return getTransactionsJSON();
+        }
+        if (System.getProperty("MODUS").equals("XML")) {
+            return getTransactionsXML();
+        }
+        return null;
+    }
+
     /**
      * Get the JSON with all the transactions from the api and place them in a JSONArray
      * Then loops through the JSONArray and makes a List of Transaction.
@@ -31,7 +41,7 @@ public class GetTransactions {
      */
     public static List<Transaction> getTransactionsJSON() throws IOException {
         List<Transaction> allTransactions = new ArrayList<>();
-        String url = System.getenv("URL_API") + "/api/transaction/getAllTransactionsJSON";
+        String url = System.getenv("URL_API") + "/api/json/getAllTransactions";
         URL api = new URL(url);
         HttpURLConnection httpURLConnection = (HttpURLConnection) api.openConnection();
         httpURLConnection.setRequestMethod("GET");
@@ -121,7 +131,7 @@ public class GetTransactions {
         List<Transaction> allTransactions = new ArrayList<>();
         ApiService apiService = new ApiService();
         try {
-            String xml = apiService.getRequest("/api/transaction/getAllTransactionsXML");
+            String xml = apiService.getRequest("/api/xml/getAllTransactions");
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
             Document document = documentBuilder.parse(new InputSource(new StringReader(xml)));

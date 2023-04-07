@@ -141,7 +141,7 @@ public class TransactionOverviewController extends SceneController implements In
     }
 
     public List<Transaction> getAllTransactions() throws IOException {
-        List<Transaction> allTransactions = GetTransactions.getTransactionsXML();
+        List<Transaction> allTransactions = GetTransactions.getTransactions();
         GetTransactions.getTransactionsJSON();
         return allTransactions;
     }
