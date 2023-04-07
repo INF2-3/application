@@ -3,15 +3,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<!--        fx:controller="com.example.quintor.SettingsController"-->
 
-<AnchorPane fx:controller="com.example.quintor.SettingsController" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quintor.SettingsController">
    <fx:include fx:id="embeddedNav" source="navbar.fxml"/>
    <children>
-      <VBox fx:id="settingsBox" alignment="TOP_CENTER" layoutX="521.0" layoutY="185.0" prefHeight="350.0" prefWidth="317.0" spacing="20.0" style="-fx-background-color: #E7C6FF; -fx-background-radius: 20; -fx-border-color: #000000; -fx-border-radius: 20;">
+      <VBox fx:id="settingsBox" alignment="TOP_CENTER" layoutX="521.0" layoutY="185.0" prefHeight="380.0" prefWidth="318.0" spacing="20.0" style="-fx-background-color: #E7C6FF; -fx-background-radius: 20; -fx-border-color: #000000; -fx-border-radius: 20;">
          <children>
             <Label style="-fx-font-weight: bold;" text="Instellingen">
                <font>
@@ -37,9 +38,27 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
+            <Label layoutX="84.0" layoutY="292.0" text="Modus:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="jsonModus" layoutX="157.0" layoutY="294.0" mnemonicParsing="false" onAction="#changeModus" selected="true" text="JSON">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="modus" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="234.0" layoutY="295.0" mnemonicParsing="false" onAction="#changeModus" text="XML" toggleGroup="$modus" fx:id="xmlModus">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </RadioButton>
          </children>
          <padding>
-            <Insets top="15.0" />
+            <Insets bottom="15.0" top="15.0" />
          </padding>
       </VBox>
    </children>

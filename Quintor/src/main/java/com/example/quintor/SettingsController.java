@@ -2,6 +2,7 @@ package com.example.quintor;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -16,6 +17,17 @@ public class SettingsController extends SceneController {
     private AnchorPane anchorPane;
     @FXML
     public VBox settingsBox;
+
+    @FXML
+    private RadioButton jsonModus, xmlModus;
+
+    /**
+     * Sets the xml or json modus to json
+     */
+
+    public void initialize() {
+        System.setProperty("MODUS", "JSON");
+    }
 
     public SettingsController() {
         stage = new Stage();
@@ -34,15 +46,16 @@ public class SettingsController extends SceneController {
     }
 
     public void logout() throws IOException {
-        // FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-        // Parent root = loader.load();
-        // Scene newScene = new Scene(root);
-        // Stage stage = (Stage) anchorPane.getScene().getWindow();
-        // Scene oldScene = stage.getScene();
-        // if (oldScene != null) {
-        // stage.close();
-        // }
-        // stage.setScene(newScene);
-        // stage.show();
+    }
+
+    /**
+     * Updates the modus to json or xml
+     */
+    public void changeModus(){
+        if(jsonModus.isSelected()){
+            System.setProperty("MODUS", "JSON");
+        }else if(xmlModus.isSelected()){
+            System.setProperty("MODUS", "XML");
+        }
     }
 }
