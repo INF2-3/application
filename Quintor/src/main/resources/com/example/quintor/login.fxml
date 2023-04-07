@@ -32,24 +32,6 @@
                         <Font size="14.0" />
                      </font>
                   </PasswordField>
-                  <RadioButton fx:id="jsonModus" layoutX="157.0" layoutY="294.0" mnemonicParsing="false" onAction="#changeModus" selected="true" text="JSON">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                     <toggleGroup>
-                        <ToggleGroup fx:id="modus" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton layoutX="234.0" layoutY="295.0" mnemonicParsing="false" onAction="#changeModus" text="XML" toggleGroup="$modus" fx:id="xmlModus">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </RadioButton>
-                  <Label layoutX="84.0" layoutY="292.0" text="Modus:">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
                </children>
             </AnchorPane>
          </children>
