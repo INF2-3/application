@@ -154,7 +154,7 @@ public class DashboardController implements Initializable {
         connection.setDoOutput(true);
 
         OutputStream os = connection.getOutputStream();
-        String params = "file=" + file + "&userId=" + userId;
+        String params = "file=" + file + "&userId=" + userId + "&mode=" + System.getProperty("MODUS");
         os.write(params.getBytes());
         os.flush();
         os.close();
