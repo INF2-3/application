@@ -24,7 +24,7 @@
           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
     </TableView>
-    <TextField layoutX="896.0" layoutY="65.0" prefHeight="45.0" prefWidth="372.0" promptText="Zoeken naar transactie" AnchorPane.rightAnchor="92.0" />
+    <TextField fx:id="search" layoutX="896.0" layoutY="65.0" prefHeight="45.0" prefWidth="372.0" promptText="Zoeken naar transactie" AnchorPane.rightAnchor="92.0" />
     <Label layoutX="91.0" layoutY="65.0" prefWidth="206.0" text="Transacties" AnchorPane.leftAnchor="91.0">
         <font>
           <Font name="Roboto Bold" size="34.0" />
