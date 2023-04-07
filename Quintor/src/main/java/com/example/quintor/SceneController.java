@@ -14,5 +14,6 @@ public abstract class SceneController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page + ".fxml")));
         Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root));
+        window.centerOnScreen();
     }
 }

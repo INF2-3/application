@@ -12,29 +12,32 @@
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quintor.LoginController">
    <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1360.0" prefHeight="720.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
-         <children>
-            <AnchorPane layoutX="400.0" layoutY="188.0" minHeight="320.0" minWidth="560.0" prefHeight="344.0" prefWidth="560.0" style="-fx-background-color: #E7C6FF; -fx-background-radius: 22; -fx-border-color: black; -fx-border-radius: 22;">
-               <children>
-                  <TextField fx:id="emailField" layoutX="80.0" layoutY="77.0" minHeight="40.0" minWidth="400.0" prefHeight="40.0" prefWidth="400.0" promptText="E-mailadres" style="-fx-border-color: black;">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <Button fx:id="loginButton" layoutX="80.0" layoutY="218.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressLoginButton" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #023047;" text="Login" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="errorLabel" layoutX="80.0" layoutY="191.0" text=" " textFill="RED" />
-                  <PasswordField fx:id="passwordField" layoutX="80.0" layoutY="140.0" prefHeight="40.0" prefWidth="400.0" promptText="Wachtwoord" style="-fx-border-color: black;">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </PasswordField>
-               </children>
-            </AnchorPane>
-         </children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1360.0" prefHeight="720.0"
+                  prefWidth="1360.0" BorderPane.alignment="CENTER">
+         <AnchorPane layoutX="400.0" layoutY="188.0" minHeight="320.0" minWidth="560.0" prefHeight="344.0"
+                     prefWidth="560.0"
+                     style="-fx-background-color: #E7C6FF; -fx-background-radius: 22; -fx-border-color: black; -fx-border-radius: 22;">
+            <TextField fx:id="emailField" layoutX="80.0" layoutY="77.0" minHeight="40.0" minWidth="400.0"
+                       prefHeight="40.0" prefWidth="400.0" promptText="E-mailadres" style="-fx-border-color: black;">
+               <font>
+                  <Font size="14.0"/>
+               </font>
+            </TextField>
+            <Button fx:id="loginButton" layoutX="80.0" layoutY="218.0" minHeight="-Infinity" minWidth="-Infinity"
+                    mnemonicParsing="false" onAction="#pressLoginButton" prefHeight="40.0" prefWidth="400.0"
+                    style="-fx-background-color: #023047;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0"/>
+               </font>
+            </Button>
+            <Label fx:id="errorLabel" layoutX="80.0" layoutY="191.0" text=" " textFill="RED"/>
+            <PasswordField fx:id="passwordField" layoutX="80.0" layoutY="140.0" prefHeight="40.0" prefWidth="400.0"
+                           promptText="Wachtwoord" style="-fx-border-color: black;">
+               <font>
+                  <Font size="14.0"/>
+               </font>
+            </PasswordField>
+         </AnchorPane>
       </AnchorPane>
    </center>
 </BorderPane>

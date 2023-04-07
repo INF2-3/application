@@ -2,16 +2,14 @@ package com.example.quintor;
 
 
 import com.example.quintor.dataobjects.BankStatement;
-import com.example.quintor.dataobjects.Transaction;
 import com.example.quintor.dataobjects.User;
 import com.example.quintor.getdata.GetBankStatement;
-import com.example.quintor.getdata.GetTransactions;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
@@ -24,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class DashboardController extends SceneController implements Initializable {
     @FXML
-    public BorderPane embeddedNav;
+    public AnchorPane embeddedNav;
     @FXML
     private VBox mainVBox;
     @FXML
