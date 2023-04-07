@@ -24,6 +24,22 @@ public class SettingsController extends SceneController {
     public SettingsController() {
         stage = new Stage();
     }
+    
+     public void initialize() {
+         switch(System.getProperty("MODUS")){
+             case "JSON":
+                 jsonModus.setSelected(true);
+                 xmlModus.setSelected(false);
+                 break;
+             case "XML":
+                 jsonModus.setSelected(false);
+                 xmlModus.setSelected(true);
+                 break;
+              default: 
+                 jsonModus.setSelected(true);
+                 xmlModus.setSelected(false);
+         }
+    }
 
     public void changePassword() {
         // changeView("changePassword");
