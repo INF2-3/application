@@ -4,7 +4,8 @@ Financing application
 
 ## Set up
 
-Rename the file 'env' to '.env' in the the parser, api and application repository.
+Rename the file 'example.env' to '.env' in the the parser, api and application repository.
+The 'example.env' file can be found in the resources folder of every repository.
 Make sure that the parser and api will run on the right ports;
     - parser: 9091
     - api: 8080
