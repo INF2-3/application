@@ -1,5 +1,6 @@
 package com.example.quintor;
 
+import com.example.quintor.dataobjects.BankStatement;
 import com.example.quintor.dataobjects.XmlOrJson;
 import com.example.quintor.getdata.GetTransactions;
 import com.example.quintor.dataobjects.Transaction;
@@ -49,12 +50,18 @@ public class TransactionOverviewController extends SceneController implements In
     private TableColumn<Transaction, String> columnDescription;
     private XmlOrJson xmlOrJson = XmlOrJson.JSON;
 
+    private static int fileId = -1;
+
     public TransactionOverviewController() {
         this.stage = new Stage();
     }
 
     public void openLayout() throws IOException {
         changeView("transactionInformation", embeddedNav);
+    }
+
+    public static void setFileId(int id) {
+        TransactionOverviewController.fileId = id;
     }
 
     /**
@@ -69,8 +76,13 @@ public class TransactionOverviewController extends SceneController implements In
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            List<Transaction> allTransactions = GetTransactions.getTransactionsXML();
-            GetTransactions.getTransactionsJSON();
+            List<Transaction> allTransactions;
+            if (fileId == -1) {
+                allTransactions = getAllTransactions();
+            } else {
+                allTransactions = getBankStatementTransactions(fileId);
+                fileId = -1;
+            }
 
             search.setOnKeyPressed(keyEvent -> {
                 if (keyEvent.getCode().equals(KeyCode.ENTER)) {
@@ -126,6 +138,22 @@ public class TransactionOverviewController extends SceneController implements In
             });
             return row;
         });
+    }
+
+    public List<Transaction> getAllTransactions() throws IOException {
+        List<Transaction> allTransactions = GetTransactions.getTransactionsXML();
+        GetTransactions.getTransactionsJSON();
+        return allTransactions;
+    }
+
+    public List<Transaction> getBankStatementTransactions(int id) throws IOException {
+        List<Transaction> bankStatementTransactions = new ArrayList<>();
+        for(Transaction transaction : getAllTransactions()) {
+            if (transaction.getFileId() == id) {
+                bankStatementTransactions.add(transaction);
+            }
+        }
+        return bankStatementTransactions;
     }
 }
 
