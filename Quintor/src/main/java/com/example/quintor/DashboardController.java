@@ -110,13 +110,18 @@ public class DashboardController extends SceneController implements Initializabl
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MT940 files", "*.940"));
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT files", "*.txt"));
         File f = fc.showOpenDialog(null);
+        Alert alert = new Alert(Alert.AlertType.NONE);
         if (f != null) {
             try {
-                if (uploadFile(f, userId)) {
-                    uploadToPostgres(f, userId);
-                }
-            } catch (IOException error) {
-                error.printStackTrace();
+                uploadToPostgres(f, userId);
+                uploadFile(f, userId);
+                alert.setAlertType(Alert.AlertType.INFORMATION);
+                alert.setContentText("Het bankafschrift is geupload");
+                alert.show();
+            } catch (Exception e) {
+                alert.setAlertType(Alert.AlertType.ERROR);
+                alert.setContentText("Er ging iets mis bij het uploaden van een bankafschrift");
+                alert.show();
             }
         }
     }
@@ -151,7 +156,8 @@ public class DashboardController extends SceneController implements Initializabl
         os.write(params.getBytes());
         os.flush();
         os.close();
-        return getResponse(httpURLConnection);
+        getResponse(httpURLConnection);
+        return true;
     }
 
 
@@ -180,7 +186,8 @@ public class DashboardController extends SceneController implements Initializabl
         os.flush();
         os.close();
 
-        return getResponse(connection);
+        getResponse(connection);
+        return true;
     }
 
     /**
@@ -190,9 +197,9 @@ public class DashboardController extends SceneController implements Initializabl
      * @return true or false based on the response of the api.
      * @throws IOException
      */
-    private boolean getResponse(HttpURLConnection httpURLConnection) throws IOException {
+    private void getResponse(HttpURLConnection httpURLConnection) throws IOException {
         if (httpURLConnection == null) {
-            return false;
+            throw new IOException();
         }
         int responseCode = httpURLConnection.getResponseCode();
         if (responseCode == HttpURLConnection.HTTP_OK) {
@@ -204,11 +211,14 @@ public class DashboardController extends SceneController implements Initializabl
                 response.append(inputLine);
             }
             in.close();
-            if (response.toString().equals(success)) {
-                return true;
-            }
-            return false;
+//            if (response.toString().equals(success)) {
+//                return true;
+//            }
+//            return false;
+//            return true;
         }
-        return false;
+        if (responseCode == HttpURLConnection.HTTP_INTERNAL_ERROR) {
+            throw new IOException();
+        }
     }
 }
