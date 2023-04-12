@@ -96,7 +96,8 @@ public class TransactionOverviewController extends SceneController implements In
                                 transaction.getOriginalDescription().toString(),
                                 transaction.getReferenceOwner(),
                                 transaction.getInstitutionReference(),
-                                transaction.getCode()
+                                transaction.getCode(),
+                                transaction.getDescription()
                         ).anyMatch(value -> value != null && value.toLowerCase().contains(filterInput.toLowerCase()))) {
                             matchingTransactions.add(transaction);
                         }
