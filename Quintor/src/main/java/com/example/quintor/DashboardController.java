@@ -110,13 +110,21 @@ public class DashboardController extends SceneController implements Initializabl
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("MT940 files", "*.940"));
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT files", "*.txt"));
         File f = fc.showOpenDialog(null);
+        Alert alert = new Alert(Alert.AlertType.NONE);
         if (f != null) {
             try {
-                if (uploadFile(f, userId)) {
-                    uploadToPostgres(f, userId);
-                }
-            } catch (IOException error) {
-                error.printStackTrace();
+                uploadToPostgres(f, userId);
+                uploadFile(f, userId);
+                alert.setAlertType(Alert.AlertType.INFORMATION);
+                alert.setTitle("");
+                alert.setHeaderText("Gelukt!");
+                alert.setContentText("Het bankafschrift is geüpload");
+                alert.show();
+            } catch (Exception e) {
+                alert.setAlertType(Alert.AlertType.ERROR);
+                alert.setHeaderText("Er ging iets mis");
+                alert.setContentText("Bankafschrift kan niet geüpload worden");
+                alert.show();
             }
         }
     }
@@ -127,16 +135,10 @@ public class DashboardController extends SceneController implements Initializabl
      *
      * @param file   The file which should be uploaded.
      * @param userId The user id of the user who uploads the file.
-     * @return return true when the file has been uploaded and false when something
-     * went wrong.
-     * @throws IOException
      */
-    private boolean uploadFile(File file, int userId) throws IOException {
-        if (file == null || !file.isFile() || !file.exists()) {
-            return false;
-        }
-        if (userId < 0) {
-            return false;
+    private void uploadFile(File file, int userId) throws IOException {
+        if (file == null || !file.isFile() || !file.exists() || userId < 0) {
+            return;
         }
 
         String url = System.getenv("URL_API") + "/api/mt940/insert";
@@ -151,7 +153,7 @@ public class DashboardController extends SceneController implements Initializabl
         os.write(params.getBytes());
         os.flush();
         os.close();
-        return getResponse(httpURLConnection);
+        getResponse(httpURLConnection);
     }
 
 
@@ -160,15 +162,12 @@ public class DashboardController extends SceneController implements Initializabl
      *
      * @param file   Uploaded file
      * @param userId id of uploaded user
-     * @return Endpoint response
      */
-    private boolean uploadToPostgres(File file, int userId) throws IOException {
-        if (file == null || !file.isFile() || !file.exists()) {
-            return false;
+    private void uploadToPostgres(File file, int userId) throws IOException {
+        if (file == null || !file.isFile() || !file.exists() || userId < 0) {
+            return;
         }
-        if (userId < 0) {
-            return false;
-        }
+
         HttpURLConnection connection = (HttpURLConnection) new URL((System.getenv("URL_API") + "/api/postgres/insert")).openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Accept", "application/json");
@@ -180,35 +179,22 @@ public class DashboardController extends SceneController implements Initializabl
         os.flush();
         os.close();
 
-        return getResponse(connection);
+        getResponse(connection);
     }
 
     /**
      * Gets the response of a httpURLConnection and puts them in a Stringbuffer.
      *
      * @param httpURLConnection the httpURLConnection used to get the response.
-     * @return true or false based on the response of the api.
-     * @throws IOException
+     * @throws IOException if there was an error in the api, throw IOException
      */
-    private boolean getResponse(HttpURLConnection httpURLConnection) throws IOException {
+    private void getResponse(HttpURLConnection httpURLConnection) throws IOException {
         if (httpURLConnection == null) {
-            return false;
+            throw new IOException();
         }
         int responseCode = httpURLConnection.getResponseCode();
-        if (responseCode == HttpURLConnection.HTTP_OK) {
-            BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-            if (response.toString().equals(success)) {
-                return true;
-            }
-            return false;
+        if (responseCode == HttpURLConnection.HTTP_INTERNAL_ERROR) {
+            throw new IOException();
         }
-        return false;
     }
 }

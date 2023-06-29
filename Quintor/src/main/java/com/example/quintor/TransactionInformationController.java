@@ -4,6 +4,7 @@ import com.example.quintor.dataobjects.Transaction;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,6 +13,9 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -59,8 +63,29 @@ public class TransactionInformationController implements Initializable {
 
     }
 
-    public void change() {
+    public void change() throws IOException {
+        HttpURLConnection connection = (HttpURLConnection) new URL((System.getenv("URL_API") + "/api/postgres/update")).openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setDoOutput(true);
 
+        OutputStream os = connection.getOutputStream();
+        String params = "transactionId=" + transaction.getId() + "&description=" + optionalDescription.getText() + "&category=" + transactionCategory.getText() + "&mode=" + System.getProperty("MODUS");
+        os.write(params.getBytes());
+        os.flush();
+        os.close();
+        System.out.println(connection.getResponseCode());
+        if (connection.getResponseCode() == HttpURLConnection.HTTP_INTERNAL_ERROR) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Er ging iets mis");
+            alert.setContentText("De beschrijving en/of categorie kon niet aangepast worden");
+            alert.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Gelukt!");
+            alert.setContentText("Beschrijving en categorie aangepast ");
+            alert.show();
+        }
     }
 
     public static void setTransactionId(Transaction transaction) {
@@ -88,7 +113,6 @@ public class TransactionInformationController implements Initializable {
         } else {
             this.transactionCategory.setText(transaction.getCategory().getName());
         }
-
     }
 
 }
